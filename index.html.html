@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hành Tinh Xanh — FPT Hòa Lạc</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --g0: #061f14;
+  --g1: #0a3d2e;
+  --g2: #1a7a4a;
+  --g3: #2ecc71;
+  --g4: #a8f0c8;
+  --g5: #e8faf0;
+  --g6: #f4fdf8;
+  --amber: #f59e0b;
+  --amber-l: #fef3cd;
+  --red: #e74c3c;
+  --red-l: #fef2f2;
+  --blue: #1a6e8a;
+  --blue-l: #e6f3f8;
+  --text: #0d2818;
+  --text2: #2d6a4f;
+  --text3: #7aad92;
+  --white: #ffffff;
+  --shadow: 0 2px 16px rgba(10,61,46,0.10);
+  --shadow-lg: 0 8px 40px rgba(10,61,46,0.16);
+  --radius: 14px;
+  --radius-lg: 20px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;}
+body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var(--text);}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+  width:260px;flex-shrink:0;
+  background:linear-gradient(180deg,var(--g1) 0%,#0d4f35 100%);
+  display:flex;flex-direction:column;
+  height:100vh;overflow:hidden;
+  position:relative;z-index:2;
+}
+.sidebar::after{content:'';position:absolute;right:0;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.07);}
+
+.sb-logo{
+  padding:1.75rem 1.5rem 1.25rem;
+  display:flex;align-items:center;gap:0.75rem;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.sb-logo-icon{font-size:2rem;animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+.sb-logo-text{font-size:1.1rem;font-weight:900;color:white;line-height:1.2;}
+.sb-logo-text span{color:var(--g4);display:block;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-top:1px;}
+
+.sb-planet{padding:1.25rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.08);}
+.sb-planet-label{font-size:0.67rem;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.45);margin-bottom:0.5rem;}
+.sb-planet-bar{height:7px;background:rgba(255,255,255,0.12);border-radius:99px;overflow:hidden;margin-bottom:0.35rem;}
+.sb-planet-fill{height:100%;background:linear-gradient(90deg,var(--g3),var(--g4));border-radius:99px;transition:width 1s ease;}
+.sb-planet-row{display:flex;justify-content:space-between;align-items:center;}
+.sb-planet-pct{font-size:0.82rem;font-weight:800;color:var(--g4);}
+.sb-planet-lbl{font-size:0.68rem;color:rgba(255,255,255,0.4);font-weight:600;}
+
+.sb-xp-card{margin:1rem 1.25rem;background:rgba(255,255,255,0.07);border-radius:12px;padding:0.85rem 1rem;display:flex;align-items:center;gap:0.75rem;}
+.sb-xp-icon{font-size:1.5rem;}
+.sb-xp-val{font-size:1.25rem;font-weight:900;color:var(--g4);}
+.sb-xp-sub{font-size:0.7rem;color:rgba(255,255,255,0.45);font-weight:600;}
+.sb-xp-streak{margin-left:auto;background:rgba(243,156,18,0.2);color:#fbbf24;font-size:0.72rem;font-weight:800;padding:0.25rem 0.55rem;border-radius:99px;}
+
+.sb-nav{flex:1;overflow-y:auto;padding:0.75rem 0;}
+.sb-nav-section{font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.3);padding:0.75rem 1.5rem 0.35rem;}
+.sb-nav-item{
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.65rem 1.5rem;cursor:pointer;
+  font-size:0.88rem;font-weight:700;color:rgba(255,255,255,0.6);
+  transition:all 0.15s;position:relative;
+  border-left:3px solid transparent;
+}
+.sb-nav-item:hover{color:rgba(255,255,255,0.9);background:rgba(255,255,255,0.05);}
+.sb-nav-item.active{color:white;background:rgba(255,255,255,0.09);border-left-color:var(--g3);}
+.sb-nav-item .ni-icon{font-size:1.1rem;width:20px;text-align:center;}
+.sb-nav-item .ni-badge{margin-left:auto;background:var(--g3);color:var(--g1);font-size:0.62rem;font-weight:900;padding:0.15rem 0.5rem;border-radius:99px;}
+.sb-nav-item .ni-done{margin-left:auto;color:var(--g3);font-size:0.85rem;}
+.sb-nav-item .ni-lock{margin-left:auto;color:rgba(255,255,255,0.25);font-size:0.85rem;}
+.sb-nav-item.locked{opacity:0.45;pointer-events:none;}
+
+.sb-footer{padding:1rem 1.25rem;border-top:1px solid rgba(255,255,255,0.08);}
+.sb-streak-row{display:flex;gap:0.35rem;justify-content:center;}
+.streak-day{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:0.9rem;}
+.streak-day.done{background:rgba(243,156,18,0.25);}
+
+/* ===== MAIN CONTENT ===== */
+.main{flex:1;height:100vh;overflow:hidden;display:flex;flex-direction:column;background:var(--g6);}
+
+/* ===== TOPBAR ===== */
+.topbar{
+  background:white;border-bottom:1px solid #e0efe8;
+  padding:0 2rem;height:60px;flex-shrink:0;
+  display:flex;align-items:center;gap:1rem;
+}
+.topbar-title{font-size:1rem;font-weight:800;color:var(--text);flex:1;}
+.topbar-timer{display:flex;align-items:center;gap:0.5rem;background:var(--g5);border-radius:10px;padding:0.4rem 0.85rem;}
+.topbar-timer-icon{font-size:1rem;}
+.topbar-timer-num{font-family:'Space Mono',monospace;font-size:1rem;font-weight:700;color:var(--g2);min-width:26px;}
+.topbar-progress{flex:1;max-width:200px;height:6px;background:#e0f0e8;border-radius:99px;overflow:hidden;}
+.topbar-progress-fill{height:100%;background:linear-gradient(90deg,var(--g2),var(--g3));border-radius:99px;transition:width 0.4s;}
+
+/* ===== SCREENS ===== */
+.screen{display:none;flex:1;overflow:hidden;}
+.screen.active{display:flex;}
+
+/* ===== HOME ===== */
+#home{
+  background:linear-gradient(135deg,var(--g1) 0%,#1e6b44 40%,#27ae60 100%);
+  align-items:center;justify-content:center;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.home-rings{position:absolute;pointer-events:none;}
+.home-ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,0.06);}
+.home-earth{font-size:120px;margin-bottom:1.5rem;filter:drop-shadow(0 16px 40px rgba(0,0,0,0.4));animation:float 3s ease-in-out infinite;}
+.home-h1{font-size:3.5rem;font-weight:900;color:white;letter-spacing:-1px;line-height:1;text-align:center;margin-bottom:0.5rem;}
+.home-h1 span{color:var(--g4);}
+.home-tag{font-size:1.1rem;color:rgba(255,255,255,0.65);margin-bottom:3rem;text-align:center;}
+.home-cards{display:flex;gap:1.5rem;margin-bottom:3rem;}
+.home-stat{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border-radius:16px;padding:1.25rem 2rem;text-align:center;border:1px solid rgba(255,255,255,0.12);}
+.home-stat-num{font-size:2rem;font-weight:900;color:var(--g4);}
+.home-stat-lbl{font-size:0.78rem;color:rgba(255,255,255,0.55);font-weight:700;margin-top:2px;}
+.home-planet-wrap{width:340px;margin-bottom:2.5rem;}
+.home-planet-label{font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.45);margin-bottom:0.5rem;}
+.home-planet-track{height:10px;background:rgba(255,255,255,0.15);border-radius:99px;overflow:hidden;}
+.home-planet-fill{height:100%;background:linear-gradient(90deg,var(--g3),var(--g4));border-radius:99px;}
+.home-planet-pct{font-size:0.82rem;color:var(--g4);font-weight:800;margin-top:0.3rem;text-align:right;}
+.home-btns{display:flex;gap:1rem;}
+.btn-hero{padding:0.9rem 2.5rem;border:none;border-radius:14px;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;cursor:pointer;transition:transform 0.12s,box-shadow 0.12s;}
+.btn-hero:active{transform:scale(0.97);}
+.btn-hero-primary{background:white;color:var(--g1);box-shadow:0 4px 20px rgba(0,0,0,0.25);}
+.btn-hero-secondary{background:rgba(255,255,255,0.12);color:white;border:1.5px solid rgba(255,255,255,0.25);}
+.btn-hero-secondary:hover{background:rgba(255,255,255,0.18);}
+
+/* ===== MISSION MAP ===== */
+#map{flex-direction:row;overflow:hidden;}
+.map-list{width:420px;flex-shrink:0;overflow-y:auto;padding:1.75rem;border-right:1px solid #e0efe8;background:white;}
+.map-list h2{font-size:1.2rem;font-weight:900;color:var(--text);margin-bottom:0.4rem;}
+.map-list-sub{font-size:0.82rem;color:var(--text3);margin-bottom:1.5rem;}
+
+.map-planet-card{background:var(--g5);border-radius:14px;padding:1rem 1.1rem;margin-bottom:1.5rem;}
+.map-planet-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.45rem;}
+.map-planet-label{font-size:0.78rem;font-weight:800;color:var(--g2);}
+.map-planet-pct{font-size:0.78rem;font-weight:800;color:var(--g2);}
+.map-planet-track{height:7px;background:#c8edd8;border-radius:99px;overflow:hidden;}
+.map-planet-fill{height:100%;background:linear-gradient(90deg,var(--g2),var(--g3));border-radius:99px;}
+
+.map-section{font-size:0.7rem;font-weight:900;text-transform:uppercase;letter-spacing:0.07em;color:var(--text3);margin:1.25rem 0 0.6rem;}
+.mcard{
+  display:flex;align-items:flex-start;gap:0.85rem;
+  padding:0.9rem 1rem;border-radius:14px;cursor:pointer;
+  border:1.5px solid #e0efe8;background:white;
+  transition:all 0.15s;margin-bottom:0.5rem;
+  position:relative;
+}
+.mcard:hover{border-color:var(--g3);background:var(--g5);}
+.mcard.selected{border-color:var(--g3);background:var(--g5);box-shadow:0 0 0 3px rgba(46,204,113,0.12);}
+.mcard.locked{opacity:0.5;pointer-events:none;}
+.mcard-icon{font-size:1.8rem;flex-shrink:0;margin-top:2px;}
+.mcard-info{flex:1;}
+.mcard-name{font-size:0.9rem;font-weight:800;color:var(--text);margin-bottom:0.2rem;}
+.mcard-desc{font-size:0.75rem;color:var(--text2);line-height:1.45;margin-bottom:0.4rem;}
+.mcard-meta{display:flex;gap:0.4rem;align-items:center;flex-wrap:wrap;}
+.tag{font-size:0.65rem;font-weight:800;padding:0.18rem 0.55rem;border-radius:99px;}
+.tag-g{background:#e2f8ec;color:#176038;}
+.tag-a{background:#fef3cd;color:#856404;}
+.tag-r{background:#fef2f2;color:#9b1c1c;}
+.tag-b{background:#e6f3f8;color:var(--blue);}
+.mcard-pts{font-size:0.72rem;font-weight:800;color:var(--g2);}
+.mcard-done{position:absolute;top:0.75rem;right:0.75rem;background:var(--g3);color:white;font-size:0.65rem;font-weight:900;padding:0.2rem 0.55rem;border-radius:99px;}
+.mcard-lock{position:absolute;top:50%;right:0.85rem;transform:translateY(-50%);font-size:1.1rem;opacity:0.4;}
+
+.map-preview{flex:1;overflow-y:auto;padding:2rem;}
+.preview-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;color:var(--text3);}
+.preview-placeholder-icon{font-size:5rem;margin-bottom:1rem;opacity:0.4;}
+.preview-placeholder h3{font-size:1.2rem;font-weight:800;color:var(--text2);margin-bottom:0.5rem;}
+.preview-placeholder p{font-size:0.88rem;line-height:1.6;max-width:320px;}
+
+.preview-card{background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden;max-width:560px;margin:0 auto;}
+.preview-header{background:linear-gradient(135deg,var(--g1),var(--g2));padding:1.75rem 2rem;position:relative;overflow:hidden;}
+.preview-header::before{content:'';position:absolute;width:200px;height:200px;border-radius:50%;border:1px solid rgba(255,255,255,0.08);top:-60px;right:-40px;}
+.preview-icon{font-size:3rem;margin-bottom:0.75rem;}
+.preview-title{font-size:1.3rem;font-weight:900;color:white;margin-bottom:0.3rem;}
+.preview-desc{font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.5;}
+.preview-body{padding:1.5rem 2rem;}
+.preview-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-bottom:1.5rem;}
+.pstat{background:var(--g5);border-radius:12px;padding:0.75rem;text-align:center;}
+.pstat-val{font-size:1.1rem;font-weight:900;color:var(--g2);}
+.pstat-lbl{font-size:0.68rem;color:var(--text3);font-weight:700;margin-top:2px;}
+.preview-q-list{margin-bottom:1.5rem;}
+.preview-q-item{display:flex;align-items:center;gap:0.6rem;padding:0.6rem 0;border-bottom:1px solid var(--g5);font-size:0.82rem;color:var(--text2);}
+.preview-q-num{width:22px;height:22px;border-radius:50%;background:var(--g5);color:var(--g2);font-size:0.7rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.btn-start-mission{width:100%;padding:0.95rem;background:var(--g2);color:white;border:none;border-radius:14px;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;cursor:pointer;transition:background 0.15s,transform 0.12s;}
+.btn-start-mission:hover{background:var(--g1);}
+.btn-start-mission:active{transform:scale(0.98);}
+
+/* ===== GAME ===== */
+#game{flex-direction:column;}
+.game-main{flex:1;overflow:hidden;display:flex;gap:0;}
+.game-left{flex:1;overflow-y:auto;padding:2rem;}
+.game-right{width:340px;flex-shrink:0;overflow-y:auto;padding:2rem;border-left:1px solid #e0efe8;background:white;}
+
+.scenario-card-d{background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;margin-bottom:1.25rem;}
+.scenario-banner{height:120px;background:linear-gradient(135deg,var(--g5),#d4f5e6);display:flex;align-items:center;justify-content:center;font-size:4rem;}
+.scenario-body{padding:1.25rem 1.5rem;}
+.scenario-badge{font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;color:var(--g2);margin-bottom:0.5rem;}
+.scenario-q-text{font-size:1.05rem;font-weight:700;color:var(--text);line-height:1.55;}
+
+.choices-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.25rem;}
+.choice-d{
+  padding:1rem 1.1rem;background:white;
+  border:2px solid #d4eddf;border-radius:14px;cursor:pointer;
+  font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:600;color:var(--text);
+  transition:all 0.15s;display:flex;align-items:flex-start;gap:0.65rem;
+  text-align:left;
+}
+.choice-d:hover:not(.disabled){border-color:var(--g3);background:var(--g5);}
+.choice-d.correct{background:#e8faf0;border-color:var(--g3);color:var(--g1);}
+.choice-d.wrong{background:var(--red-l);border-color:var(--red);color:#7f1d1d;}
+.choice-d.disabled{pointer-events:none;}
+.choice-d-letter{width:26px;height:26px;flex-shrink:0;border-radius:8px;background:var(--g5);color:var(--g2);font-size:0.75rem;font-weight:900;display:flex;align-items:center;justify-content:center;}
+.choice-d.correct .choice-d-letter{background:var(--g3);color:white;}
+.choice-d.wrong .choice-d-letter{background:var(--red);color:white;}
+
+.feedback-d{background:white;border-radius:14px;padding:1.1rem 1.25rem;border-left:4px solid var(--g3);display:none;animation:fadeUp 0.3s ease;}
+.feedback-d.show{display:block;}
+.feedback-d.bad{border-left-color:var(--red);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.fb-emoji{font-size:1.4rem;margin-bottom:0.35rem;}
+.fb-title{font-size:0.9rem;font-weight:800;color:var(--text);margin-bottom:0.2rem;}
+.fb-text{font-size:0.8rem;color:var(--text2);line-height:1.55;}
+.fb-impact{font-size:0.82rem;font-weight:800;margin-top:0.5rem;}
+.fb-impact-pos{color:var(--g2);}
+.fb-impact-neg{color:var(--red);}
+
+.btn-next-d{width:100%;padding:0.9rem;background:var(--g2);color:white;border:none;border-radius:14px;font-family:'Nunito',sans-serif;font-size:0.95rem;font-weight:800;cursor:pointer;display:none;margin-top:0.75rem;transition:background 0.15s,transform 0.12s;}
+.btn-next-d.show{display:block;animation:fadeUp 0.3s ease 0.05s both;}
+.btn-next-d:hover{background:var(--g1);}
+.btn-next-d:active{transform:scale(0.98);}
+
+/* game right panel */
+.gr-section{font-size:0.68rem;font-weight:900;text-transform:uppercase;letter-spacing:0.07em;color:var(--text3);margin-bottom:0.65rem;margin-top:1.25rem;}
+.gr-section:first-child{margin-top:0;}
+.q-list-mini{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:1rem;}
+.qm-item{display:flex;align-items:center;gap:0.55rem;font-size:0.8rem;color:var(--text2);padding:0.45rem 0.6rem;border-radius:9px;background:var(--g6);}
+.qm-item.current{background:var(--g5);color:var(--g1);font-weight:700;}
+.qm-item.done-ok{background:#e8faf0;color:var(--g1);}
+.qm-item.done-bad{background:var(--red-l);color:#9b1c1c;}
+.qm-dot{width:20px;height:20px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;}
+.qm-dot-cur{background:var(--g3);color:white;}
+.qm-dot-ok{background:var(--g3);color:white;}
+.qm-dot-bad{background:var(--red);color:white;}
+.qm-dot-idle{background:#d4eddf;color:var(--g2);}
+
+.score-mini{background:var(--g5);border-radius:12px;padding:0.85rem 1rem;text-align:center;margin-bottom:1rem;}
+.score-mini-num{font-size:1.6rem;font-weight:900;color:var(--g2);}
+.score-mini-lbl{font-size:0.7rem;color:var(--text3);font-weight:700;}
+
+.earth-mini{background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:12px;padding:0.85rem 1rem;}
+.em-label{font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:rgba(255,255,255,0.45);margin-bottom:0.45rem;}
+.em-track{height:8px;background:rgba(255,255,255,0.15);border-radius:99px;overflow:hidden;margin-bottom:0.3rem;}
+.em-fill{height:100%;background:linear-gradient(90deg,var(--g3),var(--g4));border-radius:99px;transition:width 0.8s ease;}
+.em-pct{font-size:0.82rem;font-weight:900;color:var(--g4);}
+
+/* ===== RESULT ===== */
+#result{flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--g1),#1e6b44);}
+.result-wrap{max-width:700px;width:100%;padding:2rem;text-align:center;}
+.result-trophy-d{font-size:7rem;animation:pop 0.6s cubic-bezier(0.34,1.56,0.64,1);margin-bottom:0.75rem;}
+@keyframes pop{from{transform:scale(0);}to{transform:scale(1);}}
+.result-title-d{font-size:2.5rem;font-weight:900;color:white;margin-bottom:0.4rem;}
+.result-sub-d{font-size:1rem;color:rgba(255,255,255,0.65);margin-bottom:2.5rem;}
+.result-grid-d{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem;}
+.rstat{background:rgba(255,255,255,0.1);border-radius:16px;padding:1.25rem 1rem;}
+.rstat-num{font-size:1.8rem;font-weight:900;color:var(--g4);}
+.rstat-lbl{font-size:0.72rem;color:rgba(255,255,255,0.5);font-weight:700;margin-top:3px;}
+.result-planet-d{background:rgba(255,255,255,0.1);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:2rem;}
+.rp-label{font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:700;margin-bottom:0.6rem;}
+.rp-track{height:12px;background:rgba(255,255,255,0.12);border-radius:99px;overflow:hidden;margin-bottom:0.4rem;}
+.rp-fill{height:100%;background:linear-gradient(90deg,var(--g3),var(--g4));border-radius:99px;transition:width 1.5s ease;}
+.rp-change{font-size:0.9rem;font-weight:800;color:var(--g4);}
+.result-btns{display:flex;gap:1rem;justify-content:center;}
+.btn-result{padding:0.9rem 2rem;border:none;border-radius:14px;font-family:'Nunito',sans-serif;font-size:0.95rem;font-weight:800;cursor:pointer;transition:transform 0.12s;}
+.btn-result:active{transform:scale(0.97);}
+.btn-result-p{background:white;color:var(--g1);}
+.btn-result-s{background:rgba(255,255,255,0.12);color:white;border:1.5px solid rgba(255,255,255,0.25);}
+
+/* ===== LEADERBOARD ===== */
+#leaderboard{flex-direction:row;overflow:hidden;}
+.lb-left{width:380px;flex-shrink:0;overflow-y:auto;background:white;border-right:1px solid #e0efe8;padding:1.75rem;}
+.lb-left h2{font-size:1.2rem;font-weight:900;color:var(--text);margin-bottom:0.4rem;}
+.lb-sub{font-size:0.82rem;color:var(--text3);margin-bottom:1.25rem;}
+.lb-tabs{display:flex;gap:0.4rem;margin-bottom:1.5rem;}
+.lb-tab-d{flex:1;padding:0.5rem;border:none;font-family:'Nunito',sans-serif;font-size:0.78rem;font-weight:700;border-radius:9px;cursor:pointer;background:var(--g6);color:var(--text3);border:1.5px solid #e0efe8;transition:all 0.15s;}
+.lb-tab-d.active{background:var(--g2);color:white;border-color:var(--g2);}
+.lb-row-d{display:flex;align-items:center;gap:0.85rem;padding:0.65rem 0.75rem;border-radius:12px;margin-bottom:0.4rem;background:var(--g6);}
+.lb-row-d.you{border:2px solid var(--g3);background:var(--g5);}
+.lb-rank-d{font-size:0.82rem;font-weight:900;color:var(--text3);min-width:20px;text-align:center;}
+.lb-avatar-d{width:36px;height:36px;border-radius:50%;background:var(--g5);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.lb-name-d{font-size:0.88rem;font-weight:700;color:var(--text);flex:1;}
+.lb-you-d{font-size:0.62rem;font-weight:900;background:var(--g3);color:white;padding:0.1rem 0.45rem;border-radius:99px;}
+.lb-score-d{font-size:0.88rem;font-weight:900;color:var(--g2);}
+
+.lb-right{flex:1;overflow-y:auto;padding:2rem;}
+.podium-d{display:flex;align-items:flex-end;justify-content:center;gap:1rem;margin-bottom:2rem;}
+.pd-slot{display:flex;flex-direction:column;align-items:center;gap:0.4rem;}
+.pd-avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;}
+.pd1 .pd-avatar{width:72px;height:72px;background:#fef3cd;color:#856404;}
+.pd2 .pd-avatar{width:60px;height:60px;background:#f3f4f6;color:#4b5563;}
+.pd3 .pd-avatar{width:52px;height:52px;background:#fdecea;color:#9b1c1c;}
+.pd-name{font-size:0.82rem;font-weight:800;color:var(--text);}
+.pd-pts{font-size:0.72rem;font-weight:700;color:var(--g2);}
+.pd-block{border-radius:12px 12px 0 0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:900;width:90px;}
+.pd1 .pd-block{height:80px;background:var(--amber);}
+.pd2 .pd-block{height:60px;background:#9ca3af;}
+.pd3 .pd-block{height:44px;background:#b45309;}
+
+.lb-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+.lb-stat-card{background:white;border-radius:14px;padding:1.1rem 1.25rem;box-shadow:var(--shadow);}
+.lb-stat-num{font-size:1.5rem;font-weight:900;color:var(--g2);}
+.lb-stat-lbl{font-size:0.72rem;color:var(--text3);font-weight:700;margin-top:2px;}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:#c8edd8;border-radius:99px;}
+::-webkit-scrollbar-thumb:hover{background:#9fd4b8;}
+</style>
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<div class="sidebar" id="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-icon">🌍</div>
+    <div class="sb-logo-text">
+      Hành Tinh Xanh
+      <span>FPT Hòa Lạc · THPT</span>
+    </div>
+  </div>
+
+  <div class="sb-planet">
+    <div class="sb-planet-label">Sức khỏe Trái Đất</div>
+    <div class="sb-planet-bar"><div class="sb-planet-fill" id="sb-fill" style="width:72%"></div></div>
+    <div class="sb-planet-row">
+      <span class="sb-planet-lbl">Cần cải thiện</span>
+      <span class="sb-planet-pct" id="sb-pct">72%</span>
+    </div>
+  </div>
+
+  <div class="sb-xp-card">
+    <div class="sb-xp-icon">⭐</div>
+    <div>
+      <div class="sb-xp-val" id="sb-xp">340 XP</div>
+      <div class="sb-xp-sub">Kinh nghiệm tích lũy</div>
+    </div>
+    <div class="sb-xp-streak">🔥 3 ngày</div>
+  </div>
+
+  <div class="sb-nav">
+    <div class="sb-nav-section">Menu</div>
+    <div class="sb-nav-item active" id="nav-home" onclick="showScreen('home')">
+      <span class="ni-icon">🏠</span> Trang chủ
+    </div>
+    <div class="sb-nav-item" id="nav-lb" onclick="showScreen('leaderboard')">
+      <span class="ni-icon">🏆</span> Bảng xếp hạng
+    </div>
+
+    <div class="sb-nav-section">Nhiệm vụ</div>
+    <div class="sb-nav-item" onclick="showMap(0)"><span class="ni-icon">♻️</span> Phân loại rác <span class="ni-badge">Mới</span></div>
+    <div class="sb-nav-item" onclick="showMap(1)"><span class="ni-icon">🛍️</span> Mua sắm xanh <span class="ni-done">✓</span></div>
+    <div class="sb-nav-item" onclick="showMap(2)"><span class="ni-icon">💡</span> Tiết kiệm điện nhà</div>
+    <div class="sb-nav-item" onclick="showMap(3)"><span class="ni-icon">💧</span> Tiết kiệm nước</div>
+
+    <div class="sb-nav-section">🏫 Căn teen FPT Hòa Lạc</div>
+    <div class="sb-nav-item" onclick="showMap(4)"><span class="ni-icon">🥡</span> Sau bữa trưa</div>
+    <div class="sb-nav-item" onclick="showMap(5)"><span class="ni-icon">⚡</span> Điện trong căn teen</div>
+    <div class="sb-nav-item" onclick="showMap(6)"><span class="ni-icon">🧴</span> Rác nhựa ở trường</div>
+    <div class="sb-nav-item" onclick="showMap(7)"><span class="ni-icon">🌿</span> Thử thách 7 ngày <span class="ni-badge" style="background:#f59e0b;color:#78350f;">Khó</span></div>
+    <div class="sb-nav-item locked"><span class="ni-icon">☀️</span> Năng lượng tái tạo <span class="ni-lock">🔒</span></div>
+  </div>
+
+  <div class="sb-footer">
+    <div class="sb-planet-label" style="margin-bottom:0.5rem;">Streak tuần này</div>
+    <div class="sb-streak-row">
+      <div class="streak-day done">🔥</div>
+      <div class="streak-day done">🔥</div>
+      <div class="streak-day done">🔥</div>
+      <div class="streak-day">·</div>
+      <div class="streak-day">·</div>
+      <div class="streak-day">·</div>
+      <div class="streak-day">·</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar" id="topbar" style="display:none">
+    <button onclick="showScreen('map')" style="background:none;border:none;cursor:pointer;font-size:1.2rem;padding:0.2rem 0.5rem;border-radius:8px;color:var(--text2);">←</button>
+    <div class="topbar-title" id="topbar-title">Phân loại rác thông minh</div>
+    <div class="topbar-progress"><div class="topbar-progress-fill" id="topbar-progress" style="width:0%"></div></div>
+    <span style="font-size:0.78rem;font-weight:700;color:var(--text3);min-width:48px;text-align:right;" id="q-counter-d">1 / 5</span>
+    <div class="topbar-timer">
+      <span class="topbar-timer-icon">⏱</span>
+      <span class="topbar-timer-num" id="timer-d">30</span>
+    </div>
+  </div>
+
+  <!-- ===== HOME ===== -->
+  <div id="home" class="screen active">
+    <div class="home-rings">
+      <div class="home-ring" style="width:600px;height:600px;top:-200px;right:-150px;"></div>
+      <div class="home-ring" style="width:400px;height:400px;bottom:-100px;left:-100px;"></div>
+    </div>
+    <div class="home-earth">🌍</div>
+    <h1 class="home-h1">Hành Tinh <span>Xanh</span></h1>
+    <p class="home-tag">Mỗi lựa chọn của bạn đều tạo ra sự thay đổi · FPT Hòa Lạc</p>
+    <div class="home-planet-wrap">
+      <div class="home-planet-label">Sức khỏe Trái Đất hiện tại</div>
+      <div class="home-planet-track"><div class="home-planet-fill" style="width:72%"></div></div>
+      <div class="home-planet-pct">72% — Cần cải thiện</div>
+    </div>
+    <div class="home-cards">
+      <div class="home-stat"><div class="home-stat-num">12K+</div><div class="home-stat-lbl">Người chơi</div></div>
+      <div class="home-stat"><div class="home-stat-num">48</div><div class="home-stat-lbl">Nhiệm vụ</div></div>
+      <div class="home-stat"><div class="home-stat-num">4</div><div class="home-stat-lbl">Chủ đề</div></div>
+      <div class="home-stat"><div class="home-stat-num">22</div><div class="home-stat-lbl">Câu FPT</div></div>
+    </div>
+    <div class="home-btns">
+      <button class="btn-hero btn-hero-primary" onclick="showScreen('map')">🚀 Bắt đầu nhiệm vụ</button>
+      <button class="btn-hero btn-hero-secondary" onclick="showScreen('leaderboard')">🏆 Bảng xếp hạng</button>
+    </div>
+  </div>
+
+  <!-- ===== MAP ===== -->
+  <div id="map" class="screen">
+    <div class="map-list">
+      <h2>Chọn nhiệm vụ</h2>
+      <p class="map-list-sub">Chọn một nhiệm vụ để xem chi tiết và bắt đầu</p>
+      <div class="map-planet-card">
+        <div class="map-planet-row"><span class="map-planet-label">🌍 Sức khỏe Trái Đất</span><span class="map-planet-pct">72%</span></div>
+        <div class="map-planet-track"><div class="map-planet-fill" style="width:72%"></div></div>
+      </div>
+
+      <div class="map-section">🌿 Rác thải & Tái chế</div>
+      <div class="mcard" onclick="selectMission(0)" id="mcard-0">
+        <div class="mcard-icon">♻️</div>
+        <div class="mcard-info">
+          <div class="mcard-name">Phân loại rác thông minh</div>
+          <div class="mcard-desc">5 tình huống phân loại rác hữu cơ, tái chế và nguy hại.</div>
+          <div class="mcard-meta"><span class="tag tag-g">Dễ</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+150 XP</span></div>
+        </div>
+      </div>
+      <div class="mcard" onclick="selectMission(1)" id="mcard-1">
+        <div class="mcard-icon">🛍️</div>
+        <div class="mcard-info">
+          <div class="mcard-name">Mua sắm có ý thức</div>
+          <div class="mcard-desc">Chọn sản phẩm thân thiện môi trường trong siêu thị ảo.</div>
+          <div class="mcard-meta"><span class="tag tag-a">Trung bình</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+200 XP</span></div>
+        </div>
+        <span class="mcard-done">✓ Xong</span>
+      </div>
+
+      <div class="map-section">⚡ Năng lượng & Điện</div>
+      <div class="mcard" onclick="selectMission(2)" id="mcard-2">
+        <div class="mcard-icon">💡</div>
+        <div class="mcard-info">
+          <div class="mcard-name">Tiết kiệm điện tại nhà</div>
+          <div class="mcard-desc">Những thói quen lãng phí điện và cách khắc phục.</div>
+          <div class="mcard-meta"><span class="tag tag-g">Dễ</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+150 XP</span></div>
+        </div>
+      </div>
+      <div class="mcard" onclick="selectMission(3)" id="mcard-3">
+        <div class="mcard-icon">💧</div>
+        <div class="mcard-info">
+          <div class="mcard-name">Tiết kiệm nước sạch</div>
+          <div class="mcard-desc">Cách tiết kiệm nước trong sinh hoạt hàng ngày.</div>
+          <div class="mcard-meta"><span class="tag tag-g">Dễ</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+150 XP</span></div>
+        </div>
+      </div>
+
+      <div class="map-section">🏫 Căn Teen FPT Hòa Lạc</div>
+      <div style="background:#e8faf0;border-radius:10px;padding:0.6rem 0.8rem;margin-bottom:0.75rem;font-size:0.75rem;color:var(--g2);font-weight:600;line-height:1.45;">
+        🎒 Dành riêng cho học sinh THPT FPT Hòa Lạc!
+      </div>
+      <div class="mcard" onclick="selectMission(4)" id="mcard-4">
+        <div class="mcard-icon">🥡</div>
+        <div class="mcard-info">
+          <div class="mcard-name">Sau bữa trưa ở căn teen</div>
+          <div class="mcard-desc">Hộp cơm, trà sữa, ống hút — xử lý đúng cách.</div>
+          <div class="mcard-meta"><span class="tag tag-g">Dễ</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+150 XP</span></div>
+        </div>
+      </div>
+      <div class="mcard" onclick="selectMission(5)" id="mcard-5">
+        <div class="mcard-icon">💡</div>
+        <div class="mcard-info">
+          <div class="mcard-name">Tiết kiệm điện trong căn teen</div>
+          <div class="mcard-desc">Điều hòa, đèn, quạt — bạn có đang lãng phí không?</div>
+          <div class="mcard-meta"><span class="tag tag-a">Trung bình</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+200 XP</span></div>
+        </div>
+      </div>
+      <div class="mcard" onclick="selectMission(6)" id="mcard-6">
+        <div class="mcard-icon">🧴</div>
+        <div class="mcard-info">
+          <div class="mcard-name">Rác nhựa mỗi ngày ở trường</div>
+          <div class="mcard-desc">Chai nước, túi ni-lông — tác hại thực sự là bao nhiêu?</div>
+          <div class="mcard-meta"><span class="tag tag-a">Trung bình</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+200 XP</span></div>
+        </div>
+      </div>
+      <div class="mcard" onclick="selectMission(7)" id="mcard-7">
+        <div class="mcard-icon">🌿</div>
+        <div class="mcard-info">
+          <div class="mcard-name">Thử thách 7 ngày xanh</div>
+          <div class="mcard-desc">Nếu cả lớp cùng hành động, tác động sẽ lớn đến cỡ nào?</div>
+          <div class="mcard-meta"><span class="tag tag-r">Khó</span><span class="tag tag-b">7 câu</span><span class="mcard-pts">+300 XP</span></div>
+        </div>
+      </div>
+      <div class="mcard locked">
+        <div class="mcard-icon">☀️</div>
+        <div class="mcard-info">
+          <div class="mcard-name">Năng lượng tái tạo</div>
+          <div class="mcard-desc">Điện mặt trời, gió — mở khóa sau khi hoàn thành 4 nhiệm vụ.</div>
+          <div class="mcard-meta"><span class="tag tag-r">Khó</span><span class="tag tag-b">7 câu</span><span class="mcard-pts">+300 XP</span></div>
+        </div>
+        <span class="mcard-lock">🔒</span>
+      </div>
+    </div>
+
+    <div class="map-preview" id="map-preview">
+      <div class="preview-placeholder">
+        <div class="preview-placeholder-icon">🗺️</div>
+        <h3>Chọn một nhiệm vụ</h3>
+        <p>Nhấp vào bất kỳ nhiệm vụ nào ở bên trái để xem chi tiết và bắt đầu chơi.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== GAME ===== -->
+  <div id="game" class="screen">
+    <div class="game-main">
+      <div class="game-left" id="game-left">
+        <div class="q-counter-d" id="q-label" style="font-size:0.78rem;color:var(--text3);font-weight:700;margin-bottom:0.75rem;"></div>
+        <div class="scenario-card-d">
+          <div class="scenario-banner" id="scenario-img-d">🗑️</div>
+          <div class="scenario-body">
+            <div class="scenario-badge">📍 Tình huống thực tế</div>
+            <div class="scenario-q-text" id="scenario-q-d">Đang tải...</div>
+          </div>
+        </div>
+        <div class="choices-grid" id="choices-d"></div>
+        <div class="feedback-d" id="feedback-d">
+          <div class="fb-emoji" id="fb-emoji-d">✅</div>
+          <div class="fb-title" id="fb-title-d">Chính xác!</div>
+          <div class="fb-text" id="fb-text-d"></div>
+          <div class="fb-impact" id="fb-impact-d"></div>
+        </div>
+        <button class="btn-next-d" id="btn-next-d" onclick="nextQuestion()">Câu tiếp theo →</button>
+      </div>
+
+      <div class="game-right">
+        <div class="gr-section">Tiến độ</div>
+        <div class="q-list-mini" id="q-list-mini"></div>
+        <div class="gr-section">Điểm số</div>
+        <div class="score-mini">
+          <div class="score-mini-num" id="score-display">0 / 0</div>
+          <div class="score-mini-lbl">câu đúng</div>
+        </div>
+        <div class="gr-section">Sức khỏe Trái Đất</div>
+        <div class="earth-mini">
+          <div class="em-label">Tác động hôm nay</div>
+          <div class="em-track"><div class="em-fill" id="em-fill" style="width:72%"></div></div>
+          <div class="em-pct" id="em-pct">72%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== RESULT ===== -->
+  <div id="result" class="screen">
+    <div class="result-wrap">
+      <div class="result-trophy-d" id="result-trophy-d">🏆</div>
+      <div class="result-title-d" id="result-title-d">Xuất sắc!</div>
+      <div class="result-sub-d" id="result-sub-d">Bạn đã hoàn thành nhiệm vụ</div>
+      <div class="result-grid-d">
+        <div class="rstat"><div class="rstat-num" id="rd-score">4/5</div><div class="rstat-lbl">Câu đúng</div></div>
+        <div class="rstat"><div class="rstat-num" id="rd-xp">+120 XP</div><div class="rstat-lbl">Kinh nghiệm</div></div>
+        <div class="rstat"><div class="rstat-num" id="rd-streak">🔥 3</div><div class="rstat-lbl">Streak ngày</div></div>
+        <div class="rstat"><div class="rstat-num" id="rd-rank">#42</div><div class="rstat-lbl">Xếp hạng</div></div>
+      </div>
+      <div class="result-planet-d">
+        <div class="rp-label">🌍 Tác động lên Trái Đất hôm nay</div>
+        <div class="rp-track"><div class="rp-fill" id="rp-fill" style="width:0%"></div></div>
+        <div class="rp-change" id="rp-change">+0% sức khỏe Trái Đất</div>
+      </div>
+      <div class="result-btns">
+        <button class="btn-result btn-result-p" onclick="showScreen('map')">🗺️ Nhiệm vụ khác</button>
+        <button class="btn-result btn-result-s" onclick="showScreen('leaderboard')">🏆 Bảng xếp hạng</button>
+        <button class="btn-result btn-result-s" onclick="showScreen('home')">🏠 Về trang chủ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LEADERBOARD ===== -->
+  <div id="leaderboard" class="screen">
+    <div class="lb-left">
+      <h2>🏆 Bảng xếp hạng</h2>
+      <p class="lb-sub">Top người bảo vệ môi trường FPT Hòa Lạc</p>
+      <div class="lb-tabs">
+        <button class="lb-tab-d active">Tuần này</button>
+        <button class="lb-tab-d" onclick="switchTabD(this)">Tháng này</button>
+        <button class="lb-tab-d" onclick="switchTabD(this)">Toàn thời gian</button>
+      </div>
+      <div class="lb-row-d you"><div class="lb-rank-d">8</div><div class="lb-avatar-d">😊</div><div class="lb-name-d">Bạn <span class="lb-you-d">Bạn</span></div><div class="lb-score-d">1.240 XP</div></div>
+      <div class="lb-row-d"><div class="lb-rank-d">1</div><div class="lb-avatar-d">👩</div><div class="lb-name-d">Lan N.</div><div class="lb-score-d">3.210 XP</div></div>
+      <div class="lb-row-d"><div class="lb-rank-d">2</div><div class="lb-avatar-d">🧑</div><div class="lb-name-d">Minh T.</div><div class="lb-score-d">2.840 XP</div></div>
+      <div class="lb-row-d"><div class="lb-rank-d">3</div><div class="lb-avatar-d">👦</div><div class="lb-name-d">Hùng P.</div><div class="lb-score-d">2.550 XP</div></div>
+      <div class="lb-row-d"><div class="lb-rank-d">4</div><div class="lb-avatar-d">🧑</div><div class="lb-name-d">Dũng H.</div><div class="lb-score-d">2.310 XP</div></div>
+      <div class="lb-row-d"><div class="lb-rank-d">5</div><div class="lb-avatar-d">👩</div><div class="lb-name-d">Thu M.</div><div class="lb-score-d">2.100 XP</div></div>
+      <div class="lb-row-d"><div class="lb-rank-d">6</div><div class="lb-avatar-d">👦</div><div class="lb-name-d">Phong L.</div><div class="lb-score-d">1.890 XP</div></div>
+      <div class="lb-row-d"><div class="lb-rank-d">7</div><div class="lb-avatar-d">🧑</div><div class="lb-name-d">Khoa B.</div><div class="lb-score-d">1.450 XP</div></div>
+      <div class="lb-row-d"><div class="lb-rank-d">9</div><div class="lb-avatar-d">👩</div><div class="lb-name-d">Mai V.</div><div class="lb-score-d">1.100 XP</div></div>
+      <div class="lb-row-d"><div class="lb-rank-d">10</div><div class="lb-avatar-d">👦</div><div class="lb-name-d">Tùng A.</div><div class="lb-score-d">980 XP</div></div>
+    </div>
+    <div class="lb-right">
+      <div class="podium-d">
+        <div class="pd-slot pd2"><div class="pd-avatar">🧑</div><div class="pd-name">Minh T.</div><div class="pd-pts">2.840 XP</div><div class="pd-block">🥈</div></div>
+        <div class="pd-slot pd1"><div class="pd-avatar">👩</div><div class="pd-name">Lan N.</div><div class="pd-pts">3.210 XP</div><div class="pd-block">🥇</div></div>
+        <div class="pd-slot pd3"><div class="pd-avatar">👦</div><div class="pd-name">Hùng P.</div><div class="pd-pts">2.550 XP</div><div class="pd-block">🥉</div></div>
+      </div>
+      <div class="lb-stats-grid">
+        <div class="lb-stat-card"><div class="lb-stat-num">12,481</div><div class="lb-stat-lbl">Tổng người chơi</div></div>
+        <div class="lb-stat-card"><div class="lb-stat-num">48,320</div><div class="lb-stat-lbl">Câu trả lời đúng</div></div>
+        <div class="lb-stat-card"><div class="lb-stat-num">8,240</div><div class="lb-stat-lbl">Ống hút nhựa tiết kiệm</div></div>
+        <div class="lb-stat-card"><div class="lb-stat-num">+12%</div><div class="lb-stat-lbl">Sức khỏe Trái Đất tuần này</div></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .main -->
+
+<script>
+const MISSIONS = [
+  {title:"Phân loại rác thông minh",icon:"♻️",desc:"5 tình huống thực tế về phân loại rác hữu cơ, tái chế và rác thải nguy hại.",
+   questions:[
+    {img:"🗑️",q:"Bạn vừa ăn xong một hộp cơm bằng xốp. Bạn nên bỏ vào thùng rác nào?",choices:["♻️ Thùng tái chế nhựa","🍃 Thùng rác hữu cơ","🗑️ Thùng rác thông thường","🔴 Thùng rác nguy hại"],correct:2,feedback_ok:"Đúng! Hộp xốp không thể tái chế phổ biến và không phải hữu cơ — nên bỏ rác thông thường.",feedback_bad:"Hộp xốp không tái chế được phổ biến. Bỏ vào thùng rác thông thường là đúng nhất.",impact:"+2%"},
+    {img:"🍌",q:"Bạn có vỏ chuối và bã cà phê. Nên bỏ vào đâu để có ích nhất?",choices:["🗑️ Rác thông thường","🍃 Thùng rác hữu cơ/compost","♻️ Thùng tái chế","🔴 Thùng rác nguy hại"],correct:1,feedback_ok:"Tuyệt! Chất hữu cơ như vỏ trái cây có thể làm phân compost, tốt cho đất trồng trọt.",feedback_bad:"Vỏ chuối và bã cà phê là rác hữu cơ — có thể ủ phân compost rất tốt cho môi trường.",impact:"+3%"},
+    {img:"🔋",q:"Pin điện thoại cũ hỏng cần bỏ vào đâu?",choices:["🗑️ Thùng rác thông thường","🍃 Thùng hữu cơ","♻️ Thùng tái chế thông thường","🔴 Điểm thu gom pin/rác nguy hại"],correct:3,feedback_ok:"Chính xác! Pin chứa chất độc hại cần xử lý đặc biệt tại điểm thu gom chuyên dụng.",feedback_bad:"Pin là rác nguy hại! Bỏ vào rác thông thường gây ô nhiễm đất và nước ngầm nghiêm trọng.",impact:"+4%"},
+    {img:"📰",q:"Tờ báo cũ và giấy văn phòng đã dùng — xử lý thế nào tốt nhất?",choices:["🗑️ Rác thông thường","🔥 Đốt bỏ","♻️ Thùng tái chế giấy","🍃 Thùng hữu cơ"],correct:2,feedback_ok:"Đúng rồi! Giấy có thể tái chế nhiều lần, giúp giảm chặt phá rừng đáng kể.",feedback_bad:"Giấy nên được tái chế! Đốt giấy thải ra CO₂, còn vứt bỏ là lãng phí tài nguyên.",impact:"+2%"},
+    {img:"🥤",q:"Chai nhựa nước ngọt sau khi dùng — bạn xử lý thế nào?",choices:["🗑️ Vứt thẳng vào rác","♻️ Rửa sạch rồi bỏ thùng tái chế","🌊 Bỏ vào thùng rác gần ao hồ","🔥 Đốt để giảm thể tích"],correct:1,feedback_ok:"Hoàn hảo! Rửa sạch trước khi tái chế giúp nhà máy xử lý hiệu quả hơn, giảm ô nhiễm.",feedback_bad:"Nên rửa sạch và bỏ vào thùng tái chế. Đốt nhựa thải ra khí độc rất nguy hiểm!",impact:"+3%"}
+  ]},
+  {title:"Mua sắm có ý thức",icon:"🛍️",desc:"Chọn sản phẩm thân thiện với môi trường trong siêu thị ảo.",questions:[]},
+  {title:"Tiết kiệm điện tại nhà",icon:"💡",desc:"Tìm ra những thói quen lãng phí điện và cách khắc phục hiệu quả.",questions:[]},
+  {title:"Tiết kiệm nước sạch",icon:"💧",desc:"Khám phá cách tiết kiệm nước trong sinh hoạt hàng ngày.",questions:[]},
+  {title:"Sau bữa trưa ở căn teen",icon:"🥡",desc:"Hộp cơm, trà sữa, ống hút — xử lý đúng cách sau mỗi bữa ăn tại căn teen FPT.",
+   questions:[
+    {img:"🥡",q:"Sau khi ăn trưa xong ở căn teen, bạn còn thừa hộp cơm bằng nhựa và đũa gỗ dùng 1 lần. Bạn xử lý thế nào?",choices:["🗑️ Bỏ tất cả vào 1 thùng rác gần nhất cho nhanh","♻️ Tách hộp nhựa vào thùng tái chế, đũa gỗ vào rác hữu cơ","🚪 Để lại trên bàn cho nhân viên dọn","💧 Rửa hộp nhựa rồi dùng lại lần sau"],correct:1,feedback_ok:"Chuẩn luôn! Hộp nhựa tái chế được, đũa gỗ phân hủy sinh học — tách riêng là đúng nhất.",feedback_bad:"Nên tách riêng: hộp nhựa vào thùng tái chế, đũa gỗ vào hữu cơ — bỏ chung là lãng phí tài nguyên.",impact:"+3%"},
+    {img:"🧋",q:"Bạn vừa uống xong 1 ly trà sữa có ống hút nhựa và nắp nhựa. Căn teen có 3 thùng rác. Bạn làm gì?",choices:["🗑️ Bỏ cả ly + ống hút + nắp vào 1 thùng","♻️ Tháo nắp & ly nhựa bỏ tái chế, ống hút bỏ rác thường","🌿 Xin ống hút giấy hoặc không dùng ống hút lần sau","❌ Để ly trên bàn, ra về"],correct:2,feedback_ok:"Giỏi! Và còn tốt hơn nếu lần sau xin ống hút giấy hoặc mang bình cá nhân luôn nhé!",feedback_bad:"Đúng nhất là từ chối ống hút nhựa ngay từ đầu! Mỗi ngày căn teen dùng hàng trăm ống hút nhựa.",impact:"+4%"},
+    {img:"🍱",q:"Nhóm bạn ăn xong để lại rất nhiều thức ăn thừa trong hộp. Bạn nên làm gì?",choices:["🗑️ Đổ tất cả vào thùng rác thông thường","🍃 Đổ thức ăn thừa vào thùng hữu cơ, hộp vào tái chế","📦 Xin hộp mới đựng phần thừa mang về","😐 Không quan tâm, để nhân viên dọn"],correct:2,feedback_ok:"Tuyệt vời! Mang thức ăn thừa về vừa tiết kiệm vừa tránh lãng phí thực phẩm — rất xanh!",feedback_bad:"Tốt nhất là mang phần thừa về! Lãng phí thực phẩm tạo ra lượng CO₂ khổng lồ khi phân hủy.",impact:"+3%"},
+    {img:"💧",q:"Bạn lấy nước uống ở máy nước căn teen nhưng uống không hết còn nửa ly. Bạn làm gì?",choices:["🚰 Đổ xuống cống rồi lấy ly mới","🌱 Tưới cho cây xanh trong sân trường","💧 Uống hết hoặc đem theo bình để dùng tiếp","❄️ Bỏ vào tủ lạnh căn teen"],correct:2,feedback_ok:"Đúng! Uống hết hoặc dùng bình cá nhân là thói quen tiết kiệm nước rất tốt.",feedback_bad:"Đừng đổ nước thừa! Tưới cây cũng tốt, nhưng tốt nhất là uống hết hoặc mang theo bình cá nhân.",impact:"+2%"},
+    {img:"🧻",q:"Bạn dùng khăn giấy để lau tay sau khi ăn ở căn teen. Bạn dùng bao nhiêu tờ là vừa đủ?",choices:["📚 Rút 5-6 tờ cho chắc chắn","✂️ 1-2 tờ là đủ nếu lau đúng cách","🔄 Dùng khăn vải cá nhân thay khăn giấy","💨 Vẩy tay cho khô, không cần khăn"],correct:2,feedback_ok:"Xuất sắc! Mang khăn vải cá nhân là lựa chọn xanh nhất — tiết kiệm hàng trăm tờ giấy mỗi năm!",feedback_bad:"Tốt nhất là dùng khăn vải cá nhân. Nếu phải dùng giấy thì 1-2 tờ là đủ — đừng lãng phí!",impact:"+2%"}
+  ]},
+  {title:"Tiết kiệm điện trong căn teen",icon:"💡",desc:"Điều hòa, đèn, quạt — bạn có đang để lãng phí điện mà không biết không?",
+   questions:[
+    {img:"❄️",q:"Trời mát, chỉ có vài bạn ngồi góc căn teen nhưng điều hòa đang bật 18°C lạnh buốt. Bạn làm gì?",choices:["😴 Không quan tâm, mình không phải nhân viên","🌡️ Nhờ nhân viên chỉnh lên 25-26°C hoặc tắt bớt","🧥 Mặc thêm áo vào, chấp nhận lạnh","📱 Đăng lên mạng xã hội than lạnh"],correct:1,feedback_ok:"Đúng! Mỗi 1°C điều hòa giảm xuống tốn thêm 6% điện. Nói nhân viên chỉnh là hành động xanh!",feedback_bad:"Nên nhờ nhân viên điều chỉnh nhiệt độ! 25-26°C là đủ mát và tiết kiệm điện hơn rất nhiều.",impact:"+4%"},
+    {img:"💡",q:"Bạn là người cuối cùng ra khỏi khu vực học nhóm trong căn teen. Còn đèn và quạt đang bật. Bạn làm gì?",choices:["🏃 Ra luôn, mình không bật thì không cần tắt","✅ Tắt đèn và quạt trước khi ra","📞 Gọi điện nhờ người khác quay lại tắt","🤷 Để nhân viên dọn dẹp tắt sau"],correct:1,feedback_ok:"Chuẩn! Tắt điện khi ra là thói quen cơ bản nhất — nếu ai cũng làm, trường tiết kiệm được rất nhiều.",feedback_bad:"Luôn tắt điện khi là người ra cuối! Quên tắt 1 bóng đèn 4 tiếng = lãng phí điện vô ích.",impact:"+3%"},
+    {img:"🔌",q:"Sạc điện thoại xong nhưng vẫn để dây cắm ổ điện cả buổi chiều. Tác hại là gì?",choices:["✅ Không sao, sạc xong tự ngắt điện rồi","⚡ Vẫn tiêu thụ điện dù nhỏ — gọi là 'vampire power'","🔥 Gây cháy nổ ngay lập tức","📱 Làm hỏng pin điện thoại nhanh hơn"],correct:1,feedback_ok:"Đúng! 'Vampire power' — thiết bị cắm nhưng không dùng vẫn hút điện. Nhớ rút sạc ra nhé!",feedback_bad:"Để sạc cắm không dùng gọi là 'vampire power' — vẫn tiêu thụ điện âm thầm mỗi giờ.",impact:"+3%"},
+    {img:"🌞",q:"Buổi sáng trời sáng, căn teen vẫn bật đèn huỳnh quang cả dãy dù cửa sổ nhiều ánh sáng tự nhiên. Bạn nên làm gì?",choices:["😶 Bình thường mà, không cần làm gì","🌤️ Nhờ nhân viên tắt bớt đèn, mở rèm tận dụng ánh sáng tự nhiên","😎 Kéo rèm lại để tối hơn, bật thêm đèn","📸 Chụp ảnh check-in vì ánh sáng đẹp"],correct:1,feedback_ok:"Tuyệt! Ánh sáng tự nhiên miễn phí và tốt cho mắt hơn đèn huỳnh quang. Hãy tận dụng!",feedback_bad:"Nên tận dụng ánh sáng tự nhiên! Tắt bớt đèn ban ngày là cách tiết kiệm điện đơn giản nhất.",impact:"+2%"},
+    {img:"🖥️",q:"Máy tính ở góc học tự học căn teen bị bỏ quên, màn hình sáng không ai dùng đã 30 phút. Bạn làm gì?",choices:["👀 Nhìn qua rồi đi tiếp, không liên quan mình","✅ Tắt màn hình hoặc báo nhân viên tắt giúp","🖱️ Dùng thử xem có gì hay không","📷 Chụp lại báo cáo trên mạng xã hội"],correct:1,feedback_ok:"Rất có trách nhiệm! Hành động nhỏ như tắt màn hình không người dùng tạo ra thói quen xanh chung.",feedback_bad:"Hãy tắt màn hình hoặc báo nhân viên! Máy tính để không 30 phút tốn điện tương đương sạc điện thoại.",impact:"+3%"}
+  ]},
+  {title:"Rác nhựa mỗi ngày ở trường",icon:"🧴",desc:"Chai nước, túi ni-lông, hộp nhựa dùng 1 lần — tác hại thực sự là bao nhiêu?",
+   questions:[
+    {img:"🧴",q:"Mỗi ngày bạn mua 1 chai nước nhựa 500ml ở căn teen. Trong 1 năm học (200 ngày), bạn tạo ra bao nhiêu rác nhựa?",choices:["🤏 Khoảng 20 chai — không đáng kể","📦 200 chai nhựa — 1 đống rác lớn","🏔️ Hơn 500 chai nếu tính cả bạn bè","♻️ Không sao vì chai nhựa được tái chế hết"],correct:1,feedback_ok:"Đúng! 200 chai/năm/người × cả lớp = hàng nghìn chai. Mang bình cá nhân tiết kiệm tiền lại xanh hơn!",feedback_bad:"200 chai/năm chỉ từ 1 người! Thử nhân với cả lớp 40 bạn = 8.000 chai/năm — con số đáng lo ngại.",impact:"+4%"},
+    {img:"🛍️",q:"Mua bánh ở căn teen, nhân viên cho vào túi ni-lông. Bạn chỉ đi từ quầy về bàn (5 mét). Bạn làm gì?",choices:["🛍️ Nhận túi ni-lông như bình thường","✋ Từ chối túi, cầm tay hoặc để vào balo","♻️ Nhận túi nhưng sau đó tái sử dụng","🤔 Hỏi xem túi làm bằng vật liệu gì trước"],correct:1,feedback_ok:"Hoàn hảo! Từ chối túi ni-lông khi không cần thiết là cách giảm rác nhựa đơn giản và hiệu quả nhất.",feedback_bad:"Nếu chỉ đi 5 mét thì không cần túi ni-lông! Từ chối lịch sự là hành động xanh dễ nhất.",impact:"+3%"},
+    {img:"🥤",q:"Bạn bè rủ order trà sữa online giao đến căn teen, 10 ly = 10 ống hút nhựa, 10 túi ni-lông. Bạn đề xuất gì?",choices:["👍 Bình thường, không sao cả","🌿 Nhắn shop: không cần ống hút + túi, tự mang hộp đựng","😶 Không nói gì, sợ bạn bè cho là phức tạp","📦 Order ít lại, mỗi người 1 ly thôi"],correct:1,feedback_ok:"Tuyệt! Nhắn shop không cần ống hút và túi là xu hướng 'zero-waste order' đang lan rộng. Bạn là người tiên phong!",feedback_bad:"Hãy mạnh dạn nhắn shop! Nhiều quán sẵn sàng bỏ ống hút và túi nếu khách yêu cầu.",impact:"+4%"},
+    {img:"📚",q:"Hết năm học, bạn có cả đống sách vở cũ, bút hết mực, hộp bút nhựa hỏng. Bạn xử lý thế nào tốt nhất?",choices:["🗑️ Vứt tất cả vào thùng rác","🎁 Tặng sách còn dùng được cho thư viện/em nhỏ, phân loại tái chế đồ còn lại","🔥 Đốt để không bị lộ điểm xấu","📦 Giữ lại hết trong kho ký túc xá"],correct:1,feedback_ok:"Xuất sắc! Tặng sách cũ = kéo dài vòng đời sản phẩm. Phân loại rác = giảm rác thải trường học.",feedback_bad:"Tặng đồ dùng được cho người khác và phân loại phần còn lại — đây là cách xử lý có trách nhiệm nhất!",impact:"+3%"},
+    {img:"🧃",q:"Hộp giấy đựng sữa (như Tetra Pak) sau khi uống — bạn vứt vào đâu?",choices:["🗑️ Rác thông thường vì là giấy cứng","♻️ Thùng tái chế — Tetra Pak có thể tái chế riêng","🍃 Thùng hữu cơ vì có giấy","🌊 Không quan trọng, vứt đâu cũng được"],correct:1,feedback_ok:"Đúng! Tetra Pak là vật liệu ghép (giấy + nhựa + nhôm) — cần tái chế riêng tại điểm thu gom chuyên dụng.",feedback_bad:"Tetra Pak cần tái chế riêng! Vứt vào rác thông thường là lãng phí vật liệu quý.",impact:"+3%"}
+  ]},
+  {title:"Thử thách 7 ngày xanh",icon:"🌿",desc:"Nếu cả lớp cùng hành động xanh trong 1 tuần, tác động sẽ lớn đến cỡ nào?",
+   questions:[
+    {img:"📅",q:"Nếu cả lớp 40 bạn cùng mang bình nước cá nhân trong 1 tuần (5 ngày học), tiết kiệm được bao nhiêu chai nhựa?",choices:["🤔 Khoảng 50 chai — không đáng kể","💯 200 chai nhựa trong 1 tuần","🏆 Tối thiểu 200 chai, tối đa 400 chai","♻️ Không tính được vì mỗi người uống khác nhau"],correct:2,feedback_ok:"Đúng! 40 bạn × 1-2 chai/ngày × 5 ngày = 200-400 chai. Chỉ 1 tuần thôi — sức mạnh tập thể rất lớn!",feedback_bad:"40 bạn × 1 chai/ngày × 5 ngày = 200 chai tối thiểu. Nhân 2 lần uống = 400 chai. Phi thường!",impact:"+5%"},
+    {img:"🌱",q:"Thử thách 'Thứ 2 không rác nhựa' — cả lớp đồng ý không dùng đồ nhựa 1 lần vào thứ 2. Khó khăn lớn nhất là gì?",choices:["😒 Quá khó, không ai làm được","🧠 Phải lên kế hoạch trước: mang bình, hộp cơm, túi vải","💰 Tốn nhiều tiền hơn khi dùng đồ tái sử dụng","📚 Ảnh hưởng đến việc học"],correct:1,feedback_ok:"Chuẩn! Chuẩn bị trước là chìa khóa. Thói quen xanh cần thực hành chứ không chỉ có ý định tốt.",feedback_bad:"Thử thách không rác nhựa hoàn toàn có thể làm được nếu chuẩn bị trước: bình, hộp cơm, túi vải!",impact:"+3%"},
+    {img:"🤝",q:"Bạn muốn vận động cả lớp cùng hành động xanh tại căn teen nhưng nhiều bạn thờ ơ. Chiến lược nào hiệu quả nhất?",choices:["😤 Chỉ trích thẳng những bạn không làm","🎮 Tổ chức thử thách/game có bảng điểm, phần thưởng nhỏ","📢 Post lên mạng xã hội chê trường","🤷 Bỏ cuộc, mình làm một mình thôi"],correct:1,feedback_ok:"Chính xác! Game hóa hành vi xanh — như app này — là cách hiệu quả nhất để lan truyền thói quen tốt!",feedback_bad:"Tạo thử thách vui vẻ với điểm số và phần thưởng nhỏ là cách tốt nhất! Ai cũng thích chơi game hơn bị thuyết giáo.",impact:"+4%"},
+    {img:"🌏",q:"Nếu toàn bộ 1.000 học sinh FPT Hòa Lạc giảm 1 ống hút nhựa mỗi ngày trong 1 năm học (200 ngày), giảm được bao nhiêu?",choices:["📊 200.000 ống hút nhựa","🏆 Đúng — 200.000 ống hút nhựa","💡 Chỉ 100.000 — ít hơn nhiều","🌊 Không đáng kể so với rác toàn cầu"],correct:1,feedback_ok:"200.000 ống hút nhựa! Mỗi hành động nhỏ nhân lên thành con số khổng lồ khi cả cộng đồng cùng làm.",feedback_bad:"1.000 học sinh × 1 ống hút × 200 ngày = 200.000 ống hút nhựa — từ hành động đơn giản nhất!",impact:"+5%"},
+    {img:"🎯",q:"Sau 7 ngày thử thách xanh tại căn teen, điều nào QUAN TRỌNG NHẤT để duy trì thói quen lâu dài?",choices:["📸 Chụp ảnh minh chứng và đăng mạng xã hội mỗi ngày","🔄 Biến hành động thành thói quen tự động, không cần nhắc","🏅 Chờ nhà trường khen thưởng mới tiếp tục","📊 Theo dõi số liệu phức tạp mỗi ngày"],correct:1,feedback_ok:"Tuyệt vời! Thói quen tự động mạnh hơn ý chí. Sau 21 ngày lặp lại, não bộ tự làm không cần nghĩ!",feedback_bad:"Quan trọng nhất là biến nó thành thói quen tự nhiên. Hành động xanh bền vững không phụ thuộc vào khen thưởng.",impact:"+5%"},
+    {img:"🌟",q:"Bạn đã hoàn thành thử thách 7 ngày! Bước tiếp theo để lan rộng phong trào 'Căn teen xanh FPT Hòa Lạc' là gì?",choices:["😌 Xong rồi thì thôi, mình đã làm phần của mình","🌱 Chia sẻ kết quả với lớp, rủ thêm bạn tham gia tháng sau","📝 Viết báo cáo gửi BGH xin điểm cộng","🎤 Chỉ làm nếu được lên báo/truyền thông"],correct:1,feedback_ok:"Đây mới là kết thúc thật sự đẹp! Lan truyền câu chuyện của bạn — đó là cách mạnh nhất để tạo thay đổi.",feedback_bad:"Chia sẻ hành trình của bạn! Câu chuyện thực tế từ bạn bè có sức thuyết phục hơn bất kỳ bài giảng nào.",impact:"+5%"}
+  ]}
+];
+
+let currentScreen='home', currentMission=0, currentQ=0, correctCount=0;
+let earthHealth=72, timerInterval=null, timeLeft=30, answered=false;
+let qResults=[];
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  currentScreen=id;
+  document.getElementById('topbar').style.display=(id==='game')?'flex':'none';
+  document.querySelectorAll('.sb-nav-item').forEach(n=>n.classList.remove('active'));
+  if(id==='home') document.getElementById('nav-home').classList.add('active');
+  if(id==='leaderboard') document.getElementById('nav-lb').classList.add('active');
+}
+
+function showMap(idx){
+  showScreen('map');
+  selectMission(idx);
+}
+
+function selectMission(idx){
+  document.querySelectorAll('.mcard').forEach((c,i)=>{
+    c.classList.toggle('selected', i===idx);
+  });
+  const m=MISSIONS[idx];
+  const preview=document.getElementById('map-preview');
+  const qs=m.questions;
+  if(!qs||qs.length===0){
+    preview.innerHTML=`<div class="preview-placeholder"><div class="preview-placeholder-icon">${m.icon}</div><h3>${m.title}</h3><p>Nhiệm vụ này đang được phát triển. Hãy hoàn thành các nhiệm vụ khác trước!</p></div>`;
+    return;
+  }
+  let qList=qs.map((q,i)=>`<div class="preview-q-item"><div class="preview-q-num">${i+1}</div>${q.q.substring(0,60)}${q.q.length>60?'...':''}</div>`).join('');
+  preview.innerHTML=`<div class="preview-card">
+    <div class="preview-header">
+      <div class="preview-icon">${m.icon}</div>
+      <div class="preview-title">${m.title}</div>
+      <div class="preview-desc">${m.desc}</div>
+    </div>
+    <div class="preview-body">
+      <div class="preview-stats">
+        <div class="pstat"><div class="pstat-val">${qs.length}</div><div class="pstat-lbl">Câu hỏi</div></div>
+        <div class="pstat"><div class="pstat-val">30s</div><div class="pstat-lbl">Mỗi câu</div></div>
+        <div class="pstat"><div class="pstat-val">${qs.length*30} XP</div><div class="pstat-lbl">Tối đa</div></div>
+      </div>
+      <div class="preview-q-list">${qList}</div>
+      <button class="btn-start-mission" onclick="startMission(${idx})">🚀 Bắt đầu nhiệm vụ</button>
+    </div>
+  </div>`;
+  currentMission=idx;
+}
+
+function startMission(idx){
+  currentMission=idx; currentQ=0; correctCount=0; qResults=[];
+  const m=MISSIONS[idx];
+  document.getElementById('topbar-title').textContent=m.title;
+  showScreen('game');
+  loadQuestion();
+}
+
+function loadQuestion(){
+  const m=MISSIONS[currentMission], q=m.questions[currentQ], total=m.questions.length;
+  answered=false;
+  document.getElementById('feedback-d').className='feedback-d';
+  document.getElementById('btn-next-d').className='btn-next-d';
+  document.getElementById('topbar-progress').style.width=(currentQ/total*100)+'%';
+  document.getElementById('q-counter-d').textContent=`${currentQ+1} / ${total}`;
+  document.getElementById('q-label').textContent=`Câu ${currentQ+1} / ${total}`;
+  document.getElementById('scenario-img-d').textContent=q.img;
+  document.getElementById('scenario-q-d').textContent=q.q;
+  document.getElementById('score-display').textContent=`${correctCount} / ${currentQ}`;
+
+  // choices
+  const wrap=document.getElementById('choices-d'); wrap.innerHTML='';
+  const letters=['A','B','C','D'];
+  q.choices.forEach((c,i)=>{
+    const btn=document.createElement('button');
+    btn.className='choice-d';
+    btn.innerHTML=`<span class="choice-d-letter">${letters[i]}</span>${c}`;
+    btn.onclick=()=>selectAnswer(i,q);
+    wrap.appendChild(btn);
+  });
+
+  // q list mini
+  const ql=document.getElementById('q-list-mini'); ql.innerHTML='';
+  m.questions.forEach((_,i)=>{
+    const div=document.createElement('div');
+    let cls='qm-item', dot='qm-dot qm-dot-idle', dotTxt=(i+1)+'';
+    if(i===currentQ){cls+=' current';dot='qm-dot qm-dot-cur';dotTxt='▶';}
+    else if(i<currentQ){
+      if(qResults[i]){cls+=' done-ok';dot='qm-dot qm-dot-ok';dotTxt='✓';}
+      else{cls+=' done-bad';dot='qm-dot qm-dot-bad';dotTxt='✗';}
+    }
+    div.className=cls;
+    div.innerHTML=`<div class="${dot}">${dotTxt}</div>Câu ${i+1}`;
+    ql.appendChild(div);
+  });
+  startTimer();
+}
+
+function startTimer(){
+  clearInterval(timerInterval); timeLeft=30;
+  document.getElementById('timer-d').textContent=timeLeft;
+  timerInterval=setInterval(()=>{
+    timeLeft--;
+    document.getElementById('timer-d').textContent=timeLeft;
+    if(timeLeft<=10) document.getElementById('timer-d').style.color='#e74c3c';
+    else document.getElementById('timer-d').style.color='var(--g2)';
+    if(timeLeft<=0){clearInterval(timerInterval);if(!answered)timeUp();}
+  },1000);
+}
+
+function timeUp(){
+  const q=MISSIONS[currentMission].questions[currentQ];
+  answered=true; qResults[currentQ]=false;
+  document.querySelectorAll('.choice-d').forEach((b,i)=>{
+    b.classList.add('disabled');
+    if(i===q.correct)b.classList.add('correct');
+  });
+  showFeedback(false,q);
+}
+
+function selectAnswer(idx,q){
+  if(answered)return;
+  answered=true; clearInterval(timerInterval);
+  const isOk=idx===q.correct; qResults[currentQ]=isOk;
+  document.querySelectorAll('.choice-d').forEach(b=>b.classList.add('disabled'));
+  document.querySelectorAll('.choice-d')[idx].classList.add(isOk?'correct':'wrong');
+  if(!isOk)document.querySelectorAll('.choice-d')[q.correct].classList.add('correct');
+  if(isOk)correctCount++;
+  document.getElementById('score-display').textContent=`${correctCount} / ${currentQ+1}`;
+  const newPct=Math.min(earthHealth+parseInt(q.impact.replace('+','')),100);
+  if(isOk){
+    document.getElementById('em-fill').style.width=newPct+'%';
+    document.getElementById('em-pct').textContent=newPct+'%';
+  }
+  showFeedback(isOk,q);
+}
+
+function showFeedback(ok,q){
+  const box=document.getElementById('feedback-d');
+  box.className='feedback-d show'+(ok?'':' bad');
+  if(!ok)box.classList.add('bad');
+  document.getElementById('fb-emoji-d').textContent=ok?'✅':'❌';
+  document.getElementById('fb-title-d').textContent=ok?'🎉 Chính xác!':'😅 Chưa đúng rồi!';
+  document.getElementById('fb-text-d').textContent=ok?q.feedback_ok:q.feedback_bad;
+  document.getElementById('fb-impact-d').innerHTML=ok
+    ?`<span class="fb-impact-pos">🌍 Trái Đất ${q.impact} nhờ hành động của bạn!</span>`
+    :`<span class="fb-impact-neg">⚠️ Hãy ghi nhớ để lần sau hành động đúng hơn nhé.</span>`;
+  document.getElementById('btn-next-d').className='btn-next-d show';
+}
+
+function nextQuestion(){
+  const m=MISSIONS[currentMission];
+  currentQ++;
+  if(currentQ>=m.questions.length) showResult();
+  else loadQuestion();
+}
+
+function showResult(){
+  clearInterval(timerInterval);
+  const total=MISSIONS[currentMission].questions.length;
+  const pct=Math.round(correctCount/total*100), xp=correctCount*30, impact=correctCount*4;
+  let trophy='🌱',title='Tiếp tục cố gắng!';
+  if(pct>=80){trophy='🏆';title='Xuất sắc! Nhà bảo vệ môi trường!';}
+  else if(pct>=60){trophy='🌿';title='Tốt lắm! Bạn đang tiến bộ!';}
+  document.getElementById('result-trophy-d').textContent=trophy;
+  document.getElementById('result-title-d').textContent=title;
+  document.getElementById('result-sub-d').textContent='Hoàn thành: '+MISSIONS[currentMission].title;
+  document.getElementById('rd-score').textContent=`${correctCount}/${total}`;
+  document.getElementById('rd-xp').textContent=`+${xp} XP`;
+  showScreen('result');
+  setTimeout(()=>{
+    document.getElementById('rp-fill').style.width=Math.min(earthHealth+impact,100)+'%';
+    document.getElementById('rp-change').textContent=`+${impact}% sức khỏe Trái Đất`;
+  },400);
+}
+
+function switchTabD(el){
+  document.querySelectorAll('.lb-tab-d').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
