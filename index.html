@@ -333,6 +333,34 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 </head>
 <body>
 
+<!-- ===== AUTH SCREEN ===== -->
+<div id="auth-screen" style="position:fixed;inset:0;background:linear-gradient(135deg,#0a3d2e,#1a7a4a);display:flex;align-items:center;justify-content:center;z-index:9999;">
+  <div style="background:white;border-radius:24px;padding:2.5rem 2rem;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <div style="text-align:center;margin-bottom:1.5rem;">
+      <div style="font-size:3rem;margin-bottom:0.4rem;">🌍</div>
+      <h1 style="font-size:1.5rem;font-weight:900;color:#0a3d2e;margin:0 0 0.2rem;">Hành Tinh Xanh</h1>
+      <p style="font-size:0.82rem;color:#7aad92;font-weight:600;margin:0;">FPT Hòa Lạc · THPT</p>
+    </div>
+    <div style="display:flex;background:#f0faf5;border-radius:12px;padding:4px;margin-bottom:1.5rem;">
+      <button id="tab-login" onclick="switchAuthTab('login')" style="flex:1;padding:0.6rem;border:none;border-radius:9px;font-family:Nunito,sans-serif;font-size:0.88rem;font-weight:800;cursor:pointer;background:#1a7a4a;color:white;">Đăng nhập</button>
+      <button id="tab-register" onclick="switchAuthTab('register')" style="flex:1;padding:0.6rem;border:none;border-radius:9px;font-family:Nunito,sans-serif;font-size:0.88rem;font-weight:800;cursor:pointer;background:transparent;color:#7aad92;">Đăng ký</button>
+    </div>
+    <div id="form-login">
+      <div style="margin-bottom:1rem;"><label style="font-size:0.75rem;font-weight:800;color:#2d6a4f;display:block;margin-bottom:0.3rem;">EMAIL</label><input id="login-email" type="email" placeholder="email@example.com" style="width:100%;padding:0.7rem 1rem;border:1.5px solid #d4eddf;border-radius:12px;font-family:Nunito,sans-serif;font-size:0.9rem;outline:none;box-sizing:border-box;"></div>
+      <div style="margin-bottom:1.25rem;"><label style="font-size:0.75rem;font-weight:800;color:#2d6a4f;display:block;margin-bottom:0.3rem;">MẬT KHẨU</label><input id="login-pass" type="password" placeholder="••••••••" style="width:100%;padding:0.7rem 1rem;border:1.5px solid #d4eddf;border-radius:12px;font-family:Nunito,sans-serif;font-size:0.9rem;outline:none;box-sizing:border-box;"></div>
+      <button onclick="doLogin()" style="width:100%;padding:0.85rem;background:#1a7a4a;color:white;border:none;border-radius:14px;font-family:Nunito,sans-serif;font-size:1rem;font-weight:800;cursor:pointer;">🚀 Đăng nhập</button>
+    </div>
+    <div id="form-register" style="display:none;">
+      <div style="margin-bottom:0.9rem;"><label style="font-size:0.75rem;font-weight:800;color:#2d6a4f;display:block;margin-bottom:0.3rem;">TÊN HIỂN THỊ</label><input id="reg-name" type="text" placeholder="Tên của bạn" style="width:100%;padding:0.7rem 1rem;border:1.5px solid #d4eddf;border-radius:12px;font-family:Nunito,sans-serif;font-size:0.9rem;outline:none;box-sizing:border-box;"></div>
+      <div style="margin-bottom:0.9rem;"><label style="font-size:0.75rem;font-weight:800;color:#2d6a4f;display:block;margin-bottom:0.3rem;">CHỌN AVATAR</label><div style="display:flex;gap:6px;flex-wrap:wrap;"><span onclick="pickAvatar(this,'🌱')" style="font-size:1.4rem;cursor:pointer;padding:5px;border-radius:8px;border:2px solid transparent;">🌱</span><span onclick="pickAvatar(this,'🌿')" style="font-size:1.4rem;cursor:pointer;padding:5px;border-radius:8px;border:2px solid transparent;">🌿</span><span onclick="pickAvatar(this,'🌍')" style="font-size:1.4rem;cursor:pointer;padding:5px;border-radius:8px;border:2px solid transparent;">🌍</span><span onclick="pickAvatar(this,'🦋')" style="font-size:1.4rem;cursor:pointer;padding:5px;border-radius:8px;border:2px solid transparent;">🦋</span><span onclick="pickAvatar(this,'🐢')" style="font-size:1.4rem;cursor:pointer;padding:5px;border-radius:8px;border:2px solid transparent;">🐢</span><span onclick="pickAvatar(this,'🐝')" style="font-size:1.4rem;cursor:pointer;padding:5px;border-radius:8px;border:2px solid transparent;">🐝</span><span onclick="pickAvatar(this,'🌻')" style="font-size:1.4rem;cursor:pointer;padding:5px;border-radius:8px;border:2px solid transparent;">🌻</span><span onclick="pickAvatar(this,'♻️')" style="font-size:1.4rem;cursor:pointer;padding:5px;border-radius:8px;border:2px solid transparent;">♻️</span></div></div>
+      <div style="margin-bottom:0.9rem;"><label style="font-size:0.75rem;font-weight:800;color:#2d6a4f;display:block;margin-bottom:0.3rem;">EMAIL</label><input id="reg-email" type="email" placeholder="email@example.com" style="width:100%;padding:0.7rem 1rem;border:1.5px solid #d4eddf;border-radius:12px;font-family:Nunito,sans-serif;font-size:0.9rem;outline:none;box-sizing:border-box;"></div>
+      <div style="margin-bottom:1.25rem;"><label style="font-size:0.75rem;font-weight:800;color:#2d6a4f;display:block;margin-bottom:0.3rem;">MẬT KHẨU</label><input id="reg-pass" type="password" placeholder="Tối thiểu 6 ký tự" style="width:100%;padding:0.7rem 1rem;border:1.5px solid #d4eddf;border-radius:12px;font-family:Nunito,sans-serif;font-size:0.9rem;outline:none;box-sizing:border-box;"></div>
+      <button onclick="doRegister()" style="width:100%;padding:0.85rem;background:#1a7a4a;color:white;border:none;border-radius:14px;font-family:Nunito,sans-serif;font-size:1rem;font-weight:800;cursor:pointer;">✨ Tạo tài khoản</button>
+    </div>
+    <div id="auth-msg" style="margin-top:0.75rem;text-align:center;font-size:0.82rem;font-weight:700;min-height:18px;color:#e74c3c;"></div>
+  </div>
+</div>
+
 <!-- ===== SIDEBAR ===== -->
 <div class="sidebar" id="sidebar">
   <div class="sb-logo">
@@ -358,7 +386,15 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
       <div class="sb-xp-val" id="sb-xp">340 XP</div>
       <div class="sb-xp-sub">Kinh nghiệm tích lũy</div>
     </div>
-    <div class="sb-xp-streak">🔥 3 ngày</div>
+    <div class="sb-xp-streak" id="sb-xp-streak-val">🔥 0 ngày</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:0.6rem;padding:0.7rem 1.25rem;border-bottom:1px solid rgba(255,255,255,0.08);">
+    <div id="sb-user-avatar" style="font-size:1.4rem;width:32px;text-align:center;">🌍</div>
+    <div style="flex:1;min-width:0;">
+      <div id="sb-user-name" style="font-size:0.82rem;font-weight:800;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Đang tải...</div>
+      <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);font-weight:600;">Người chơi</div>
+    </div>
+    <button onclick="doLogout()" style="background:rgba(255,255,255,0.1);border:none;color:rgba(255,255,255,0.5);font-size:0.7rem;font-weight:800;padding:0.3rem 0.6rem;border-radius:8px;cursor:pointer;font-family:Nunito,sans-serif;">Thoát</button>
   </div>
 
   <div class="sb-nav">
@@ -617,7 +653,7 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
         <button class="lb-tab-d" onclick="switchTabD(this)">Tháng này</button>
         <button class="lb-tab-d" onclick="switchTabD(this)">Toàn thời gian</button>
       </div>
-      <div class="lb-row-d you"><div class="lb-rank-d">8</div><div class="lb-avatar-d">😊</div><div class="lb-name-d">Bạn <span class="lb-you-d">Bạn</span></div><div class="lb-score-d">1.240 XP</div></div>
+      <div id="lb-rows"><div class="lb-row-d you"><div class="lb-rank-d">8</div><div class="lb-avatar-d">😊</div><div class="lb-name-d">Bạn <span class="lb-you-d">Bạn</span></div><div class="lb-score-d">1.240 XP</div></div>
       <div class="lb-row-d"><div class="lb-rank-d">1</div><div class="lb-avatar-d">👩</div><div class="lb-name-d">Lan N.</div><div class="lb-score-d">3.210 XP</div></div>
       <div class="lb-row-d"><div class="lb-rank-d">2</div><div class="lb-avatar-d">🧑</div><div class="lb-name-d">Minh T.</div><div class="lb-score-d">2.840 XP</div></div>
       <div class="lb-row-d"><div class="lb-rank-d">3</div><div class="lb-avatar-d">👦</div><div class="lb-name-d">Hùng P.</div><div class="lb-score-d">2.550 XP</div></div>
@@ -627,6 +663,7 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
       <div class="lb-row-d"><div class="lb-rank-d">7</div><div class="lb-avatar-d">🧑</div><div class="lb-name-d">Khoa B.</div><div class="lb-score-d">1.450 XP</div></div>
       <div class="lb-row-d"><div class="lb-rank-d">9</div><div class="lb-avatar-d">👩</div><div class="lb-name-d">Mai V.</div><div class="lb-score-d">1.100 XP</div></div>
       <div class="lb-row-d"><div class="lb-rank-d">10</div><div class="lb-avatar-d">👦</div><div class="lb-name-d">Tùng A.</div><div class="lb-score-d">980 XP</div></div>
+      </div>
     </div>
     <div class="lb-right">
       <div class="podium-d">
@@ -646,7 +683,7 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 </div><!-- end .main -->
 
 <script>
-const MISSIONS = [
+const MISSIONS = window.MISSIONS = [
   {title:"Phân loại rác thông minh",icon:"♻️",desc:"5 tình huống thực tế về phân loại rác hữu cơ, tái chế và rác thải nguy hại.",
    questions:[
     {img:"🗑️",q:"Bạn vừa ăn xong một hộp cơm bằng xốp. Bạn nên bỏ vào thùng rác nào?",choices:["♻️ Thùng tái chế nhựa","🍃 Thùng rác hữu cơ","🗑️ Thùng rác thông thường","🔴 Thùng rác nguy hại"],correct:2,feedback_ok:"Đúng! Hộp xốp không thể tái chế phổ biến và không phải hữu cơ — nên bỏ rác thông thường.",feedback_bad:"Hộp xốp không tái chế được phổ biến. Bỏ vào thùng rác thông thường là đúng nhất.",impact:"+2%"},
@@ -693,7 +730,7 @@ const MISSIONS = [
   ]}
 ];
 
-let currentScreen='home', currentMission=0, currentQ=0, correctCount=0;
+window.currentMission=0; window.correctCount=0; let currentScreen='home', currentMission=0, currentQ=0, correctCount=0;
 let earthHealth=72, timerInterval=null, timeLeft=30, answered=false;
 let qResults=[];
 
@@ -744,7 +781,7 @@ function selectMission(idx){
 }
 
 function startMission(idx){
-  currentMission=idx; currentQ=0; correctCount=0; qResults=[];
+  currentMission=idx; currentQ=0; correctCount=0; qResults=[]; window.currentMission=idx; window.correctCount=0;
   const m=MISSIONS[idx];
   document.getElementById('topbar-title').textContent=m.title;
   showScreen('game');
@@ -820,7 +857,7 @@ function selectAnswer(idx,q){
   document.querySelectorAll('.choice-d').forEach(b=>b.classList.add('disabled'));
   document.querySelectorAll('.choice-d')[idx].classList.add(isOk?'correct':'wrong');
   if(!isOk)document.querySelectorAll('.choice-d')[q.correct].classList.add('correct');
-  if(isOk)correctCount++;
+  if(isOk){correctCount++; window.correctCount=correctCount;}
   document.getElementById('score-display').textContent=`${correctCount} / ${currentQ+1}`;
   const newPct=Math.min(earthHealth+parseInt(q.impact.replace('+','')),100);
   if(isOk){
@@ -873,6 +910,190 @@ function switchTabD(el){
   document.querySelectorAll('.lb-tab-d').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
 }
+</script>
+<script>
+function switchAuthTab(t){ if(window._switchAuthTab) window._switchAuthTab(t); }
+function pickAvatar(el,e){ if(window._pickAvatar) window._pickAvatar(el,e); }
+function doLogin(){ if(window._doLogin) window._doLogin(); }
+function doRegister(){ if(window._doRegister) window._doRegister(); }
+function doLogout(){ if(window._doLogout) window._doLogout(); }
+</script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, getDocs, orderBy, query, limit } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAVrL8Bq6RHL77EyX-8aVfQBJ1LwmQPD-A",
+  authDomain: "hanhtinhxanh-8cb85.firebaseapp.com",
+  projectId: "hanhtinhxanh-8cb85",
+  storageBucket: "hanhtinhxanh-8cb85.firebasestorage.app",
+  messagingSenderId: "150062325711",
+  appId: "1:150062325711:web:b7b7a955a6eac33ea47cba"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUser = null;
+let selectedAvatar = '🌱';
+let userXP = 0;
+let userStreak = 0;
+let completedMissions = [];
+
+window._pickAvatar = window.pickAvatar = function(el, emoji) {
+  document.querySelectorAll('#form-register span').forEach(s => s.style.border = '2px solid transparent');
+  el.style.border = '2px solid #2ecc71';
+  selectedAvatar = emoji;
+};
+
+window._switchAuthTab = window.switchAuthTab = function(tab) {
+  document.getElementById('form-login').style.display = tab === 'login' ? 'block' : 'none';
+  document.getElementById('form-register').style.display = tab === 'register' ? 'block' : 'none';
+  document.getElementById('tab-login').style.background = tab === 'login' ? '#1a7a4a' : 'transparent';
+  document.getElementById('tab-login').style.color = tab === 'login' ? 'white' : '#7aad92';
+  document.getElementById('tab-register').style.background = tab === 'register' ? '#1a7a4a' : 'transparent';
+  document.getElementById('tab-register').style.color = tab === 'register' ? 'white' : '#7aad92';
+  document.getElementById('auth-msg').textContent = '';
+};
+
+function showAuthMsg(msg, isError = true) {
+  const el = document.getElementById('auth-msg');
+  el.textContent = msg;
+  el.style.color = isError ? '#e74c3c' : '#1a7a4a';
+}
+
+window._doLogin = window.doLogin = async function() {
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  if (!email || !pass) return showAuthMsg('Vui lòng điền đầy đủ thông tin!');
+  showAuthMsg('Đang đăng nhập...', false);
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
+  } catch(e) {
+    const msgs = {
+      'auth/user-not-found': 'Email không tồn tại!',
+      'auth/wrong-password': 'Mật khẩu không đúng!',
+      'auth/invalid-credential': 'Email hoặc mật khẩu không đúng!',
+      'auth/invalid-email': 'Email không hợp lệ!'
+    };
+    showAuthMsg(msgs[e.code] || 'Đăng nhập thất bại!');
+  }
+};
+
+window._doRegister = window.doRegister = async function() {
+  const name = document.getElementById('reg-name').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const pass = document.getElementById('reg-pass').value;
+  if (!name || !email || !pass) return showAuthMsg('Vui lòng điền đầy đủ thông tin!');
+  if (pass.length < 6) return showAuthMsg('Mật khẩu tối thiểu 6 ký tự!');
+  showAuthMsg('Đang tạo tài khoản...', false);
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, email, pass);
+    await setDoc(doc(db, 'users', cred.user.uid), {
+      displayName: name,
+      avatar: selectedAvatar,
+      email: email,
+      xp: 0,
+      streak: 0,
+      completedMissions: [],
+      createdAt: new Date().toISOString(),
+      lastLogin: new Date().toISOString()
+    });
+  } catch(e) {
+    const msgs = {
+      'auth/email-already-in-use': 'Email này đã được đăng ký!',
+      'auth/invalid-email': 'Email không hợp lệ!',
+      'auth/weak-password': 'Mật khẩu quá yếu!'
+    };
+    showAuthMsg(msgs[e.code] || 'Đăng ký thất bại!');
+  }
+};
+
+window._doLogout = window.doLogout = async function() {
+  await signOut(auth);
+};
+
+async function loadUserData(uid) {
+  const snap = await getDoc(doc(db, 'users', uid));
+  if (snap.exists()) {
+    const data = snap.data();
+    userXP = data.xp || 0;
+    userStreak = data.streak || 0;
+    completedMissions = data.completedMissions || [];
+    const name = data.displayName || 'Người chơi';
+    const avatar = data.avatar || '🌍';
+    document.getElementById('sb-xp').textContent = userXP + ' XP';
+    document.getElementById('sb-xp-streak-val').textContent = '🔥 ' + userStreak + ' ngày';
+    document.getElementById('sb-user-name').textContent = name;
+    document.getElementById('sb-user-avatar').textContent = avatar;
+    completedMissions.forEach(idx => {
+      const card = document.getElementById('mcard-' + idx);
+      if (card && !card.querySelector('.mcard-done')) {
+        const badge = document.createElement('span');
+        badge.className = 'mcard-done';
+        badge.textContent = '✓ Xong';
+        card.appendChild(badge);
+      }
+    });
+    await updateDoc(doc(db, 'users', uid), { lastLogin: new Date().toISOString() });
+    await loadLeaderboard();
+  }
+}
+
+async function saveProgress(missionIdx, correct, total) {
+  if (!currentUser) return;
+  const xpEarned = correct * 30;
+  const newXP = userXP + xpEarned;
+  const newMissions = completedMissions.includes(missionIdx) ? completedMissions : [...completedMissions, missionIdx];
+  userXP = newXP;
+  completedMissions = newMissions;
+  document.getElementById('sb-xp').textContent = newXP + ' XP';
+  await updateDoc(doc(db, 'users', currentUser.uid), {
+    xp: newXP,
+    completedMissions: newMissions
+  });
+}
+window.saveProgress = saveProgress;
+
+async function loadLeaderboard() {
+  try {
+    const q = query(collection(db, 'users'), orderBy('xp', 'desc'), limit(10));
+    const snap = await getDocs(q);
+    const lbLeft = document.getElementById('lb-rows');
+    if (!lbLeft) return;
+    lbLeft.innerHTML = '';
+    let rank = 1;
+    snap.forEach(d => {
+      const data = d.data();
+      const isYou = currentUser && d.id === currentUser.uid;
+      const row = document.createElement('div');
+      row.className = 'lb-row-d' + (isYou ? ' you' : '');
+      row.innerHTML = `<div class="lb-rank-d">${rank}</div><div class="lb-avatar-d">${data.avatar||'🌍'}</div><div class="lb-name-d">${data.displayName||'Người chơi'}${isYou?' <span class="lb-you-d">Bạn</span>':''}</div><div class="lb-score-d">${(data.xp||0).toLocaleString()} XP</div>`;
+      lbLeft.appendChild(row);
+      rank++;
+    });
+  } catch(e) { console.log('LB error:', e); }
+}
+
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    currentUser = user;
+    document.getElementById('auth-screen').style.display = 'none';
+    await loadUserData(user.uid);
+  } else {
+    currentUser = null;
+    document.getElementById('auth-screen').style.display = 'flex';
+  }
+});
+
+const origShowResult = window.showResult;
+window.showResult = function() {
+  origShowResult && origShowResult();
+  const total = window.MISSIONS ? window.MISSIONS[window.currentMission]?.questions?.length || 5 : 5;
+  saveProgress(window.currentMission, window.correctCount, total);
+};
 </script>
 </body>
 </html>
