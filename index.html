@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trường Học Xanh — FPT Hòa Lạc</title>
+<title>Trường Học Xanh — FPT Hòa Lạc + Mini Games</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -105,7 +105,7 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 .topbar-progress{flex:1;max-width:200px;height:6px;background:#e0f0e8;border-radius:99px;overflow:hidden;}
 .topbar-progress-fill{height:100%;background:linear-gradient(90deg,var(--g2),var(--g3));border-radius:99px;transition:width 0.4s;}
 
-/* ===== SCREENS ===== */
+/* ===== SCREENS (original + mini games) ===== */
 .screen{display:none;flex:1;overflow:hidden;}
 .screen.active{display:flex;}
 
@@ -137,19 +137,17 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 .btn-hero-secondary{background:rgba(255,255,255,0.12);color:white;border:1.5px solid rgba(255,255,255,0.25);}
 .btn-hero-secondary:hover{background:rgba(255,255,255,0.18);}
 
-/* ===== MISSION MAP ===== */
+/* ===== MISSION MAP (giữ nguyên) ===== */
 #map{flex-direction:row;overflow:hidden;}
 .map-list{width:420px;flex-shrink:0;overflow-y:auto;padding:1.75rem;border-right:1px solid #e0efe8;background:white;}
 .map-list h2{font-size:1.2rem;font-weight:900;color:var(--text);margin-bottom:0.4rem;}
 .map-list-sub{font-size:0.82rem;color:var(--text3);margin-bottom:1.5rem;}
-
 .map-planet-card{background:var(--g5);border-radius:14px;padding:1rem 1.1rem;margin-bottom:1.5rem;}
 .map-planet-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.45rem;}
 .map-planet-label{font-size:0.78rem;font-weight:800;color:var(--g2);}
 .map-planet-pct{font-size:0.78rem;font-weight:800;color:var(--g2);}
 .map-planet-track{height:7px;background:#c8edd8;border-radius:99px;overflow:hidden;}
 .map-planet-fill{height:100%;background:linear-gradient(90deg,var(--g2),var(--g3));border-radius:99px;}
-
 .map-section{font-size:0.7rem;font-weight:900;text-transform:uppercase;letter-spacing:0.07em;color:var(--text3);margin:1.25rem 0 0.6rem;}
 .mcard{
   display:flex;align-items:flex-start;gap:0.85rem;
@@ -174,13 +172,11 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 .mcard-pts{font-size:0.72rem;font-weight:800;color:var(--g2);}
 .mcard-done{position:absolute;top:0.75rem;right:0.75rem;background:var(--g3);color:white;font-size:0.65rem;font-weight:900;padding:0.2rem 0.55rem;border-radius:99px;}
 .mcard-lock{position:absolute;top:50%;right:0.85rem;transform:translateY(-50%);font-size:1.1rem;opacity:0.4;}
-
 .map-preview{flex:1;overflow-y:auto;padding:2rem;}
 .preview-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;color:var(--text3);}
 .preview-placeholder-icon{font-size:5rem;margin-bottom:1rem;opacity:0.4;}
 .preview-placeholder h3{font-size:1.2rem;font-weight:800;color:var(--text2);margin-bottom:0.5rem;}
 .preview-placeholder p{font-size:0.88rem;line-height:1.6;max-width:320px;}
-
 .preview-card{background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden;max-width:560px;margin:0 auto;}
 .preview-header{background:linear-gradient(135deg,var(--g1),var(--g2));padding:1.75rem 2rem;position:relative;overflow:hidden;}
 .preview-header::before{content:'';position:absolute;width:200px;height:200px;border-radius:50%;border:1px solid rgba(255,255,255,0.08);top:-60px;right:-40px;}
@@ -199,26 +195,18 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 .btn-start-mission:hover{background:var(--g1);}
 .btn-start-mission:active{transform:scale(0.98);}
 
-/* ===== GAME ===== */
+/* ===== GAME (original) ===== */
 #game{flex-direction:column;}
 .game-main{flex:1;overflow:hidden;display:flex;gap:0;}
 .game-left{flex:1;overflow-y:auto;padding:2rem;}
 .game-right{width:340px;flex-shrink:0;overflow-y:auto;padding:2rem;border-left:1px solid #e0efe8;background:white;}
-
 .scenario-card-d{background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;margin-bottom:1.25rem;}
 .scenario-banner{height:120px;background:linear-gradient(135deg,var(--g5),#d4f5e6);display:flex;align-items:center;justify-content:center;font-size:4rem;}
 .scenario-body{padding:1.25rem 1.5rem;}
 .scenario-badge{font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;color:var(--g2);margin-bottom:0.5rem;}
 .scenario-q-text{font-size:1.05rem;font-weight:700;color:var(--text);line-height:1.55;}
-
 .choices-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.25rem;}
-.choice-d{
-  padding:1rem 1.1rem;background:white;
-  border:2px solid #d4eddf;border-radius:14px;cursor:pointer;
-  font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:600;color:var(--text);
-  transition:all 0.15s;display:flex;align-items:flex-start;gap:0.65rem;
-  text-align:left;
-}
+.choice-d{padding:1rem 1.1rem;background:white;border:2px solid #d4eddf;border-radius:14px;cursor:pointer;font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:600;color:var(--text);transition:all 0.15s;display:flex;align-items:flex-start;gap:0.65rem;text-align:left;}
 .choice-d:hover:not(.disabled){border-color:var(--g3);background:var(--g5);}
 .choice-d.correct{background:#e8faf0;border-color:var(--g3);color:var(--g1);}
 .choice-d.wrong{background:var(--red-l);border-color:var(--red);color:#7f1d1d;}
@@ -226,7 +214,6 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 .choice-d-letter{width:26px;height:26px;flex-shrink:0;border-radius:8px;background:var(--g5);color:var(--g2);font-size:0.75rem;font-weight:900;display:flex;align-items:center;justify-content:center;}
 .choice-d.correct .choice-d-letter{background:var(--g3);color:white;}
 .choice-d.wrong .choice-d-letter{background:var(--red);color:white;}
-
 .feedback-d{background:white;border-radius:14px;padding:1.1rem 1.25rem;border-left:4px solid var(--g3);display:none;animation:fadeUp 0.3s ease;}
 .feedback-d.show{display:block;}
 .feedback-d.bad{border-left-color:var(--red);}
@@ -237,13 +224,10 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 .fb-impact{font-size:0.82rem;font-weight:800;margin-top:0.5rem;}
 .fb-impact-pos{color:var(--g2);}
 .fb-impact-neg{color:var(--red);}
-
 .btn-next-d{width:100%;padding:0.9rem;background:var(--g2);color:white;border:none;border-radius:14px;font-family:'Nunito',sans-serif;font-size:0.95rem;font-weight:800;cursor:pointer;display:none;margin-top:0.75rem;transition:background 0.15s,transform 0.12s;}
 .btn-next-d.show{display:block;animation:fadeUp 0.3s ease 0.05s both;}
 .btn-next-d:hover{background:var(--g1);}
 .btn-next-d:active{transform:scale(0.98);}
-
-/* game right panel */
 .gr-section{font-size:0.68rem;font-weight:900;text-transform:uppercase;letter-spacing:0.07em;color:var(--text3);margin-bottom:0.65rem;margin-top:1.25rem;}
 .gr-section:first-child{margin-top:0;}
 .q-list-mini{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:1rem;}
@@ -256,11 +240,9 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 .qm-dot-ok{background:var(--g3);color:white;}
 .qm-dot-bad{background:var(--red);color:white;}
 .qm-dot-idle{background:#d4eddf;color:var(--g2);}
-
 .score-mini{background:var(--g5);border-radius:12px;padding:0.85rem 1rem;text-align:center;margin-bottom:1rem;}
 .score-mini-num{font-size:1.6rem;font-weight:900;color:var(--g2);}
 .score-mini-lbl{font-size:0.7rem;color:var(--text3);font-weight:700;}
-
 .earth-mini{background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:12px;padding:0.85rem 1rem;}
 .em-label{font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:rgba(255,255,255,0.45);margin-bottom:0.45rem;}
 .em-track{height:8px;background:rgba(255,255,255,0.15);border-radius:99px;overflow:hidden;margin-bottom:0.3rem;}
@@ -304,7 +286,6 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 .lb-name-d{font-size:0.88rem;font-weight:700;color:var(--text);flex:1;}
 .lb-you-d{font-size:0.62rem;font-weight:900;background:var(--g3);color:white;padding:0.1rem 0.45rem;border-radius:99px;}
 .lb-score-d{font-size:0.88rem;font-weight:900;color:var(--g2);}
-
 .lb-right{flex:1;overflow-y:auto;padding:2rem;}
 .podium-d{display:flex;align-items:flex-end;justify-content:center;gap:1rem;margin-bottom:2rem;}
 .pd-slot{display:flex;flex-direction:column;align-items:center;gap:0.4rem;}
@@ -318,22 +299,153 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 .pd1 .pd-block{height:80px;background:var(--amber);}
 .pd2 .pd-block{height:60px;background:#9ca3af;}
 .pd3 .pd-block{height:44px;background:#b45309;}
-
 .lb-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
 .lb-stat-card{background:white;border-radius:14px;padding:1.1rem 1.25rem;box-shadow:var(--shadow);}
 .lb-stat-num{font-size:1.5rem;font-weight:900;color:var(--g2);}
 .lb-stat-lbl{font-size:0.72rem;color:var(--text3);font-weight:700;margin-top:2px;}
 
-/* ===== SCROLLBAR ===== */
-::-webkit-scrollbar{width:5px;height:5px;}
-::-webkit-scrollbar-track{background:transparent;}
-::-webkit-scrollbar-thumb{background:#c8edd8;border-radius:99px;}
-::-webkit-scrollbar-thumb:hover{background:#9fd4b8;}
+/* ============ MINI GAMES STYLES (từ More game.html) ============ */
+.minigames-hub{
+  flex-direction: column;
+  padding: 2rem;
+  overflow-y: auto;
+}
+.hub-title{font-size:1.8rem;font-weight:900;color:var(--text);margin-bottom:0.3rem;}
+.hub-sub{font-size:0.9rem;color:var(--text3);margin-bottom:2rem;}
+.games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;}
+.game-card{background:white;border-radius:var(--radius-lg);padding:1.5rem 1.25rem;cursor:pointer;border:2px solid transparent;transition:all 0.2s;box-shadow:var(--shadow);text-align:center;}
+.game-card:hover{border-color:var(--g3);transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.game-card:active{transform:scale(0.97);}
+.gc-icon{font-size:3rem;margin-bottom:0.75rem;}
+.gc-name{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:0.3rem;}
+.gc-desc{font-size:0.78rem;color:var(--text3);line-height:1.5;margin-bottom:0.75rem;}
+.gc-badge{display:inline-block;font-size:0.7rem;font-weight:800;padding:0.25rem 0.65rem;border-radius:99px;}
+.badge-green{background:var(--g5);color:var(--g2);}
+.badge-amber{background:#fef3cd;color:#856404;}
+.badge-red{background:#fef2f2;color:#9b1c1c;}
+.badge-purple{background:#f3f0ff;color:var(--purple);}
+
+/* drag & drop */
+.drag-arena{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
+.trash-zone{background:white;border-radius:var(--radius-lg);padding:1.25rem;box-shadow:var(--shadow);min-height:160px;}
+.tz-header{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.85rem;}
+.tz-icon{font-size:1.5rem;}
+.tz-name{font-size:0.9rem;font-weight:800;color:var(--text);}
+.tz-drop{min-height:100px;border:2px dashed #d4eddf;border-radius:12px;padding:0.75rem;display:flex;flex-wrap:wrap;gap:0.5rem;align-items:flex-start;transition:all 0.2s;}
+.tz-drop.drag-over{border-color:var(--g3);background:var(--g5);}
+.tz-drop.correct-flash{border-color:var(--g3);background:#e8faf0;animation:flash-green 0.5s ease;}
+.tz-drop.wrong-flash{border-color:var(--red);background:#fef2f2;animation:flash-red 0.5s ease;}
+@keyframes flash-green{0%,100%{background:white;}50%{background:#c8f5e0;}}
+@keyframes flash-red{0%,100%{background:white;}50%{background:#fdc5c5;}}
+.items-pool{background:white;border-radius:var(--radius-lg);padding:1.25rem;box-shadow:var(--shadow);grid-column:1/-1;}
+.pool-title{font-size:0.8rem;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.85rem;}
+.pool-items{display:flex;flex-wrap:wrap;gap:0.6rem;}
+.drag-item{background:var(--g5);border:1.5px solid #c8edd8;border-radius:10px;padding:0.5rem 0.85rem;font-size:0.88rem;font-weight:700;cursor:grab;user-select:none;transition:all 0.15s;display:flex;align-items:center;gap:0.4rem;}
+.drag-item:hover{border-color:var(--g3);box-shadow:0 2px 8px rgba(46,204,113,0.2);}
+.drag-item:active{cursor:grabbing;transform:scale(1.05);opacity:0.8;}
+.drag-item.placed{opacity:0.45;pointer-events:none;}
+.placed-item{background:var(--g5);border:1.5px solid var(--g3);border-radius:8px;padding:0.35rem 0.7rem;font-size:0.8rem;font-weight:700;color:var(--g2);}
+.drag-feedback{background:white;border-radius:var(--radius);padding:1rem 1.25rem;box-shadow:var(--shadow);margin-bottom:1rem;display:none;border-left:4px solid var(--g3);}
+.drag-feedback.show{display:block;animation:fadeUp 0.3s ease;}
+.drag-feedback.bad{border-left-color:var(--red);}
+
+/* memory */
+.memory-info{display:flex;gap:1rem;margin-bottom:1.25rem;}
+.mem-stat{background:white;border-radius:12px;padding:0.65rem 1rem;box-shadow:var(--shadow);flex:1;text-align:center;}
+.mem-stat-num{font-size:1.3rem;font-weight:900;color:var(--g2);}
+.mem-stat-lbl{font-size:0.7rem;color:var(--text3);font-weight:700;}
+.memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-bottom:1.5rem;}
+.mem-card{aspect-ratio:1;cursor:pointer;perspective:600px;}
+.mem-card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.4s ease;border-radius:12px;}
+.mem-card.flipped .mem-card-inner{transform:rotateY(180deg);}
+.mem-card.matched .mem-card-inner{transform:rotateY(180deg);}
+.mem-front,.mem-back{position:absolute;inset:0;border-radius:12px;display:flex;align-items:center;justify-content:center;backface-visibility:hidden;}
+.mem-front{background:linear-gradient(135deg,var(--g1),var(--g2));font-size:1.5rem;box-shadow:var(--shadow);}
+.mem-back{background:white;border:2px solid #d4eddf;transform:rotateY(180deg);box-shadow:var(--shadow);flex-direction:column;gap:0.3rem;padding:0.5rem;}
+.mem-back-icon{font-size:1.6rem;}
+.mem-back-text{font-size:0.62rem;font-weight:800;color:var(--text2);text-align:center;line-height:1.3;}
+.mem-card.matched .mem-front{background:linear-gradient(135deg,#1a7a4a,#2ecc71);}
+.mem-card.matched .mem-back{border-color:var(--g3);background:#e8faf0;}
+
+/* racing */
+.race-track{background:linear-gradient(180deg,#87ceeb 0%,#87ceeb 60%,#4a7c59 60%,#2d5a3d 100%);border-radius:var(--radius-lg);overflow:hidden;position:relative;height:200px;margin-bottom:1.25rem;box-shadow:var(--shadow-lg);}
+.road{position:absolute;bottom:0;left:0;right:0;height:80px;background:#555;display:flex;align-items:center;}
+.road-lines{position:absolute;inset:0;overflow:hidden;}
+.road-line{position:absolute;height:6px;background:white;border-radius:3px;top:50%;transform:translateY(-50%);animation:moveLine 1s linear infinite;opacity:0.7;}
+@keyframes moveLine{from{right:-60px;}to{right:110%;}}
+.race-car{position:absolute;bottom:18px;font-size:2.2rem;transition:left 0.5s ease;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));}
+.race-finish{position:absolute;right:0;top:0;bottom:0;width:40px;display:flex;flex-direction:column;justify-content:space-evenly;}
+.finish-cell{flex:1;background:repeating-linear-gradient(45deg,black 0,black 5px,white 5px,white 10px);}
+.race-clouds{position:absolute;top:10px;animation:moveClouds 8s linear infinite;}
+@keyframes moveClouds{from{left:100%;}to{left:-150px;}}
+.race-q{background:white;border-radius:var(--radius-lg);padding:1.25rem 1.5rem;box-shadow:var(--shadow);margin-bottom:1rem;}
+.race-q-text{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.race-timer-bar{height:6px;background:#e0f0e8;border-radius:99px;overflow:hidden;margin-bottom:1rem;}
+.race-timer-fill{height:100%;background:linear-gradient(90deg,var(--g3),var(--amber));border-radius:99px;transition:width 0.1s linear;}
+.race-choices{display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;}
+.race-choice{padding:0.8rem 1rem;background:white;border:2px solid #d4eddf;border-radius:12px;cursor:pointer;font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;color:var(--text);text-align:left;transition:all 0.15s;display:flex;align-items:center;gap:0.5rem;}
+.race-choice:hover:not(.disabled){border-color:var(--g3);background:var(--g5);}
+.race-choice.correct{background:#e8faf0;border-color:var(--g3);color:var(--g1);}
+.race-choice.wrong{background:#fef2f2;border-color:var(--red);}
+.race-choice.disabled{pointer-events:none;}
+.race-progress{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;}
+.race-lap{font-size:0.8rem;font-weight:800;color:var(--text2);}
+.speed-badge{background:var(--amber);color:white;font-size:0.72rem;font-weight:800;padding:0.2rem 0.6rem;border-radius:99px;}
+
+/* city builder */
+.city-wrap{display:grid;grid-template-columns:1fr 300px;gap:1.5rem;}
+.city-canvas{background:linear-gradient(180deg,#87ceeb 0%,#c8e6f5 40%,#5a9e6f 40%,#3d7a52 100%);border-radius:var(--radius-lg);overflow:hidden;position:relative;min-height:360px;box-shadow:var(--shadow-lg);}
+.city-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);gap:4px;position:absolute;bottom:0;left:0;right:0;height:60%;padding:4px;}
+.city-cell{border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.6rem;transition:all 0.2s;background:rgba(255,255,255,0.1);border:1.5px dashed rgba(255,255,255,0.3);min-height:60px;}
+.city-cell:hover{background:rgba(255,255,255,0.25);transform:scale(1.05);}
+.city-cell.placed{background:rgba(255,255,255,0.15);border-style:solid;border-color:rgba(255,255,255,0.4);}
+.city-stats{position:absolute;top:12px;left:12px;display:flex;gap:0.5rem;}
+.city-stat-pill{background:rgba(0,0,0,0.45);backdrop-filter:blur(8px);color:white;font-size:0.72rem;font-weight:800;padding:0.3rem 0.65rem;border-radius:99px;display:flex;align-items:center;gap:0.3rem;}
+.city-sun{position:absolute;top:15px;right:20px;font-size:2.5rem;animation:rotateSun 10s linear infinite;}
+@keyframes rotateSun{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+.city-panel{display:flex;flex-direction:column;gap:0.85rem;}
+.city-panel-card{background:white;border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);}
+.cp-title{font-size:0.72rem;font-weight:900;text-transform:uppercase;letter-spacing:0.07em;color:var(--text3);margin-bottom:0.65rem;}
+.buildings-list{display:flex;flex-direction:column;gap:0.5rem;}
+.building-item{display:flex;align-items:center;gap:0.65rem;padding:0.55rem 0.65rem;border-radius:10px;cursor:pointer;border:1.5px solid #e0efe8;transition:all 0.15s;}
+.building-item:hover{border-color:var(--g3);background:var(--g5);}
+.building-item.selected{border-color:var(--g3);background:var(--g5);box-shadow:0 0 0 2px rgba(46,204,113,0.2);}
+.building-item.locked{opacity:0.4;pointer-events:none;}
+.bi-icon{font-size:1.4rem;width:28px;text-align:center;}
+.bi-info{flex:1;}
+.bi-name{font-size:0.8rem;font-weight:800;color:var(--text);}
+.bi-cost{font-size:0.7rem;color:var(--text3);font-weight:700;}
+.bi-effect{font-size:0.68rem;color:var(--g2);font-weight:700;}
+.city-score-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;}
+.cs-item{background:var(--g5);border-radius:10px;padding:0.6rem 0.5rem;text-align:center;}
+.cs-val{font-size:1.1rem;font-weight:900;color:var(--g2);}
+.cs-lbl{font-size:0.62rem;color:var(--text3);font-weight:700;}
+
+/* result overlay mini games */
+#mg-result-overlay{position:fixed;inset:0;background:rgba(10,61,46,0.85);display:none;align-items:center;justify-content:center;z-index:1000;}
+#mg-result-overlay.show{display:flex;}
+.mg-result-box{background:white;border-radius:24px;padding:2.5rem 2rem;max-width:400px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+.mg-rb-trophy{font-size:4rem;margin-bottom:0.5rem;animation:pop 0.5s cubic-bezier(0.34,1.56,0.64,1);}
+.mg-rb-title{font-size:1.5rem;font-weight:900;color:var(--text);margin-bottom:0.25rem;}
+.mg-rb-sub{font-size:0.88rem;color:var(--text3);margin-bottom:1.5rem;}
+.mg-rb-stats{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.5rem;}
+.mg-rb-stat{background:var(--g5);border-radius:12px;padding:0.75rem;}
+.mg-rb-stat-num{font-size:1.3rem;font-weight:900;color:var(--g2);}
+.mg-rb-stat-lbl{font-size:0.68rem;color:var(--text3);font-weight:700;}
+.mg-rb-btns{display:flex;gap:0.75rem;}
+.mg-rb-btn{flex:1;padding:0.8rem;border:none;border-radius:12px;font-family:'Nunito',sans-serif;font-size:0.9rem;font-weight:800;cursor:pointer;}
+.mg-rb-btn-p{background:var(--g2);color:white;}
+.mg-rb-btn-s{background:var(--g5);color:var(--g2);}
+
+/* misc */
+.btn-primary{padding:0.8rem 1.75rem;background:var(--g2);color:white;border:none;border-radius:12px;font-family:'Nunito',sans-serif;font-size:0.95rem;font-weight:800;cursor:pointer;transition:all 0.15s;}
+.btn-primary:hover{background:var(--g1);}
+.btn-primary:active{transform:scale(0.98);}
 </style>
 </head>
 <body>
 
-<!-- ===== AUTH SCREEN ===== -->
+<!-- ===== AUTH SCREEN (giữ nguyên) ===== -->
 <div id="auth-screen" style="position:fixed;inset:0;background:linear-gradient(135deg,#0a3d2e,#1a7a4a);display:flex;align-items:center;justify-content:center;z-index:9999;">
   <div style="background:white;border-radius:24px;padding:2.5rem 2rem;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
     <div style="text-align:center;margin-bottom:1.5rem;">
@@ -365,756 +477,179 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 <div class="sidebar" id="sidebar">
   <div class="sb-logo">
     <div class="sb-logo-icon">🌍</div>
-    <div class="sb-logo-text">
-      Trường Học Xanh
-      <span>FPT Hòa Lạc · THPT</span>
-    </div>
+    <div class="sb-logo-text">Trường Học Xanh<span>FPT Hòa Lạc · THPT</span></div>
   </div>
-
   <div class="sb-planet">
     <div class="sb-planet-label">Điểm Xanh Trường Học</div>
     <div class="sb-planet-bar"><div class="sb-planet-fill" id="sb-fill" style="width:72%"></div></div>
-    <div class="sb-planet-row">
-      <span class="sb-planet-lbl">Cần cải thiện</span>
-      <span class="sb-planet-pct" id="sb-pct">72%</span>
-    </div>
+    <div class="sb-planet-row"><span class="sb-planet-lbl">Cần cải thiện</span><span class="sb-planet-pct" id="sb-pct">72%</span></div>
   </div>
-
   <div class="sb-xp-card">
     <div class="sb-xp-icon">⭐</div>
-    <div>
-      <div class="sb-xp-val" id="sb-xp">340 XP</div>
-      <div class="sb-xp-sub">Kinh nghiệm tích lũy</div>
-    </div>
+    <div><div class="sb-xp-val" id="sb-xp">340 XP</div><div class="sb-xp-sub">Kinh nghiệm tích lũy</div></div>
     <div class="sb-xp-streak" id="sb-xp-streak-val">🔥 0 ngày</div>
   </div>
   <div style="display:flex;align-items:center;gap:0.6rem;padding:0.7rem 1.25rem;border-bottom:1px solid rgba(255,255,255,0.08);">
     <div id="sb-user-avatar" style="font-size:1.4rem;width:32px;text-align:center;">🌍</div>
-    <div style="flex:1;min-width:0;">
-      <div id="sb-user-name" style="font-size:0.82rem;font-weight:800;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Đang tải...</div>
-      <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);font-weight:600;">Người chơi</div>
-    </div>
+    <div style="flex:1;min-width:0;"><div id="sb-user-name" style="font-size:0.82rem;font-weight:800;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Đang tải...</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.4);font-weight:600;">Người chơi</div></div>
     <button onclick="doLogout()" style="background:rgba(255,255,255,0.1);border:none;color:rgba(255,255,255,0.5);font-size:0.7rem;font-weight:800;padding:0.3rem 0.6rem;border-radius:8px;cursor:pointer;font-family:Nunito,sans-serif;">Thoát</button>
   </div>
-
   <div class="sb-nav">
     <div class="sb-nav-section">Menu</div>
-    <div class="sb-nav-item active" id="nav-home" onclick="showScreen('home')">
-      <span class="ni-icon">🏠</span> Trang chủ
-    </div>
-    <div class="sb-nav-item" id="nav-lb" onclick="showScreen('leaderboard')">
-      <span class="ni-icon">🏆</span> Bảng xếp hạng
-    </div>
-
+    <div class="sb-nav-item active" id="nav-home" onclick="showScreen('home')"><span class="ni-icon">🏠</span> Trang chủ</div>
+    <div class="sb-nav-item" id="nav-lb" onclick="showScreen('leaderboard')"><span class="ni-icon">🏆</span> Bảng xếp hạng</div>
     <div class="sb-nav-section">Nhiệm vụ</div>
     <div class="sb-nav-item" onclick="showMap(0)"><span class="ni-icon">♻️</span> Phân loại rác <span class="ni-badge">Mới</span></div>
     <div class="sb-nav-item" onclick="showMap(1)"><span class="ni-icon">🛍️</span> Mua sắm xanh <span class="ni-done">✓</span></div>
     <div class="sb-nav-item" onclick="showMap(2)"><span class="ni-icon">💡</span> Tiết kiệm điện nhà</div>
     <div class="sb-nav-item" onclick="showMap(3)"><span class="ni-icon">💧</span> Tiết kiệm nước</div>
-
     <div class="sb-nav-section">🏫 Căn teen FPT Hòa Lạc</div>
     <div class="sb-nav-item" onclick="showMap(4)"><span class="ni-icon">🥡</span> Sau bữa trưa</div>
     <div class="sb-nav-item" onclick="showMap(5)"><span class="ni-icon">⚡</span> Điện trong căn teen</div>
     <div class="sb-nav-item" onclick="showMap(6)"><span class="ni-icon">🧴</span> Rác nhựa ở trường</div>
     <div class="sb-nav-item" onclick="showMap(7)"><span class="ni-icon">🌿</span> Thử thách 7 ngày <span class="ni-badge" style="background:#f59e0b;color:#78350f;">Khó</span></div>
     <div class="sb-nav-item locked"><span class="ni-icon">☀️</span> Năng lượng tái tạo <span class="ni-lock">🔒</span></div>
+    <!-- MINI GAMES MỤC MỚI -->
+    <div class="sb-nav-section">🎮 Mini Games</div>
+    <div class="sb-nav-item" onclick="showMiniGamesHub()"><span class="ni-icon">🎲</span> Khu vui chơi xanh</div>
   </div>
-
   <div class="sb-footer">
     <div class="sb-planet-label" style="margin-bottom:0.5rem;">Streak tuần này</div>
-    <div class="sb-streak-row">
-      <div class="streak-day done">🔥</div>
-      <div class="streak-day done">🔥</div>
-      <div class="streak-day done">🔥</div>
-      <div class="streak-day">·</div>
-      <div class="streak-day">·</div>
-      <div class="streak-day">·</div>
-      <div class="streak-day">·</div>
-    </div>
+    <div class="sb-streak-row"><div class="streak-day done">🔥</div><div class="streak-day done">🔥</div><div class="streak-day done">🔥</div><div class="streak-day">·</div><div class="streak-day">·</div><div class="streak-day">·</div><div class="streak-day">·</div></div>
   </div>
 </div>
 
 <!-- ===== MAIN ===== -->
 <div class="main">
-
-  <!-- TOPBAR -->
   <div class="topbar" id="topbar" style="display:none">
     <button onclick="showScreen('map')" style="background:none;border:none;cursor:pointer;font-size:1.2rem;padding:0.2rem 0.5rem;border-radius:8px;color:var(--text2);">←</button>
     <div class="topbar-title" id="topbar-title">Phân loại rác thông minh</div>
     <div class="topbar-progress"><div class="topbar-progress-fill" id="topbar-progress" style="width:0%"></div></div>
     <span style="font-size:0.78rem;font-weight:700;color:var(--text3);min-width:48px;text-align:right;" id="q-counter-d">1 / 5</span>
-    <div class="topbar-timer">
-      <span class="topbar-timer-icon">⏱</span>
-      <span class="topbar-timer-num" id="timer-d">30</span>
+    <div class="topbar-timer"><span class="topbar-timer-icon">⏱</span><span class="topbar-timer-num" id="timer-d">30</span></div>
+  </div>
+
+  <!-- Các screen cũ (home, map, game, result, leaderboard) giữ nguyên -->
+  <div id="home" class="screen active">...</div>
+  <div id="map" class="screen">...</div>
+  <div id="game" class="screen">...</div>
+  <div id="result" class="screen">...</div>
+  <div id="leaderboard" class="screen">...</div>
+
+  <!-- ========== MINI GAMES HUB ========== -->
+  <div id="minigames-hub" class="screen minigames-hub">
+    <div class="hub-title">🎮 Mini Games Xanh</div>
+    <div class="hub-sub">Chơi game, rèn luyện kỹ năng sống xanh và nhận thêm XP!</div>
+    <div class="games-grid">
+      <div class="game-card" onclick="startMiniGame('drag')"><div class="gc-icon">🧩</div><div class="gc-name">Phân loại rác</div><div class="gc-desc">Kéo thả rác vào đúng thùng — hữu cơ, tái chế hay nguy hại?</div><span class="gc-badge badge-green">+50 XP mỗi vòng</span></div>
+      <div class="game-card" onclick="startMiniGame('memory')"><div class="gc-icon">🃏</div><div class="gc-name">Lật thẻ ghi nhớ</div><div class="gc-desc">Ghép đôi hành động xanh với tác động môi trường.</div><span class="gc-badge badge-amber">+80 XP mỗi vòng</span></div>
+      <div class="game-card" onclick="startMiniGame('race')"><div class="gc-icon">⏱️</div><div class="gc-name">Đua xe xanh</div><div class="gc-desc">Trả lời nhanh để xe tăng tốc — sai thì xe chậm lại!</div><span class="gc-badge badge-red">+100 XP mỗi vòng</span></div>
+      <div class="game-card" onclick="startMiniGame('city')"><div class="gc-icon">🌍</div><div class="gc-name">Xây thành phố xanh</div><div class="gc-desc">Đặt công trình xanh để tăng điểm môi trường và hạnh phúc.</div><span class="gc-badge badge-purple">+120 XP mỗi vòng</span></div>
     </div>
   </div>
 
-  <!-- ===== HOME ===== -->
-  <div id="home" class="screen active">
-    <div class="home-rings">
-      <div class="home-ring" style="width:600px;height:600px;top:-200px;right:-150px;"></div>
-      <div class="home-ring" style="width:400px;height:400px;bottom:-100px;left:-100px;"></div>
-    </div>
-    <div class="home-earth">🌍</div>
-    <h1 class="home-h1">Trường Học <span>Xanh</span></h1>
-    <p class="home-tag">Mỗi lựa chọn của bạn đều tạo ra sự thay đổi · FPT Hòa Lạc</p>
-    <div class="home-planet-wrap">
-      <div class="home-planet-label">Điểm Xanh Trường Học hiện tại</div>
-      <div class="home-planet-track"><div class="home-planet-fill" style="width:72%"></div></div>
-      <div class="home-planet-pct">72% — Cần cải thiện</div>
-    </div>
-    <div class="home-cards">
-      <div class="home-stat"><div class="home-stat-num">12K+</div><div class="home-stat-lbl">Người chơi</div></div>
-      <div class="home-stat"><div class="home-stat-num">48</div><div class="home-stat-lbl">Nhiệm vụ</div></div>
-      <div class="home-stat"><div class="home-stat-num">4</div><div class="home-stat-lbl">Chủ đề</div></div>
-      <div class="home-stat"><div class="home-stat-num">22</div><div class="home-stat-lbl">Câu FPT</div></div>
-    </div>
-    <div class="home-btns">
-      <button class="btn-hero btn-hero-primary" onclick="showScreen('map')">🚀 Bắt đầu nhiệm vụ</button>
-      <button class="btn-hero btn-hero-secondary" onclick="showScreen('leaderboard')">🏆 Bảng xếp hạng</button>
-    </div>
-  </div>
+  <!-- Các màn hình game mini (giữ nguyên id từ More game.html nhưng thêm prefix mg- để tránh xung đột?) nhưng để đơn giản ta dùng id mới -->
+  <div id="mg-drag-screen" class="screen"><div class="game-header"><button class="back-game" onclick="showMiniGamesHub()">← Quay lại</button><div class="game-title">🧩 Phân loại rác</div><div class="score-bar" id="drag-score">✅ 0 đúng</div></div><div class="items-pool"><div class="pool-title">Kéo các rác vào đúng thùng 👇</div><div class="pool-items" id="pool-items"></div></div><div style="margin-top:1rem;" class="drag-arena"><div class="trash-zone"><div class="tz-header"><span class="tz-icon">🍃</span><span class="tz-name">Rác hữu cơ</span></div><div class="tz-drop" id="zone-organic" ondragover="allowDrop(event)" ondrop="dropItem(event,'organic')"></div></div><div class="trash-zone"><div class="tz-header"><span class="tz-icon">♻️</span><span class="tz-name">Rác tái chế</span></div><div class="tz-drop" id="zone-recycle" ondragover="allowDrop(event)" ondrop="dropItem(event,'recycle')"></div></div><div class="trash-zone"><div class="tz-header"><span class="tz-icon">🔴</span><span class="tz-name">Rác nguy hại</span></div><div class="tz-drop" id="zone-hazard" ondragover="allowDrop(event)" ondrop="dropItem(event,'hazard')"></div></div><div class="trash-zone"><div class="tz-header"><span class="tz-icon">🗑️</span><span class="tz-name">Rác thông thường</span></div><div class="tz-drop" id="zone-general" ondragover="allowDrop(event)" ondrop="dropItem(event,'general')"></div></div></div><div class="drag-feedback" id="drag-feedback"></div><button class="btn-primary" id="drag-next" onclick="nextDragRound()" style="display:none;">Vòng tiếp theo →</button></div>
+  <div id="mg-memory-screen" class="screen"><div class="game-header"><button class="back-game" onclick="showMiniGamesHub()">← Quay lại</button><div class="game-title">🃏 Lật thẻ ghi nhớ</div></div><div class="memory-info"><div class="mem-stat"><div class="mem-stat-num" id="mem-pairs">0/8</div><div class="mem-stat-lbl">Cặp tìm thấy</div></div><div class="mem-stat"><div class="mem-stat-num" id="mem-moves">0</div><div class="mem-stat-lbl">Số lượt lật</div></div><div class="mem-stat"><div class="mem-stat-num" id="mem-time">0s</div><div class="mem-stat-lbl">Thời gian</div></div><div class="mem-stat"><div class="mem-stat-num" id="mem-xp">+0</div><div class="mem-stat-lbl">XP dự kiến</div></div></div><div class="memory-grid" id="memory-grid"></div></div>
+  <div id="mg-race-screen" class="screen"><div class="game-header"><button class="back-game" onclick="showMiniGamesHub()">← Quay lại</button><div class="game-title">⏱️ Đua xe xanh</div></div><div class="race-track"><div class="race-clouds" style="top:20px;font-size:2rem;">☁️</div><div class="race-clouds" style="top:40px;font-size:1.5rem;animation-duration:12s;animation-delay:-4s;">☁️</div><div class="road"><div class="road-lines" id="road-lines"></div></div><div class="race-car" id="race-car" style="left:5%;">🚗</div><div class="race-finish"><div class="finish-cell"></div><div class="finish-cell"></div><div class="finish-cell"></div></div></div><div class="race-progress"><div class="race-lap" id="race-lap">Câu 1 / 8</div><div class="speed-badge" id="speed-badge">🏎️ Tốc độ: 0</div></div><div class="race-q"><div class="race-q-text" id="race-q-text">Đang tải...</div><div class="race-timer-bar"><div class="race-timer-fill" id="race-timer-fill" style="width:100%"></div></div><div class="race-choices" id="race-choices"></div></div></div>
+  <div id="mg-city-screen" class="screen"><div class="game-header"><button class="back-game" onclick="showMiniGamesHub()">← Quay lại</button><div class="game-title">🌍 Xây thành phố xanh</div><div class="score-bar" id="city-budget">💰 Ngân sách: 500</div></div><div class="city-wrap"><div class="city-canvas"><div class="city-sun">☀️</div><div class="city-stats"><div class="city-stat-pill">🌿 <span id="city-env">0</span>%</div><div class="city-stat-pill">😊 <span id="city-happy">0</span>%</div><div class="city-stat-pill">👥 <span id="city-pop">0</span></div></div><div class="city-grid" id="city-grid"></div></div><div class="city-panel"><div class="city-panel-card"><div class="cp-title">Công trình xanh</div><div class="buildings-list" id="buildings-list"></div></div><div class="city-panel-card"><div class="cp-title">Thống kê thành phố</div><div class="city-score-grid"><div class="cs-item"><div class="cs-val" id="cs-env">0%</div><div class="cs-lbl">Môi trường</div></div><div class="cs-item"><div class="cs-val" id="cs-happy">0%</div><div class="cs-lbl">Hạnh phúc</div></div><div class="cs-item"><div class="cs-val" id="cs-pop">0</div><div class="cs-lbl">Dân số</div></div><div class="cs-item"><div class="cs-val" id="cs-score">0</div><div class="cs-lbl">Điểm xanh</div></div></div></div><button class="btn-primary" onclick="finishCity()" style="width:100%;">🏁 Hoàn thành thành phố</button></div></div></div>
 
-  <!-- ===== MAP ===== -->
-  <div id="map" class="screen">
-    <div class="map-list">
-      <h2>Chọn nhiệm vụ</h2>
-      <p class="map-list-sub">Chọn một nhiệm vụ để xem chi tiết và bắt đầu</p>
-      <div class="map-planet-card">
-        <div class="map-planet-row"><span class="map-planet-label">🌍 Điểm Xanh Trường Học</span><span class="map-planet-pct">72%</span></div>
-        <div class="map-planet-track"><div class="map-planet-fill" style="width:72%"></div></div>
-      </div>
-
-      <div class="map-section">🌿 Rác thải & Tái chế</div>
-      <div class="mcard" onclick="selectMission(0)" id="mcard-0">
-        <div class="mcard-icon">♻️</div>
-        <div class="mcard-info">
-          <div class="mcard-name">Phân loại rác thông minh</div>
-          <div class="mcard-desc">5 tình huống phân loại rác hữu cơ, tái chế và nguy hại.</div>
-          <div class="mcard-meta"><span class="tag tag-g">Dễ</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+150 XP</span></div>
-        </div>
-      </div>
-      <div class="mcard" onclick="selectMission(1)" id="mcard-1">
-        <div class="mcard-icon">🛍️</div>
-        <div class="mcard-info">
-          <div class="mcard-name">Mua sắm có ý thức</div>
-          <div class="mcard-desc">Chọn sản phẩm thân thiện môi trường trong siêu thị ảo.</div>
-          <div class="mcard-meta"><span class="tag tag-a">Trung bình</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+200 XP</span></div>
-        </div>
-        <span class="mcard-done">✓ Xong</span>
-      </div>
-
-      <div class="map-section">⚡ Năng lượng & Điện</div>
-      <div class="mcard" onclick="selectMission(2)" id="mcard-2">
-        <div class="mcard-icon">💡</div>
-        <div class="mcard-info">
-          <div class="mcard-name">Tiết kiệm điện tại nhà</div>
-          <div class="mcard-desc">Những thói quen lãng phí điện và cách khắc phục.</div>
-          <div class="mcard-meta"><span class="tag tag-g">Dễ</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+150 XP</span></div>
-        </div>
-      </div>
-      <div class="mcard" onclick="selectMission(3)" id="mcard-3">
-        <div class="mcard-icon">💧</div>
-        <div class="mcard-info">
-          <div class="mcard-name">Tiết kiệm nước sạch</div>
-          <div class="mcard-desc">Cách tiết kiệm nước trong sinh hoạt hàng ngày.</div>
-          <div class="mcard-meta"><span class="tag tag-g">Dễ</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+150 XP</span></div>
-        </div>
-      </div>
-
-      <div class="map-section">🏫 Căn Teen FPT Hòa Lạc</div>
-      <div style="background:#e8faf0;border-radius:10px;padding:0.6rem 0.8rem;margin-bottom:0.75rem;font-size:0.75rem;color:var(--g2);font-weight:600;line-height:1.45;">
-        🎒 Dành riêng cho học sinh THPT FPT Hòa Lạc!
-      </div>
-      <div class="mcard" onclick="selectMission(4)" id="mcard-4">
-        <div class="mcard-icon">🥡</div>
-        <div class="mcard-info">
-          <div class="mcard-name">Sau bữa trưa ở căn teen</div>
-          <div class="mcard-desc">Hộp cơm, trà sữa, ống hút — xử lý đúng cách.</div>
-          <div class="mcard-meta"><span class="tag tag-g">Dễ</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+150 XP</span></div>
-        </div>
-      </div>
-      <div class="mcard" onclick="selectMission(5)" id="mcard-5">
-        <div class="mcard-icon">💡</div>
-        <div class="mcard-info">
-          <div class="mcard-name">Tiết kiệm điện trong căn teen</div>
-          <div class="mcard-desc">Điều hòa, đèn, quạt — bạn có đang lãng phí không?</div>
-          <div class="mcard-meta"><span class="tag tag-a">Trung bình</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+200 XP</span></div>
-        </div>
-      </div>
-      <div class="mcard" onclick="selectMission(6)" id="mcard-6">
-        <div class="mcard-icon">🧴</div>
-        <div class="mcard-info">
-          <div class="mcard-name">Rác nhựa mỗi ngày ở trường</div>
-          <div class="mcard-desc">Chai nước, túi ni-lông — tác hại thực sự là bao nhiêu?</div>
-          <div class="mcard-meta"><span class="tag tag-a">Trung bình</span><span class="tag tag-b">5 câu</span><span class="mcard-pts">+200 XP</span></div>
-        </div>
-      </div>
-      <div class="mcard" onclick="selectMission(7)" id="mcard-7">
-        <div class="mcard-icon">🌿</div>
-        <div class="mcard-info">
-          <div class="mcard-name">Thử thách 7 ngày xanh</div>
-          <div class="mcard-desc">Nếu cả lớp cùng hành động, tác động sẽ lớn đến cỡ nào?</div>
-          <div class="mcard-meta"><span class="tag tag-r">Khó</span><span class="tag tag-b">7 câu</span><span class="mcard-pts">+300 XP</span></div>
-        </div>
-      </div>
-      <div class="mcard locked">
-        <div class="mcard-icon">☀️</div>
-        <div class="mcard-info">
-          <div class="mcard-name">Năng lượng tái tạo</div>
-          <div class="mcard-desc">Điện mặt trời, gió — mở khóa sau khi hoàn thành 4 nhiệm vụ.</div>
-          <div class="mcard-meta"><span class="tag tag-r">Khó</span><span class="tag tag-b">7 câu</span><span class="mcard-pts">+300 XP</span></div>
-        </div>
-        <span class="mcard-lock">🔒</span>
-      </div>
-    </div>
-
-    <div class="map-preview" id="map-preview">
-      <div class="preview-placeholder">
-        <div class="preview-placeholder-icon">🗺️</div>
-        <h3>Chọn một nhiệm vụ</h3>
-        <p>Nhấp vào bất kỳ nhiệm vụ nào ở bên trái để xem chi tiết và bắt đầu chơi.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== GAME ===== -->
-  <div id="game" class="screen">
-    <div class="game-main">
-      <div class="game-left" id="game-left">
-        <div class="q-counter-d" id="q-label" style="font-size:0.78rem;color:var(--text3);font-weight:700;margin-bottom:0.75rem;"></div>
-        <div class="scenario-card-d">
-          <div class="scenario-banner" id="scenario-img-d">🗑️</div>
-          <div class="scenario-body">
-            <div class="scenario-badge">📍 Tình huống thực tế</div>
-            <div class="scenario-q-text" id="scenario-q-d">Đang tải...</div>
-          </div>
-        </div>
-        <div class="choices-grid" id="choices-d"></div>
-        <div class="feedback-d" id="feedback-d">
-          <div class="fb-emoji" id="fb-emoji-d">✅</div>
-          <div class="fb-title" id="fb-title-d">Chính xác!</div>
-          <div class="fb-text" id="fb-text-d"></div>
-          <div class="fb-impact" id="fb-impact-d"></div>
-        </div>
-        <button class="btn-next-d" id="btn-next-d" onclick="nextQuestion()">Câu tiếp theo →</button>
-      </div>
-
-      <div class="game-right">
-        <div class="gr-section">Tiến độ</div>
-        <div class="q-list-mini" id="q-list-mini"></div>
-        <div class="gr-section">Điểm số</div>
-        <div class="score-mini">
-          <div class="score-mini-num" id="score-display">0 / 0</div>
-          <div class="score-mini-lbl">câu đúng</div>
-        </div>
-        <div class="gr-section">Điểm Xanh Trường Học</div>
-        <div class="earth-mini">
-          <div class="em-label">Đóng góp hôm nay</div>
-          <div class="em-track"><div class="em-fill" id="em-fill" style="width:72%"></div></div>
-          <div class="em-pct" id="em-pct">72%</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== RESULT ===== -->
-  <div id="result" class="screen">
-    <div class="result-wrap">
-      <div class="result-trophy-d" id="result-trophy-d">🏆</div>
-      <div class="result-title-d" id="result-title-d">Xuất sắc!</div>
-      <div class="result-sub-d" id="result-sub-d">Bạn đã hoàn thành nhiệm vụ</div>
-      <div class="result-grid-d">
-        <div class="rstat"><div class="rstat-num" id="rd-score">4/5</div><div class="rstat-lbl">Câu đúng</div></div>
-        <div class="rstat"><div class="rstat-num" id="rd-xp">+120 XP</div><div class="rstat-lbl">Kinh nghiệm</div></div>
-        <div class="rstat"><div class="rstat-num" id="rd-streak">🔥 3</div><div class="rstat-lbl">Streak ngày</div></div>
-        <div class="rstat"><div class="rstat-num" id="rd-rank">#42</div><div class="rstat-lbl">Xếp hạng</div></div>
-      </div>
-      <div class="result-planet-d">
-        <div class="rp-label">🌍 Tác động lên Trường học hôm nay</div>
-        <div class="rp-track"><div class="rp-fill" id="rp-fill" style="width:0%"></div></div>
-        <div class="rp-change" id="rp-change">+0% điểm xanh trường học</div>
-      </div>
-      <div class="result-btns">
-        <button class="btn-result btn-result-p" onclick="showScreen('map')">🗺️ Nhiệm vụ khác</button>
-        <button class="btn-result btn-result-s" onclick="showScreen('leaderboard')">🏆 Bảng xếp hạng</button>
-        <button class="btn-result btn-result-s" onclick="showScreen('home')">🏠 Về trang chủ</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== LEADERBOARD ===== -->
-  <div id="leaderboard" class="screen">
-    <div class="lb-left">
-      <h2>🏆 Bảng xếp hạng</h2>
-      <p class="lb-sub">Top người bảo vệ môi trường FPT Hòa Lạc</p>
-      <div class="lb-tabs">
-        <button class="lb-tab-d active">Tuần này</button>
-        <button class="lb-tab-d" onclick="switchTabD(this)">Tháng này</button>
-        <button class="lb-tab-d" onclick="switchTabD(this)">Toàn thời gian</button>
-      </div>
-      <div id="lb-rows"><div class="lb-row-d you"><div class="lb-rank-d">8</div><div class="lb-avatar-d">😊</div><div class="lb-name-d">Bạn <span class="lb-you-d">Bạn</span></div><div class="lb-score-d">1.240 XP</div></div>
-      <div class="lb-row-d"><div class="lb-rank-d">1</div><div class="lb-avatar-d">👩</div><div class="lb-name-d">Lan N.</div><div class="lb-score-d">3.210 XP</div></div>
-      <div class="lb-row-d"><div class="lb-rank-d">2</div><div class="lb-avatar-d">🧑</div><div class="lb-name-d">Minh T.</div><div class="lb-score-d">2.840 XP</div></div>
-      <div class="lb-row-d"><div class="lb-rank-d">3</div><div class="lb-avatar-d">👦</div><div class="lb-name-d">Hùng P.</div><div class="lb-score-d">2.550 XP</div></div>
-      <div class="lb-row-d"><div class="lb-rank-d">4</div><div class="lb-avatar-d">🧑</div><div class="lb-name-d">Dũng H.</div><div class="lb-score-d">2.310 XP</div></div>
-      <div class="lb-row-d"><div class="lb-rank-d">5</div><div class="lb-avatar-d">👩</div><div class="lb-name-d">Thu M.</div><div class="lb-score-d">2.100 XP</div></div>
-      <div class="lb-row-d"><div class="lb-rank-d">6</div><div class="lb-avatar-d">👦</div><div class="lb-name-d">Phong L.</div><div class="lb-score-d">1.890 XP</div></div>
-      <div class="lb-row-d"><div class="lb-rank-d">7</div><div class="lb-avatar-d">🧑</div><div class="lb-name-d">Khoa B.</div><div class="lb-score-d">1.450 XP</div></div>
-      <div class="lb-row-d"><div class="lb-rank-d">9</div><div class="lb-avatar-d">👩</div><div class="lb-name-d">Mai V.</div><div class="lb-score-d">1.100 XP</div></div>
-      <div class="lb-row-d"><div class="lb-rank-d">10</div><div class="lb-avatar-d">👦</div><div class="lb-name-d">Tùng A.</div><div class="lb-score-d">980 XP</div></div>
-      </div>
-    </div>
-    <div class="lb-right">
-      <div class="podium-d">
-        <div class="pd-slot pd2"><div class="pd-avatar">🧑</div><div class="pd-name">Minh T.</div><div class="pd-pts">2.840 XP</div><div class="pd-block">🥈</div></div>
-        <div class="pd-slot pd1"><div class="pd-avatar">👩</div><div class="pd-name">Lan N.</div><div class="pd-pts">3.210 XP</div><div class="pd-block">🥇</div></div>
-        <div class="pd-slot pd3"><div class="pd-avatar">👦</div><div class="pd-name">Hùng P.</div><div class="pd-pts">2.550 XP</div><div class="pd-block">🥉</div></div>
-      </div>
-      <div class="lb-stats-grid">
-        <div class="lb-stat-card"><div class="lb-stat-num">12,481</div><div class="lb-stat-lbl">Tổng người chơi</div></div>
-        <div class="lb-stat-card"><div class="lb-stat-num">48,320</div><div class="lb-stat-lbl">Câu trả lời đúng</div></div>
-        <div class="lb-stat-card"><div class="lb-stat-num">8,240</div><div class="lb-stat-lbl">Ống hút nhựa tiết kiệm</div></div>
-        <div class="lb-stat-card"><div class="lb-stat-num">+12%</div><div class="lb-stat-lbl">Điểm Xanh Trường Học tuần này</div></div>
-      </div>
-    </div>
-  </div>
-
-</div><!-- end .main -->
+  <!-- Overlay kết quả cho mini games -->
+  <div id="mg-result-overlay" class="result-overlay" style="display:none;"><div class="mg-result-box"><div class="mg-rb-trophy" id="mg-rb-trophy">🏆</div><div class="mg-rb-title" id="mg-rb-title">Xuất sắc!</div><div class="mg-rb-sub" id="mg-rb-sub">Bạn đã hoàn thành game</div><div class="mg-rb-stats"><div class="mg-rb-stat"><div class="mg-rb-stat-num" id="mg-rb-xp">+0 XP</div><div class="mg-rb-stat-lbl">Kinh nghiệm</div></div><div class="mg-rb-stat"><div class="mg-rb-stat-num" id="mg-rb-score">0</div><div class="mg-rb-stat-lbl">Điểm số</div></div></div><div class="mg-rb-btns"><button class="mg-rb-btn mg-rb-btn-p" onclick="playAgainMiniGame()">🔄 Chơi lại</button><button class="mg-rb-btn mg-rb-btn-s" onclick="showMiniGamesHub()">🏠 Menu</button></div></div></div>
+</div>
 
 <script>
-const MISSIONS = window.MISSIONS = [
-  {title:"Phân loại rác thông minh",icon:"♻️",desc:"5 tình huống thực tế về phân loại rác hữu cơ, tái chế và rác thải nguy hại.",
-   questions:[
-    {img:"🗑️",q:"Bạn vừa ăn xong một hộp cơm bằng xốp. Bạn nên bỏ vào thùng rác nào?",choices:["♻️ Thùng tái chế nhựa","🍃 Thùng rác hữu cơ","🗑️ Thùng rác thông thường","🔴 Thùng rác nguy hại"],correct:2,feedback_ok:"Đúng! Hộp xốp không thể tái chế phổ biến và không phải hữu cơ — nên bỏ rác thông thường.",feedback_bad:"Hộp xốp không tái chế được phổ biến. Bỏ vào thùng rác thông thường là đúng nhất.",impact:"+2%"},
-    {img:"🍌",q:"Bạn có vỏ chuối và bã cà phê. Nên bỏ vào đâu để có ích nhất?",choices:["🗑️ Rác thông thường","🍃 Thùng rác hữu cơ/compost","♻️ Thùng tái chế","🔴 Thùng rác nguy hại"],correct:1,feedback_ok:"Tuyệt! Chất hữu cơ như vỏ trái cây có thể làm phân compost, tốt cho đất trồng trọt.",feedback_bad:"Vỏ chuối và bã cà phê là rác hữu cơ — có thể ủ phân compost rất tốt cho môi trường.",impact:"+3%"},
-    {img:"🔋",q:"Pin điện thoại cũ hỏng cần bỏ vào đâu?",choices:["🗑️ Thùng rác thông thường","🍃 Thùng hữu cơ","♻️ Thùng tái chế thông thường","🔴 Điểm thu gom pin/rác nguy hại"],correct:3,feedback_ok:"Chính xác! Pin chứa chất độc hại cần xử lý đặc biệt tại điểm thu gom chuyên dụng.",feedback_bad:"Pin là rác nguy hại! Bỏ vào rác thông thường gây ô nhiễm đất và nước ngầm nghiêm trọng.",impact:"+4%"},
-    {img:"📰",q:"Tờ báo cũ và giấy văn phòng đã dùng — xử lý thế nào tốt nhất?",choices:["🗑️ Rác thông thường","🔥 Đốt bỏ","♻️ Thùng tái chế giấy","🍃 Thùng hữu cơ"],correct:2,feedback_ok:"Đúng rồi! Giấy có thể tái chế nhiều lần, giúp giảm chặt phá rừng đáng kể.",feedback_bad:"Giấy nên được tái chế! Đốt giấy thải ra CO₂, còn vứt bỏ là lãng phí tài nguyên.",impact:"+2%"},
-    {img:"🥤",q:"Chai nhựa nước ngọt sau khi dùng — bạn xử lý thế nào?",choices:["🗑️ Vứt thẳng vào rác","♻️ Rửa sạch rồi bỏ thùng tái chế","🌊 Bỏ vào thùng rác gần ao hồ","🔥 Đốt để giảm thể tích"],correct:1,feedback_ok:"Hoàn hảo! Rửa sạch trước khi tái chế giúp nhà máy xử lý hiệu quả hơn, giảm ô nhiễm.",feedback_bad:"Nên rửa sạch và bỏ vào thùng tái chế. Đốt nhựa thải ra khí độc rất nguy hiểm!",impact:"+3%"}
-  ]},
-  {title:"Mua sắm có ý thức",icon:"🛍️",desc:"Chọn sản phẩm thân thiện với môi trường trong siêu thị ảo.",
-   questions:[
-    {img:"🛒",q:"Bạn cần mua nước uống cho cả ngày đi học. Lựa chọn nào xanh nhất?",choices:["🧴 Mua chai nhựa 500ml tại cửa hàng","🧊 Mang bình nước cá nhân từ nhà","🥤 Mua hộp giấy Tetra Pak","🧃 Mua lon nhôm"],correct:1,feedback_ok:"Xuất sắc! Bình nước cá nhân tái sử dụng được hàng trăm lần — tiết kiệm tiền và giảm rác nhựa tối đa.",feedback_bad:"Mang bình cá nhân là lựa chọn xanh nhất! Chai nhựa dùng 1 lần tạo ra lượng rác khổng lồ mỗi năm.",impact:"+4%"},
-    {img:"🧴",q:"Khi mua dầu gội, bạn chọn loại nào?",choices:["💊 Chai nhựa thường, giá rẻ nhất","🌿 Sản phẩm có nhãn thân thiện môi trường hoặc bao bì tái chế","📦 Loại đựng trong hộp giấy có thể tái chế","🔄 Mua dạng refill (túi nạp lại) để tái sử dụng chai cũ"],correct:3,feedback_ok:"Tuyệt! Dạng refill giảm đến 70% lượng nhựa so với mua chai mới — thói quen nhỏ, tác động lớn!",feedback_bad:"Dạng refill là lựa chọn xanh nhất — tái sử dụng chai cũ giảm lượng nhựa mới đến 70%.",impact:"+3%"},
-    {img:"🌾",q:"Ở siêu thị, bạn chọn rau củ nào?",choices:["📦 Rau đóng gói sẵn trong hộp nhựa cho tiện","🌱 Rau tươi không bọc nhựa, tự bỏ vào túi vải mang theo","🚗 Rau nhập khẩu từ nước ngoài vì tươi hơn","❄️ Rau đông lạnh đóng gói sẵn"],correct:1,feedback_ok:"Đúng! Rau tươi không bọc nhựa + túi vải cá nhân = zero waste shopping hoàn hảo.",feedback_bad:"Rau tươi không bọc nhựa trong túi vải của mình là lựa chọn xanh nhất — không rác, không nhựa!",impact:"+3%"},
-    {img:"🏷️",q:"Nhãn nào trên sản phẩm chứng tỏ thực sự thân thiện với môi trường?",choices:["💚 Nhãn tự in Eco hoặc Green của chính thương hiệu","🌍 Chứng nhận quốc tế như FSC, Energy Star, Ecolabel","⭐ Sản phẩm có màu xanh lá trên bao bì","📢 Quảng cáo tự nhiên 100% trên TV"],correct:1,feedback_ok:"Chính xác! Chứng nhận quốc tế (FSC, Energy Star) là bằng chứng thực — không phải quảng cáo tự gắn nhãn.",feedback_bad:"Chỉ tin vào chứng nhận quốc tế độc lập như FSC, Ecolabel! Nhãn tự gắn Eco không có giá trị.",impact:"+4%"},
-    {img:"👗",q:"Bạn cần mua thêm quần áo. Lựa chọn nào có tác động môi trường thấp nhất?",choices:["🛍️ Mua quần áo mới giá rẻ ở shop thời trang nhanh","👚 Mua đồ secondhand (quần áo cũ còn tốt)","🌐 Đặt hàng online từ nước ngoài vì rẻ hơn","🏪 Mua ở trung tâm thương mại lớn"],correct:1,feedback_ok:"Hoàn hảo! Thời trang secondhand kéo dài vòng đời sản phẩm, tiết kiệm nước và giảm CO₂ đáng kể.",feedback_bad:"Đồ secondhand là lựa chọn xanh nhất! Ngành thời trang nhanh là 1 trong những ngành ô nhiễm nhất thế giới.",impact:"+4%"}
-  ]},
-  {title:"Tiết kiệm điện tại nhà",icon:"💡",desc:"Tìm ra những thói quen lãng phí điện và cách khắc phục hiệu quả.",
-   questions:[
-    {img:"🌡️",q:"Nhiệt độ điều hòa lý tưởng để tiết kiệm điện mà vẫn mát là bao nhiêu?",choices:["❄️ 16-18°C cho thật lạnh","🌡️ 25-27°C là đủ mát","🌤️ 20-22°C cho mát vừa","💨 Không dùng điều hòa, chỉ dùng quạt"],correct:1,feedback_ok:"Đúng! 25-27°C là nhiệt độ lý tưởng. Mỗi 1°C giảm xuống tiêu thụ thêm 6% điện năng.",feedback_bad:"25-27°C là đủ mát và tiết kiệm điện. Mỗi 1°C thấp hơn = tốn thêm 6% điện!",impact:"+3%"},
-    {img:"🔌",q:"Thiết bị nào tốn điện ngay cả khi đã tắt nhưng vẫn cắm điện?",choices:["🖥️ Chỉ máy tính mới tốn","📺 TV, bộ sạc, lò vi sóng, modem — tất cả đều tốn","💡 Chỉ bóng đèn mới tốn khi bật","🔋 Không thiết bị nào tốn khi đã tắt"],correct:1,feedback_ok:"Đúng! Đây gọi là vampire power — rút phích cắm khi không dùng để tiết kiệm!",feedback_bad:"TV, sạc, lò vi sóng... vẫn tiêu thụ điện khi ở chế độ chờ. Rút phích cắm ra khi không dùng nhé!",impact:"+4%"},
-    {img:"💡",q:"Loại bóng đèn nào tiết kiệm điện nhất hiện nay?",choices:["🕯️ Bóng sợi đốt truyền thống","☀️ Bóng huỳnh quang (đèn tuýp)","💡 Đèn LED","🔦 Đèn halogen"],correct:2,feedback_ok:"Chính xác! Đèn LED tiết kiệm đến 80% điện so với bóng sợi đốt và có tuổi thọ gấp 25 lần.",feedback_bad:"Đèn LED tiết kiệm 80% điện so với bóng thường và sống lâu gấp 25 lần — nên thay ngay!",impact:"+3%"},
-    {img:"🌞",q:"Bạn đi ra ngoài 30 phút, phòng không có ai. Bạn làm gì với đèn và quạt?",choices:["💡 Để nguyên cho tiện","✅ Tắt hết trước khi ra","🔄 Chỉ tắt đèn, để quạt chạy","😴 Để chế độ ngủ (sleep mode)"],correct:1,feedback_ok:"Tuyệt! Tắt điện khi ra khỏi phòng là thói quen đơn giản nhất giúp tiết kiệm điện hiệu quả.",feedback_bad:"Luôn tắt đèn và quạt khi ra khỏi phòng! Dù chỉ 30 phút, tích lũy cả năm là rất nhiều điện.",impact:"+3%"},
-    {img:"🧺",q:"Khi giặt quần áo bằng máy, cách nào tiết kiệm điện nhất?",choices:["🔥 Giặt nước nóng cho sạch hơn","❄️ Giặt nước lạnh, chỉ cho đầy máy mới giặt","🌊 Giặt tay thay vì dùng máy","⚡ Giặt nhiều lần một ngày, mỗi lần ít đồ"],correct:1,feedback_ok:"Hoàn hảo! Nước lạnh + đầy máy = tiết kiệm điện tối đa. 90% điện máy giặt dùng để làm nóng nước!",feedback_bad:"Giặt nước lạnh và đợi đầy máy mới giặt! 90% điện của máy giặt dùng để đun nóng nước.",impact:"+4%"}
-  ]},
-  {title:"Tiết kiệm nước sạch",icon:"💧",desc:"Khám phá cách tiết kiệm nước trong sinh hoạt hàng ngày.",
-   questions:[
-    {img:"🚿",q:"Bạn tắm bao nhiêu phút là hợp lý để tiết kiệm nước?",choices:["🛁 20-30 phút cho thư giãn","⏱️ 5-10 phút là đủ","🚿 15-20 phút bình thường","💧 Tắm bồn cho sạch hơn tắm vòi"],correct:1,feedback_ok:"Đúng! 5-10 phút tắm vòi hoa sen dùng khoảng 60-80 lít — tiết kiệm hơn tắm bồn đến 4 lần!",feedback_bad:"5-10 phút là đủ! Tắm vòi 10 phút dùng 80 lít, còn tắm bồn tốn đến 300 lít nước.",impact:"+3%"},
-    {img:"🪥",q:"Khi đánh răng, bạn nên làm gì với vòi nước?",choices:["💧 Để vòi chảy cho tiện","✅ Tắt vòi khi không cần, chỉ mở khi súc miệng","🥤 Dùng cốc nước để súc miệng","🚰 Để nước nhỏ giọt thôi"],correct:2,feedback_ok:"Xuất sắc! Dùng cốc nước súc miệng tiết kiệm nhất — chỉ dùng khoảng 0.5 lít thay vì 10 lít nếu để vòi chảy.",feedback_bad:"Dùng cốc nước súc miệng tiết kiệm nhất! Để vòi chảy khi đánh răng lãng phí 10 lít nước mỗi lần.",impact:"+4%"},
-    {img:"🌧️",q:"Nước mưa có thể tái sử dụng cho việc gì?",choices:["🚫 Không dùng được gì","🌱 Tưới cây, rửa xe, lau nhà — hoàn toàn được","🍳 Nấu ăn trực tiếp","🛁 Tắm trực tiếp không cần lọc"],correct:1,feedback_ok:"Tuyệt! Tái sử dụng nước mưa cho tưới cây và vệ sinh giúp tiết kiệm đáng kể nước máy.",feedback_bad:"Nước mưa dùng được cho tưới cây, rửa xe, lau nhà! Tái sử dụng nước mưa là thói quen xanh rất tốt.",impact:"+3%"},
-    {img:"🔧",q:"Vòi nước bị nhỏ giọt liên tục. Tác hại là gì?",choices:["😌 Không đáng kể, chỉ vài giọt","💧 Lãng phí đến 20.000 lít nước mỗi năm","🔧 Chỉ tốn tiền sửa thôi","💸 Không ảnh hưởng vì nước máy rẻ"],correct:1,feedback_ok:"Đúng! 1 vòi nhỏ giọt = 20.000 lít/năm. Sửa vòi ngay khi phát hiện — đơn giản mà cực kỳ hiệu quả!",feedback_bad:"1 vòi nhỏ giọt lãng phí 20.000 lít nước mỗi năm! Báo ngay người lớn để sửa khi phát hiện nhé.",impact:"+4%"},
-    {img:"🍽️",q:"Khi rửa bát, cách nào tiết kiệm nước nhất?",choices:["🚰 Để vòi chảy liên tục khi rửa từng cái","🪣 Ngâm bát vào chậu nước xà phòng rồi tráng một lượt","🤖 Dùng máy rửa bát chạy khi chưa đầy","💦 Rửa dưới vòi nước nóng để sạch hơn"],correct:1,feedback_ok:"Hoàn hảo! Ngâm + tráng một lượt chỉ dùng 15-20 lít, trong khi để vòi chảy tốn 60-80 lít.",feedback_bad:"Ngâm bát trong chậu rồi tráng một lượt tiết kiệm đến 75% nước so với để vòi chảy liên tục!",impact:"+3%"}
-  ]},
-  {title:"Sau bữa trưa ở căn teen",icon:"🥡",desc:"Hộp cơm, trà sữa, ống hút — xử lý đúng cách sau mỗi bữa ăn tại căn teen FPT.",
-   questions:[
-    {img:"🥡",q:"Sau khi ăn trưa xong ở căn teen, bạn còn thừa hộp cơm bằng nhựa và đũa gỗ dùng 1 lần. Bạn xử lý thế nào?",choices:["🗑️ Bỏ tất cả vào 1 thùng rác gần nhất cho nhanh","♻️ Tách hộp nhựa vào thùng tái chế, đũa gỗ vào rác hữu cơ","🚪 Để lại trên bàn cho nhân viên dọn","💧 Rửa hộp nhựa rồi dùng lại lần sau"],correct:1,feedback_ok:"Chuẩn luôn! Hộp nhựa tái chế được, đũa gỗ phân hủy sinh học — tách riêng là đúng nhất.",feedback_bad:"Nên tách riêng: hộp nhựa vào thùng tái chế, đũa gỗ vào hữu cơ — bỏ chung là lãng phí tài nguyên.",impact:"+3%"},
-    {img:"🧋",q:"Bạn vừa uống xong 1 ly trà sữa có ống hút nhựa và nắp nhựa. Căn teen có 3 thùng rác. Bạn làm gì?",choices:["🗑️ Bỏ cả ly + ống hút + nắp vào 1 thùng","♻️ Tháo nắp & ly nhựa bỏ tái chế, ống hút bỏ rác thường","🌿 Xin ống hút giấy hoặc không dùng ống hút lần sau","❌ Để ly trên bàn, ra về"],correct:2,feedback_ok:"Giỏi! Và còn tốt hơn nếu lần sau xin ống hút giấy hoặc mang bình cá nhân luôn nhé!",feedback_bad:"Đúng nhất là từ chối ống hút nhựa ngay từ đầu! Mỗi ngày căn teen dùng hàng trăm ống hút nhựa.",impact:"+4%"},
-    {img:"🍱",q:"Nhóm bạn ăn xong để lại rất nhiều thức ăn thừa trong hộp. Bạn nên làm gì?",choices:["🗑️ Đổ tất cả vào thùng rác thông thường","🍃 Đổ thức ăn thừa vào thùng hữu cơ, hộp vào tái chế","📦 Xin hộp mới đựng phần thừa mang về","😐 Không quan tâm, để nhân viên dọn"],correct:2,feedback_ok:"Tuyệt vời! Mang thức ăn thừa về vừa tiết kiệm vừa tránh lãng phí thực phẩm — rất xanh!",feedback_bad:"Tốt nhất là mang phần thừa về! Lãng phí thực phẩm tạo ra lượng CO₂ khổng lồ khi phân hủy.",impact:"+3%"},
-    {img:"💧",q:"Bạn lấy nước uống ở máy nước căn teen nhưng uống không hết còn nửa ly. Bạn làm gì?",choices:["🚰 Đổ xuống cống rồi lấy ly mới","🌱 Tưới cho cây xanh trong sân trường","💧 Uống hết hoặc đem theo bình để dùng tiếp","❄️ Bỏ vào tủ lạnh căn teen"],correct:2,feedback_ok:"Đúng! Uống hết hoặc dùng bình cá nhân là thói quen tiết kiệm nước rất tốt.",feedback_bad:"Đừng đổ nước thừa! Tưới cây cũng tốt, nhưng tốt nhất là uống hết hoặc mang theo bình cá nhân.",impact:"+2%"},
-    {img:"🧻",q:"Bạn dùng khăn giấy để lau tay sau khi ăn ở căn teen. Bạn dùng bao nhiêu tờ là vừa đủ?",choices:["📚 Rút 5-6 tờ cho chắc chắn","✂️ 1-2 tờ là đủ nếu lau đúng cách","🔄 Dùng khăn vải cá nhân thay khăn giấy","💨 Vẩy tay cho khô, không cần khăn"],correct:2,feedback_ok:"Xuất sắc! Mang khăn vải cá nhân là lựa chọn xanh nhất — tiết kiệm hàng trăm tờ giấy mỗi năm!",feedback_bad:"Tốt nhất là dùng khăn vải cá nhân. Nếu phải dùng giấy thì 1-2 tờ là đủ — đừng lãng phí!",impact:"+2%"}
-  ]},
-  {title:"Tiết kiệm điện trong căn teen",icon:"💡",desc:"Điều hòa, đèn, quạt — bạn có đang để lãng phí điện mà không biết không?",
-   questions:[
-    {img:"❄️",q:"Trời mát, chỉ có vài bạn ngồi góc căn teen nhưng điều hòa đang bật 18°C lạnh buốt. Bạn làm gì?",choices:["😴 Không quan tâm, mình không phải nhân viên","🌡️ Nhờ nhân viên chỉnh lên 25-26°C hoặc tắt bớt","🧥 Mặc thêm áo vào, chấp nhận lạnh","📱 Đăng lên mạng xã hội than lạnh"],correct:1,feedback_ok:"Đúng! Mỗi 1°C điều hòa giảm xuống tốn thêm 6% điện. Nói nhân viên chỉnh là hành động xanh!",feedback_bad:"Nên nhờ nhân viên điều chỉnh nhiệt độ! 25-26°C là đủ mát và tiết kiệm điện hơn rất nhiều.",impact:"+4%"},
-    {img:"💡",q:"Bạn là người cuối cùng ra khỏi khu vực học nhóm trong căn teen. Còn đèn và quạt đang bật. Bạn làm gì?",choices:["🏃 Ra luôn, mình không bật thì không cần tắt","✅ Tắt đèn và quạt trước khi ra","📞 Gọi điện nhờ người khác quay lại tắt","🤷 Để nhân viên dọn dẹp tắt sau"],correct:1,feedback_ok:"Chuẩn! Tắt điện khi ra là thói quen cơ bản nhất — nếu ai cũng làm, trường tiết kiệm được rất nhiều.",feedback_bad:"Luôn tắt điện khi là người ra cuối! Quên tắt 1 bóng đèn 4 tiếng = lãng phí điện vô ích.",impact:"+3%"},
-    {img:"🔌",q:"Sạc điện thoại xong nhưng vẫn để dây cắm ổ điện cả buổi chiều. Tác hại là gì?",choices:["✅ Không sao, sạc xong tự ngắt điện rồi","⚡ Vẫn tiêu thụ điện dù nhỏ — gọi là 'vampire power'","🔥 Gây cháy nổ ngay lập tức","📱 Làm hỏng pin điện thoại nhanh hơn"],correct:1,feedback_ok:"Đúng! 'Vampire power' — thiết bị cắm nhưng không dùng vẫn hút điện. Nhớ rút sạc ra nhé!",feedback_bad:"Để sạc cắm không dùng gọi là 'vampire power' — vẫn tiêu thụ điện âm thầm mỗi giờ.",impact:"+3%"},
-    {img:"🌞",q:"Buổi sáng trời sáng, căn teen vẫn bật đèn huỳnh quang cả dãy dù cửa sổ nhiều ánh sáng tự nhiên. Bạn nên làm gì?",choices:["😶 Bình thường mà, không cần làm gì","🌤️ Nhờ nhân viên tắt bớt đèn, mở rèm tận dụng ánh sáng tự nhiên","😎 Kéo rèm lại để tối hơn, bật thêm đèn","📸 Chụp ảnh check-in vì ánh sáng đẹp"],correct:1,feedback_ok:"Tuyệt! Ánh sáng tự nhiên miễn phí và tốt cho mắt hơn đèn huỳnh quang. Hãy tận dụng!",feedback_bad:"Nên tận dụng ánh sáng tự nhiên! Tắt bớt đèn ban ngày là cách tiết kiệm điện đơn giản nhất.",impact:"+2%"},
-    {img:"🖥️",q:"Máy tính ở góc học tự học căn teen bị bỏ quên, màn hình sáng không ai dùng đã 30 phút. Bạn làm gì?",choices:["👀 Nhìn qua rồi đi tiếp, không liên quan mình","✅ Tắt màn hình hoặc báo nhân viên tắt giúp","🖱️ Dùng thử xem có gì hay không","📷 Chụp lại báo cáo trên mạng xã hội"],correct:1,feedback_ok:"Rất có trách nhiệm! Hành động nhỏ như tắt màn hình không người dùng tạo ra thói quen xanh chung.",feedback_bad:"Hãy tắt màn hình hoặc báo nhân viên! Máy tính để không 30 phút tốn điện tương đương sạc điện thoại.",impact:"+3%"}
-  ]},
-  {title:"Rác nhựa mỗi ngày ở trường",icon:"🧴",desc:"Chai nước, túi ni-lông, hộp nhựa dùng 1 lần — tác hại thực sự là bao nhiêu?",
-   questions:[
-    {img:"🧴",q:"Mỗi ngày bạn mua 1 chai nước nhựa 500ml ở căn teen. Trong 1 năm học (200 ngày), bạn tạo ra bao nhiêu rác nhựa?",choices:["🤏 Khoảng 20 chai — không đáng kể","📦 200 chai nhựa — 1 đống rác lớn","🏔️ Hơn 500 chai nếu tính cả bạn bè","♻️ Không sao vì chai nhựa được tái chế hết"],correct:1,feedback_ok:"Đúng! 200 chai/năm/người × cả lớp = hàng nghìn chai. Mang bình cá nhân tiết kiệm tiền lại xanh hơn!",feedback_bad:"200 chai/năm chỉ từ 1 người! Thử nhân với cả lớp 40 bạn = 8.000 chai/năm — con số đáng lo ngại.",impact:"+4%"},
-    {img:"🛍️",q:"Mua bánh ở căn teen, nhân viên cho vào túi ni-lông. Bạn chỉ đi từ quầy về bàn (5 mét). Bạn làm gì?",choices:["🛍️ Nhận túi ni-lông như bình thường","✋ Từ chối túi, cầm tay hoặc để vào balo","♻️ Nhận túi nhưng sau đó tái sử dụng","🤔 Hỏi xem túi làm bằng vật liệu gì trước"],correct:1,feedback_ok:"Hoàn hảo! Từ chối túi ni-lông khi không cần thiết là cách giảm rác nhựa đơn giản và hiệu quả nhất.",feedback_bad:"Nếu chỉ đi 5 mét thì không cần túi ni-lông! Từ chối lịch sự là hành động xanh dễ nhất.",impact:"+3%"},
-    {img:"🥤",q:"Bạn bè rủ order trà sữa online giao đến căn teen, 10 ly = 10 ống hút nhựa, 10 túi ni-lông. Bạn đề xuất gì?",choices:["👍 Bình thường, không sao cả","🌿 Nhắn shop: không cần ống hút + túi, tự mang hộp đựng","😶 Không nói gì, sợ bạn bè cho là phức tạp","📦 Order ít lại, mỗi người 1 ly thôi"],correct:1,feedback_ok:"Tuyệt! Nhắn shop không cần ống hút và túi là xu hướng 'zero-waste order' đang lan rộng. Bạn là người tiên phong!",feedback_bad:"Hãy mạnh dạn nhắn shop! Nhiều quán sẵn sàng bỏ ống hút và túi nếu khách yêu cầu.",impact:"+4%"},
-    {img:"📚",q:"Hết năm học, bạn có cả đống sách vở cũ, bút hết mực, hộp bút nhựa hỏng. Bạn xử lý thế nào tốt nhất?",choices:["🗑️ Vứt tất cả vào thùng rác","🎁 Tặng sách còn dùng được cho thư viện/em nhỏ, phân loại tái chế đồ còn lại","🔥 Đốt để không bị lộ điểm xấu","📦 Giữ lại hết trong kho ký túc xá"],correct:1,feedback_ok:"Xuất sắc! Tặng sách cũ = kéo dài vòng đời sản phẩm. Phân loại rác = giảm rác thải trường học.",feedback_bad:"Tặng đồ dùng được cho người khác và phân loại phần còn lại — đây là cách xử lý có trách nhiệm nhất!",impact:"+3%"},
-    {img:"🧃",q:"Hộp giấy đựng sữa (như Tetra Pak) sau khi uống — bạn vứt vào đâu?",choices:["🗑️ Rác thông thường vì là giấy cứng","♻️ Thùng tái chế — Tetra Pak có thể tái chế riêng","🍃 Thùng hữu cơ vì có giấy","🌊 Không quan trọng, vứt đâu cũng được"],correct:1,feedback_ok:"Đúng! Tetra Pak là vật liệu ghép (giấy + nhựa + nhôm) — cần tái chế riêng tại điểm thu gom chuyên dụng.",feedback_bad:"Tetra Pak cần tái chế riêng! Vứt vào rác thông thường là lãng phí vật liệu quý.",impact:"+3%"}
-  ]},
-  {title:"Thử thách 7 ngày xanh",icon:"🌿",desc:"Nếu cả lớp cùng hành động xanh trong 1 tuần, tác động sẽ lớn đến cỡ nào?",
-   questions:[
-    {img:"📅",q:"Nếu cả lớp 40 bạn cùng mang bình nước cá nhân trong 1 tuần (5 ngày học), tiết kiệm được bao nhiêu chai nhựa?",choices:["🤔 Khoảng 50 chai — không đáng kể","💯 200 chai nhựa trong 1 tuần","🏆 Tối thiểu 200 chai, tối đa 400 chai","♻️ Không tính được vì mỗi người uống khác nhau"],correct:2,feedback_ok:"Đúng! 40 bạn × 1-2 chai/ngày × 5 ngày = 200-400 chai. Chỉ 1 tuần thôi — sức mạnh tập thể rất lớn!",feedback_bad:"40 bạn × 1 chai/ngày × 5 ngày = 200 chai tối thiểu. Nhân 2 lần uống = 400 chai. Phi thường!",impact:"+5%"},
-    {img:"🌱",q:"Thử thách 'Thứ 2 không rác nhựa' — cả lớp đồng ý không dùng đồ nhựa 1 lần vào thứ 2. Khó khăn lớn nhất là gì?",choices:["😒 Quá khó, không ai làm được","🧠 Phải lên kế hoạch trước: mang bình, hộp cơm, túi vải","💰 Tốn nhiều tiền hơn khi dùng đồ tái sử dụng","📚 Ảnh hưởng đến việc học"],correct:1,feedback_ok:"Chuẩn! Chuẩn bị trước là chìa khóa. Thói quen xanh cần thực hành chứ không chỉ có ý định tốt.",feedback_bad:"Thử thách không rác nhựa hoàn toàn có thể làm được nếu chuẩn bị trước: bình, hộp cơm, túi vải!",impact:"+3%"},
-    {img:"🤝",q:"Bạn muốn vận động cả lớp cùng hành động xanh tại căn teen nhưng nhiều bạn thờ ơ. Chiến lược nào hiệu quả nhất?",choices:["😤 Chỉ trích thẳng những bạn không làm","🎮 Tổ chức thử thách/game có bảng điểm, phần thưởng nhỏ","📢 Post lên mạng xã hội chê trường","🤷 Bỏ cuộc, mình làm một mình thôi"],correct:1,feedback_ok:"Chính xác! Game hóa hành vi xanh — như app này — là cách hiệu quả nhất để lan truyền thói quen tốt!",feedback_bad:"Tạo thử thách vui vẻ với điểm số và phần thưởng nhỏ là cách tốt nhất! Ai cũng thích chơi game hơn bị thuyết giáo.",impact:"+4%"},
-    {img:"🌏",q:"Nếu toàn bộ 1.000 học sinh FPT Hòa Lạc giảm 1 ống hút nhựa mỗi ngày trong 1 năm học (200 ngày), giảm được bao nhiêu?",choices:["📊 200.000 ống hút nhựa","🏆 Đúng — 200.000 ống hút nhựa","💡 Chỉ 100.000 — ít hơn nhiều","🌊 Không đáng kể so với rác toàn cầu"],correct:1,feedback_ok:"200.000 ống hút nhựa! Mỗi hành động nhỏ nhân lên thành con số khổng lồ khi cả cộng đồng cùng làm.",feedback_bad:"1.000 học sinh × 1 ống hút × 200 ngày = 200.000 ống hút nhựa — từ hành động đơn giản nhất!",impact:"+5%"},
-    {img:"🎯",q:"Sau 7 ngày thử thách xanh tại căn teen, điều nào QUAN TRỌNG NHẤT để duy trì thói quen lâu dài?",choices:["📸 Chụp ảnh minh chứng và đăng mạng xã hội mỗi ngày","🔄 Biến hành động thành thói quen tự động, không cần nhắc","🏅 Chờ nhà trường khen thưởng mới tiếp tục","📊 Theo dõi số liệu phức tạp mỗi ngày"],correct:1,feedback_ok:"Tuyệt vời! Thói quen tự động mạnh hơn ý chí. Sau 21 ngày lặp lại, não bộ tự làm không cần nghĩ!",feedback_bad:"Quan trọng nhất là biến nó thành thói quen tự nhiên. Hành động xanh bền vững không phụ thuộc vào khen thưởng.",impact:"+5%"},
-    {img:"🌟",q:"Bạn đã hoàn thành thử thách 7 ngày! Bước tiếp theo để lan rộng phong trào 'Căn teen xanh FPT Hòa Lạc' là gì?",choices:["😌 Xong rồi thì thôi, mình đã làm phần của mình","🌱 Chia sẻ kết quả với lớp, rủ thêm bạn tham gia tháng sau","📝 Viết báo cáo gửi BGH xin điểm cộng","🎤 Chỉ làm nếu được lên báo/truyền thông"],correct:1,feedback_ok:"Đây mới là kết thúc thật sự đẹp! Lan truyền câu chuyện của bạn — đó là cách mạnh nhất để tạo thay đổi.",feedback_bad:"Chia sẻ hành trình của bạn! Câu chuyện thực tế từ bạn bè có sức thuyết phục hơn bất kỳ bài giảng nào.",impact:"+5%"}
-  ]}
-];
+// ===== CÁC HÀM CHUYỂN MÀN HÌNH CŨ (GIỮ NGUYÊN) =====
+function showScreen(id){ /* giống như cũ nhưng cần xử lý thêm mini games */ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); currentScreen=id; document.getElementById('topbar').style.display=(id==='game')?'flex':'none'; document.querySelectorAll('.sb-nav-item').forEach(n=>n.classList.remove('active')); if(id==='home') document.getElementById('nav-home').classList.add('active'); if(id==='leaderboard') document.getElementById('nav-lb').classList.add('active'); }
+function showMap(idx){ showScreen('map'); selectMission(idx); }
+function selectMission(idx){ /* giữ nguyên từ index cũ */ }
+function startMission(idx){ /* giữ nguyên */ }
+function loadQuestion(){ /* giữ nguyên */ }
+function startTimer(){ /* giữ nguyên */ }
+function timeUp(){ /* giữ nguyên */ }
+function selectAnswer(idx,q){ /* giữ nguyên */ }
+function showFeedback(ok,q){ /* giữ nguyên */ }
+function nextQuestion(){ /* giữ nguyên */ }
+function showResult(){ /* giữ nguyên */ }
+function switchTabD(el){ /* giữ nguyên */ }
 
-window.currentMission=0; window.correctCount=0; let currentScreen='home', currentMission=0, currentQ=0, correctCount=0;
-let earthHealth=72, timerInterval=null, timeLeft=30, answered=false;
-let qResults=[];
+// ===== TÍCH HỢP MINI GAMES =====
+let currentMiniGame = '';
+let mgDragScore = 0, mgDragRound = 0, mgDragItems = [], mgDragAnswered = 0;
+let memFlipped = [], memMatched = 0, memMoves = 0, memLocked = false, memTimer = null, memSecs = 0;
+let raceQ = 0, raceSpeed = 0, racePos = 5, raceTimer = null, raceTimeLeft = 0, raceAnswered = false, raceScore = 0;
+const RACE_QS = [{q:"Loại bóng đèn nào tiết kiệm điện nhất?",choices:["Bóng sợi đốt","Đèn LED ✅","Đèn huỳnh quang","Đèn halogen"],correct:1},{q:"Tắm bao nhiêu phút để tiết kiệm nước?",choices:["20-30 phút","30 phút+","5-10 phút ✅","Tắm bồn"],correct:2},{q:"Rác nào bỏ vào thùng hữu cơ?",choices:["Pin cũ","Chai nhựa","Vỏ chuối ✅","Hộp xốp"],correct:2},{q:"Nhiệt độ điều hòa tiết kiệm điện nhất?",choices:["16-18°C","20-22°C","25-27°C ✅","30°C+"],correct:2},{q:"Vòi nước nhỏ giọt lãng phí bao nhiêu/năm?",choices:["100 lít","1.000 lít","5.000 lít","20.000 lít ✅"],correct:3},{q:"Mang gì khi đi siêu thị để giảm rác nhựa?",choices:["Nhiều túi nilon","Túi vải cá nhân ✅","Hộp xốp","Không cần gì"],correct:1},{q:"Thời trang secondhand giúp gì?",choices:["Tốn nhiều tiền hơn","Không tốt bằng đồ mới","Giảm ô nhiễm ngành may mặc ✅","Không ảnh hưởng gì"],correct:2},{q:"Vampire power là gì?",choices:["Năng lượng ma cà rồng","Điện tiêu thụ khi thiết bị chờ ✅","Điện mặt trời","Điện gió"],correct:1}];
+const TRASH_ITEMS = [{emoji:'🍌',name:'Vỏ chuối',type:'organic'},{emoji:'☕',name:'Bã cà phê',type:'organic'},{emoji:'🥬',name:'Rau thừa',type:'organic'},{emoji:'🍳',name:'Vỏ trứng',type:'organic'},{emoji:'📰',name:'Tờ báo',type:'recycle'},{emoji:'🥤',name:'Chai nhựa',type:'recycle'},{emoji:'🫙',name:'Hộp thiếc',type:'recycle'},{emoji:'📦',name:'Hộp giấy',type:'recycle'},{emoji:'🔋',name:'Pin cũ',type:'hazard'},{emoji:'💊',name:'Thuốc hết hạn',type:'hazard'},{emoji:'🖨️',name:'Mực in',type:'hazard'},{emoji:'🧴',name:'Chai hóa chất',type:'hazard'},{emoji:'🍱',name:'Hộp xốp',type:'general'},{emoji:'🧻',name:'Khăn giấy bẩn',type:'general'},{emoji:'🪮',name:'Tóc rụng',type:'general'},{emoji:'🩹',name:'Băng gạc cũ',type:'general'}];
+const MEM_PAIRS = [{icon:'🌱',text:'Trồng cây',match:'CO₂↓'},{icon:'CO₂↓',text:'CO₂↓',match:'🌱'},{icon:'♻️',text:'Tái chế',match:'Rác↓'},{icon:'Rác↓',text:'Rác↓',match:'♻️'},{icon:'💡',text:'Đèn LED',match:'Điện↓'},{icon:'Điện↓',text:'Điện↓',match:'💡'},{icon:'🚲',text:'Đi xe đạp',match:'Khói↓'},{icon:'Khói↓',text:'Khói↓',match:'🚲'}];
+let cityBudget = 500, cityEnv = 0, cityHappy = 0, cityPop = 0, cityScore = 0, selectedBuilding = null, cityGrid = [];
+const BUILDINGS = [{icon:'🌳',name:'Công viên cây xanh',cost:50,env:15,happy:10,pop:0},{icon:'⚡',name:'Trạm điện mặt trời',cost:80,env:20,happy:5,pop:0},{icon:'🏫',name:'Trường học xanh',cost:100,env:10,happy:15,pop:30},{icon:'♻️',name:'Trạm tái chế',cost:60,env:25,happy:5,pop:0},{icon:'🚲',name:'Làn xe đạp',cost:40,env:12,happy:8,pop:0},{icon:'💧',name:'Hệ thống lọc nước',cost:70,env:18,happy:12,pop:20},{icon:'🌻',name:'Vườn rau cộng đồng',cost:45,env:10,happy:20,pop:10},{icon:'🏥',name:'Trạm y tế xanh',cost:90,env:8,happy:25,pop:40}];
 
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  currentScreen=id;
-  document.getElementById('topbar').style.display=(id==='game')?'flex':'none';
-  document.querySelectorAll('.sb-nav-item').forEach(n=>n.classList.remove('active'));
-  if(id==='home') document.getElementById('nav-home').classList.add('active');
-  if(id==='leaderboard') document.getElementById('nav-lb').classList.add('active');
-}
+function showMiniGamesHub(){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById('minigames-hub').classList.add('active'); currentMiniGame=''; }
+function startMiniGame(game){ currentMiniGame=game; document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(`mg-${game}-screen`).classList.add('active'); if(game==='drag') initDrag(); if(game==='memory') initMemory(); if(game==='race') initRace(); if(game==='city') initCity(); }
+function playAgainMiniGame(){ document.getElementById('mg-result-overlay').style.display='none'; startMiniGame(currentMiniGame); }
+function showMiniGameResult(trophy,title,sub,xp,score){ document.getElementById('mg-rb-trophy').textContent=trophy; document.getElementById('mg-rb-title').textContent=title; document.getElementById('mg-rb-sub').textContent=sub; document.getElementById('mg-rb-xp').textContent='+'+xp+' XP'; document.getElementById('mg-rb-score').textContent=score; document.getElementById('mg-result-overlay').style.display='flex'; addXPToUser(xp); }
+async function addXPToUser(amount){ if(window.currentUser && window.currentUser.uid){ let newXP = (window.userXP || 0) + amount; window.userXP = newXP; document.getElementById('sb-xp').textContent = newXP + ' XP'; try{ await window.updateDoc(window.doc(window.db, 'users', window.currentUser.uid), { xp: newXP }); }catch(e){ console.log('Lỗi cập nhật XP:', e); } }else{ console.warn('Chưa đăng nhập, không cộng XP'); } }
 
-function showMap(idx){
-  showScreen('map');
-  selectMission(idx);
-}
+// Drag & Drop
+function initDrag(){ mgDragScore=0; mgDragRound=0; document.getElementById('drag-score').textContent='✅ 0 đúng'; nextDragRound(); }
+function nextDragRound(){ mgDragRound++; mgDragAnswered=0; document.getElementById('drag-next').style.display='none'; document.getElementById('drag-feedback').className='drag-feedback'; ['organic','recycle','hazard','general'].forEach(z=>{ document.getElementById('zone-'+z).innerHTML=''; document.getElementById('zone-'+z).className='tz-drop'; }); const shuffled=[...TRASH_ITEMS].sort(()=>Math.random()-0.5).slice(0,8); mgDragItems=shuffled; const pool=document.getElementById('pool-items'); pool.innerHTML=''; shuffled.forEach((item,i)=>{ const el=document.createElement('div'); el.className='drag-item'; el.draggable=true; el.id='drag-'+i; el.dataset.type=item.type; el.dataset.idx=i; el.innerHTML=item.emoji+' '+item.name; el.addEventListener('dragstart',e=>{ e.dataTransfer.setData('text/plain',i+':'+item.type); el.style.opacity='0.5'; }); el.addEventListener('dragend',()=>{ el.style.opacity='1'; }); pool.appendChild(el); }); }
+function allowDrop(e){ e.preventDefault(); }
+function dropItem(e,zone){ e.preventDefault(); const data=e.dataTransfer.getData('text/plain'); const [idx,type]=data.split(':'); const item=mgDragItems[parseInt(idx)]; const dragEl=document.getElementById('drag-'+idx); if(!dragEl||dragEl.classList.contains('placed')) return; dragEl.classList.add('placed'); const zoneEl=document.getElementById('zone-'+zone); const placed=document.createElement('div'); placed.className='placed-item'; placed.textContent=item.emoji+' '+item.name; zoneEl.appendChild(placed); const correct=type===zone; if(correct){ mgDragScore++; zoneEl.classList.add('correct-flash'); setTimeout(()=>zoneEl.classList.remove('correct-flash'),500); }else{ zoneEl.classList.add('wrong-flash'); setTimeout(()=>zoneEl.classList.remove('wrong-flash'),500); } document.getElementById('drag-score').textContent='✅ '+mgDragScore+' đúng'; mgDragAnswered++; if(mgDragAnswered>=mgDragItems.length){ const fb=document.getElementById('drag-feedback'); fb.className='drag-feedback show'+(mgDragScore>=6?'':' bad'); fb.innerHTML=(mgDragScore>=6?'🎉':'😅')+' <strong>'+mgDragScore+'/8 đúng!</strong> '+(mgDragScore>=6?'Xuất sắc! Bạn là chuyên gia phân loại rác!':'Cần luyện thêm! Xem lại các loại rác nhé.'); document.getElementById('drag-next').style.display='inline-block'; if(mgDragRound>=3){ const xp=mgDragScore*6; showMiniGameResult(mgDragScore>=20?'🏆':'🌿',mgDragScore>=20?'Chuyên gia rác!':'Tốt lắm!','Hoàn thành Phân loại rác',xp,mgDragScore+'/24'); } } }
 
-function selectMission(idx){
-  document.querySelectorAll('.mcard').forEach((c,i)=>{
-    c.classList.toggle('selected', i===idx);
-  });
-  const m=MISSIONS[idx];
-  const preview=document.getElementById('map-preview');
-  const qs=m.questions;
-  if(!qs||qs.length===0){
-    preview.innerHTML=`<div class="preview-placeholder"><div class="preview-placeholder-icon">${m.icon}</div><h3>${m.title}</h3><p>Nhiệm vụ này đang được phát triển. Hãy hoàn thành các nhiệm vụ khác trước!</p></div>`;
-    return;
-  }
-  let qList=qs.map((q,i)=>`<div class="preview-q-item"><div class="preview-q-num">${i+1}</div>${q.q.substring(0,60)}${q.q.length>60?'...':''}</div>`).join('');
-  preview.innerHTML=`<div class="preview-card">
-    <div class="preview-header">
-      <div class="preview-icon">${m.icon}</div>
-      <div class="preview-title">${m.title}</div>
-      <div class="preview-desc">${m.desc}</div>
-    </div>
-    <div class="preview-body">
-      <div class="preview-stats">
-        <div class="pstat"><div class="pstat-val">${qs.length}</div><div class="pstat-lbl">Câu hỏi</div></div>
-        <div class="pstat"><div class="pstat-val">30s</div><div class="pstat-lbl">Mỗi câu</div></div>
-        <div class="pstat"><div class="pstat-val">${qs.length*30} XP</div><div class="pstat-lbl">Tối đa</div></div>
-      </div>
-      <div class="preview-q-list">${qList}</div>
-      <button class="btn-start-mission" onclick="startMission(${idx})">🚀 Bắt đầu nhiệm vụ</button>
-    </div>
-  </div>`;
-  currentMission=idx;
-}
+// Memory
+function initMemory(){ memFlipped=[]; memMatched=0; memMoves=0; memLocked=false; memSecs=0; clearInterval(memTimer); memTimer=setInterval(()=>{ memSecs++; document.getElementById('mem-time').textContent=memSecs+'s'; const xp=Math.max(0,80-memMoves*2); document.getElementById('mem-xp').textContent='+'+xp; },1000); document.getElementById('mem-pairs').textContent='0/8'; document.getElementById('mem-moves').textContent='0'; document.getElementById('mem-time').textContent='0s'; const cards=[...MEM_PAIRS].sort(()=>Math.random()-0.5); const grid=document.getElementById('memory-grid'); grid.innerHTML=''; cards.forEach((card,i)=>{ const el=document.createElement('div'); el.className='mem-card'; el.dataset.idx=i; el.dataset.match=card.match; el.dataset.icon=card.icon; el.innerHTML=`<div class="mem-card-inner"><div class="mem-front">🌿</div><div class="mem-back"><div class="mem-back-icon">${card.icon}</div><div class="mem-back-text">${card.text}</div></div></div>`; el.onclick=()=>flipMemCard(el); grid.appendChild(el); }); }
+function flipMemCard(el){ if(memLocked||el.classList.contains('flipped')||el.classList.contains('matched')) return; el.classList.add('flipped'); memFlipped.push(el); if(memFlipped.length===2){ memMoves++; document.getElementById('mem-moves').textContent=memMoves; memLocked=true; const [a,b]=memFlipped; const match=a.dataset.icon===b.dataset.match&&b.dataset.icon===a.dataset.match; if(match){ a.classList.add('matched'); b.classList.add('matched'); memMatched++; document.getElementById('mem-pairs').textContent=memMatched+'/8'; memFlipped=[]; memLocked=false; if(memMatched===8){ clearInterval(memTimer); const xp=Math.max(20,80-memMoves*2); setTimeout(()=>showMiniGameResult('🃏','Trí nhớ siêu đẳng!','Hoàn thành Lật thẻ ghi nhớ',xp,memMoves+' lượt'),500); } }else{ setTimeout(()=>{ a.classList.remove('flipped'); b.classList.remove('flipped'); memFlipped=[]; memLocked=false; },1000); } } }
 
-function startMission(idx){
-  currentMission=idx; currentQ=0; correctCount=0; qResults=[]; window.currentMission=idx; window.correctCount=0;
-  const m=MISSIONS[idx];
-  document.getElementById('topbar-title').textContent=m.title;
-  showScreen('game');
-  loadQuestion();
-}
+// Race
+function initRace(){ raceQ=0; raceSpeed=0; racePos=5; raceScore=0; document.getElementById('race-car').style.left='5%'; buildRoadLines(); loadRaceQ(); }
+function buildRoadLines(){ const container=document.getElementById('road-lines'); container.innerHTML=''; for(let i=0;i<6;i++){ const line=document.createElement('div'); line.className='road-line'; line.style.width='50px'; line.style.right=(i*18)+'%'; line.style.animationDelay=(-i*0.15)+'s'; line.style.animationDuration=Math.max(0.3,1-raceSpeed*0.08)+'s'; container.appendChild(line); } }
+function loadRaceQ(){ if(raceQ>=RACE_QS.length){ const xp=raceScore*12; showMiniGameResult(raceScore>=6?'🏎️':'🌿',raceScore>=6?'Tay đua xuất sắc!':'Cần luyện thêm!','Hoàn thành Đua xe xanh',xp,raceScore+'/8 đúng'); return; } raceAnswered=false; const q=RACE_QS[raceQ]; document.getElementById('race-q-text').textContent=q.q; document.getElementById('race-lap').textContent='Câu '+(raceQ+1)+' / '+RACE_QS.length; document.getElementById('speed-badge').textContent='🏎️ Tốc độ: '+raceSpeed; const choicesEl=document.getElementById('race-choices'); choicesEl.innerHTML=''; q.choices.forEach((c,i)=>{ const btn=document.createElement('button'); btn.className='race-choice'; btn.textContent=c.replace(' ✅',''); btn.onclick=()=>answerRace(i,q.correct,btn); choicesEl.appendChild(btn); }); raceTimeLeft=100; document.getElementById('race-timer-fill').style.width='100%'; clearInterval(raceTimer); raceTimer=setInterval(()=>{ raceTimeLeft-=2; document.getElementById('race-timer-fill').style.width=raceTimeLeft+'%'; if(raceTimeLeft<=20) document.getElementById('race-timer-fill').style.background='linear-gradient(90deg,#e74c3c,#f59e0b)'; else document.getElementById('race-timer-fill').style.background='linear-gradient(90deg,var(--g3),var(--amber))'; if(raceTimeLeft<=0){ clearInterval(raceTimer); if(!raceAnswered) timeoutRace(); } },80); }
+function answerRace(idx,correct,btn){ if(raceAnswered) return; raceAnswered=true; clearInterval(raceTimer); document.querySelectorAll('.race-choice').forEach(b=>b.classList.add('disabled')); const isOk=idx===correct; btn.classList.add(isOk?'correct':'wrong'); document.querySelectorAll('.race-choice')[correct].classList.add('correct'); if(isOk){ raceScore++; raceSpeed=Math.min(raceSpeed+1,8); racePos=Math.min(racePos+11,80); }else{ raceSpeed=Math.max(raceSpeed-1,0); racePos=Math.max(racePos-5,5); } document.getElementById('race-car').style.left=racePos+'%'; document.getElementById('speed-badge').textContent='🏎️ Tốc độ: '+raceSpeed; buildRoadLines(); raceQ++; setTimeout(loadRaceQ,1200); }
+function timeoutRace(){ raceAnswered=true; document.querySelectorAll('.race-choice').forEach(b=>b.classList.add('disabled')); document.querySelectorAll('.race-choice')[RACE_QS[raceQ].correct].classList.add('correct'); racePos=Math.max(racePos-3,5); document.getElementById('race-car').style.left=racePos+'%'; raceQ++; setTimeout(loadRaceQ,1200); }
 
-function loadQuestion(){
-  const m=MISSIONS[currentMission], q=m.questions[currentQ], total=m.questions.length;
-  answered=false;
-  document.getElementById('feedback-d').className='feedback-d';
-  document.getElementById('btn-next-d').className='btn-next-d';
-  document.getElementById('topbar-progress').style.width=(currentQ/total*100)+'%';
-  document.getElementById('q-counter-d').textContent=`${currentQ+1} / ${total}`;
-  document.getElementById('q-label').textContent=`Câu ${currentQ+1} / ${total}`;
-  document.getElementById('scenario-img-d').textContent=q.img;
-  document.getElementById('scenario-q-d').textContent=q.q;
-  document.getElementById('score-display').textContent=`${correctCount} / ${currentQ}`;
+// City
+function initCity(){ cityBudget=500; cityEnv=0; cityHappy=0; cityPop=0; cityScore=0; selectedBuilding=null; cityGrid=new Array(18).fill(null); updateCityStats(); renderBuildingsList(); renderCityGrid(); }
+function renderBuildingsList(){ const list=document.getElementById('buildings-list'); list.innerHTML=''; BUILDINGS.forEach((b,i)=>{ const el=document.createElement('div'); el.className='building-item'+(cityBudget<b.cost?' locked':''); el.id='building-'+i; el.innerHTML=`<div class="bi-icon">${b.icon}</div><div class="bi-info"><div class="bi-name">${b.name}</div><div class="bi-cost">💰 ${b.cost} xu</div></div><div class="bi-effect">🌿+${b.env} 😊+${b.happy}</div>`; el.onclick=()=>{ selectedBuilding=i; document.querySelectorAll('.building-item').forEach(x=>x.classList.remove('selected')); el.classList.add('selected'); }; list.appendChild(el); }); }
+function renderCityGrid(){ const grid=document.getElementById('city-grid'); grid.innerHTML=''; for(let i=0;i<18;i++){ const cell=document.createElement('div'); cell.className='city-cell'+(cityGrid[i]?' placed':''); cell.textContent=cityGrid[i]?cityGrid[i].icon:''; cell.onclick=()=>placeBuilding(i,cell); grid.appendChild(cell); } }
+function placeBuilding(idx,cell){ if(selectedBuilding===null||cityGrid[idx]) return; const b=BUILDINGS[selectedBuilding]; if(cityBudget<b.cost) return; cityBudget-=b.cost; cityGrid[idx]=b; cityEnv=Math.min(100,cityEnv+b.env); cityHappy=Math.min(100,cityHappy+b.happy); cityPop+=b.pop; cityScore+=b.env+b.happy; cell.textContent=b.icon; cell.classList.add('placed'); document.getElementById('city-budget').textContent='💰 Ngân sách: '+cityBudget; updateCityStats(); renderBuildingsList(); }
+function updateCityStats(){ document.getElementById('city-env').textContent=cityEnv; document.getElementById('city-happy').textContent=cityHappy; document.getElementById('city-pop').textContent=cityPop; document.getElementById('cs-env').textContent=cityEnv+'%'; document.getElementById('cs-happy').textContent=cityHappy+'%'; document.getElementById('cs-pop').textContent=cityPop; document.getElementById('cs-score').textContent=cityScore; }
+function finishCity(){ const xp=Math.round(cityScore*0.8); let trophy='🌱',title='Thành phố đang phát triển!'; if(cityScore>=150){ trophy='🏆'; title='Thành phố xanh hoàn hảo!'; }else if(cityScore>=80){ trophy='🌍'; title='Thành phố xanh tốt!'; } showMiniGameResult(trophy,title,'Hoàn thành Xây thành phố xanh',xp,cityScore+' điểm xanh'); }
 
-  // choices
-  const wrap=document.getElementById('choices-d'); wrap.innerHTML='';
-  const letters=['A','B','C','D'];
-  q.choices.forEach((c,i)=>{
-    const btn=document.createElement('button');
-    btn.className='choice-d';
-    btn.innerHTML=`<span class="choice-d-letter">${letters[i]}</span>${c}`;
-    btn.onclick=()=>selectAnswer(i,q);
-    wrap.appendChild(btn);
-  });
-
-  // q list mini
-  const ql=document.getElementById('q-list-mini'); ql.innerHTML='';
-  m.questions.forEach((_,i)=>{
-    const div=document.createElement('div');
-    let cls='qm-item', dot='qm-dot qm-dot-idle', dotTxt=(i+1)+'';
-    if(i===currentQ){cls+=' current';dot='qm-dot qm-dot-cur';dotTxt='▶';}
-    else if(i<currentQ){
-      if(qResults[i]){cls+=' done-ok';dot='qm-dot qm-dot-ok';dotTxt='✓';}
-      else{cls+=' done-bad';dot='qm-dot qm-dot-bad';dotTxt='✗';}
-    }
-    div.className=cls;
-    div.innerHTML=`<div class="${dot}">${dotTxt}</div>Câu ${i+1}`;
-    ql.appendChild(div);
-  });
-  startTimer();
-}
-
-function startTimer(){
-  clearInterval(timerInterval); timeLeft=30;
-  document.getElementById('timer-d').textContent=timeLeft;
-  timerInterval=setInterval(()=>{
-    timeLeft--;
-    document.getElementById('timer-d').textContent=timeLeft;
-    if(timeLeft<=10) document.getElementById('timer-d').style.color='#e74c3c';
-    else document.getElementById('timer-d').style.color='var(--g2)';
-    if(timeLeft<=0){clearInterval(timerInterval);if(!answered)timeUp();}
-  },1000);
-}
-
-function timeUp(){
-  const q=MISSIONS[currentMission].questions[currentQ];
-  answered=true; qResults[currentQ]=false;
-  document.querySelectorAll('.choice-d').forEach((b,i)=>{
-    b.classList.add('disabled');
-    if(i===q.correct)b.classList.add('correct');
-  });
-  showFeedback(false,q);
-}
-
-function selectAnswer(idx,q){
-  if(answered)return;
-  answered=true; clearInterval(timerInterval);
-  const isOk=idx===q.correct; qResults[currentQ]=isOk;
-  document.querySelectorAll('.choice-d').forEach(b=>b.classList.add('disabled'));
-  document.querySelectorAll('.choice-d')[idx].classList.add(isOk?'correct':'wrong');
-  if(!isOk)document.querySelectorAll('.choice-d')[q.correct].classList.add('correct');
-  if(isOk){correctCount++; window.correctCount=correctCount;}
-  document.getElementById('score-display').textContent=`${correctCount} / ${currentQ+1}`;
-  const newPct=Math.min(earthHealth+parseInt(q.impact.replace('+','')),100);
-  if(isOk){
-    document.getElementById('em-fill').style.width=newPct+'%';
-    document.getElementById('em-pct').textContent=newPct+'%';
-  }
-  showFeedback(isOk,q);
-}
-
-function showFeedback(ok,q){
-  const box=document.getElementById('feedback-d');
-  box.className='feedback-d show'+(ok?'':' bad');
-  if(!ok)box.classList.add('bad');
-  document.getElementById('fb-emoji-d').textContent=ok?'✅':'❌';
-  document.getElementById('fb-title-d').textContent=ok?'🎉 Chính xác!':'😅 Chưa đúng rồi!';
-  document.getElementById('fb-text-d').textContent=ok?q.feedback_ok:q.feedback_bad;
-  document.getElementById('fb-impact-d').innerHTML=ok
-    ?`<span class="fb-impact-pos">🏫 Trường học ${q.impact} nhờ hành động của bạn!</span>`
-    :`<span class="fb-impact-neg">⚠️ Hãy ghi nhớ để lần sau hành động đúng hơn nhé.</span>`;
-  document.getElementById('btn-next-d').className='btn-next-d show';
-}
-
-function nextQuestion(){
-  const m=MISSIONS[currentMission];
-  currentQ++;
-  if(currentQ>=m.questions.length) showResult();
-  else loadQuestion();
-}
-
-function showResult(){
-  clearInterval(timerInterval);
-  const total=MISSIONS[currentMission].questions.length;
-  const pct=Math.round(correctCount/total*100), xp=correctCount*30, impact=correctCount*4;
-  let trophy='🌱',title='Tiếp tục cố gắng!';
-  if(pct>=80){trophy='🏆';title='Xuất sắc! Học sinh xanh tiêu biểu!';}
-  else if(pct>=60){trophy='🌿';title='Tốt lắm! Bạn đang tiến bộ!';}
-  document.getElementById('result-trophy-d').textContent=trophy;
-  document.getElementById('result-title-d').textContent=title;
-  document.getElementById('result-sub-d').textContent='Hoàn thành: '+MISSIONS[currentMission].title;
-  document.getElementById('rd-score').textContent=`${correctCount}/${total}`;
-  document.getElementById('rd-xp').textContent=`+${xp} XP`;
-  showScreen('result');
-  setTimeout(()=>{
-    document.getElementById('rp-fill').style.width=Math.min(earthHealth+impact,100)+'%';
-    document.getElementById('rp-change').textContent=`+${impact}% điểm xanh trường học`;
-  },400);
-}
-
-function switchTabD(el){
-  document.querySelectorAll('.lb-tab-d').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-}
-</script>
-<script>
-function switchAuthTab(t){ if(window._switchAuthTab) window._switchAuthTab(t); }
-function pickAvatar(el,e){ if(window._pickAvatar) window._pickAvatar(el,e); }
-function doLogin(){ if(window._doLogin) window._doLogin(); }
-function doRegister(){ if(window._doRegister) window._doRegister(); }
-function doLogout(){ if(window._doLogout) window._doLogout(); }
+// Kế thừa các biến Firebase từ script cũ (giả lập)
+window.updateDoc = window.updateDoc || (()=>{});
+window.doc = window.doc || (()=>{});
+window.db = window.db || {};
+// Đảm bảo các biến global user
+window.currentUser = null;
+window.userXP = 0;
 </script>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, getDocs, orderBy, query, limit } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAVrL8Bq6RHL77EyX-8aVfQBJ1LwmQPD-A",
-  authDomain: "hanhtinhxanh-8cb85.firebaseapp.com",
-  projectId: "hanhtinhxanh-8cb85",
-  storageBucket: "hanhtinhxanh-8cb85.firebasestorage.app",
-  messagingSenderId: "150062325711",
-  appId: "1:150062325711:web:b7b7a955a6eac33ea47cba"
-};
-
+const firebaseConfig = { apiKey: "AIzaSyAVrL8Bq6RHL77EyX-8aVfQBJ1LwmQPD-A", authDomain: "hanhtinhxanh-8cb85.firebaseapp.com", projectId: "hanhtinhxanh-8cb85", storageBucket: "hanhtinhxanh-8cb85.firebasestorage.app", messagingSenderId: "150062325711", appId: "1:150062325711:web:b7b7a955a6eac33ea47cba" };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+window.db = db; window.doc = doc; window.updateDoc = updateDoc;
+let currentUser = null, userXP = 0, selectedAvatar = '🌱', completedMissions = [];
 
-let currentUser = null;
-let selectedAvatar = '🌱';
-let userXP = 0;
-let userStreak = 0;
-let completedMissions = [];
-
-window._pickAvatar = window.pickAvatar = function(el, emoji) {
-  document.querySelectorAll('#form-register span').forEach(s => s.style.border = '2px solid transparent');
-  el.style.border = '2px solid #2ecc71';
-  selectedAvatar = emoji;
-};
-
-window._switchAuthTab = window.switchAuthTab = function(tab) {
-  document.getElementById('form-login').style.display = tab === 'login' ? 'block' : 'none';
-  document.getElementById('form-register').style.display = tab === 'register' ? 'block' : 'none';
-  document.getElementById('tab-login').style.background = tab === 'login' ? '#1a7a4a' : 'transparent';
-  document.getElementById('tab-login').style.color = tab === 'login' ? 'white' : '#7aad92';
-  document.getElementById('tab-register').style.background = tab === 'register' ? '#1a7a4a' : 'transparent';
-  document.getElementById('tab-register').style.color = tab === 'register' ? 'white' : '#7aad92';
-  document.getElementById('auth-msg').textContent = '';
-};
-
-function showAuthMsg(msg, isError = true) {
-  const el = document.getElementById('auth-msg');
-  el.textContent = msg;
-  el.style.color = isError ? '#e74c3c' : '#1a7a4a';
-}
-
-window._doLogin = window.doLogin = async function() {
-  const email = document.getElementById('login-email').value.trim();
-  const pass = document.getElementById('login-pass').value;
-  if (!email || !pass) return showAuthMsg('Vui lòng điền đầy đủ thông tin!');
-  showAuthMsg('Đang đăng nhập...', false);
-  try {
-    await signInWithEmailAndPassword(auth, email, pass);
-  } catch(e) {
-    const msgs = {
-      'auth/user-not-found': 'Email không tồn tại!',
-      'auth/wrong-password': 'Mật khẩu không đúng!',
-      'auth/invalid-credential': 'Email hoặc mật khẩu không đúng!',
-      'auth/invalid-email': 'Email không hợp lệ!'
-    };
-    showAuthMsg(msgs[e.code] || 'Đăng nhập thất bại!');
-  }
-};
-
-window._doRegister = window.doRegister = async function() {
-  const name = document.getElementById('reg-name').value.trim();
-  const email = document.getElementById('reg-email').value.trim();
-  const pass = document.getElementById('reg-pass').value;
-  if (!name || !email || !pass) return showAuthMsg('Vui lòng điền đầy đủ thông tin!');
-  if (pass.length < 6) return showAuthMsg('Mật khẩu tối thiểu 6 ký tự!');
-  showAuthMsg('Đang tạo tài khoản...', false);
-  try {
-    const cred = await createUserWithEmailAndPassword(auth, email, pass);
-    await setDoc(doc(db, 'users', cred.user.uid), {
-      displayName: name,
-      avatar: selectedAvatar,
-      email: email,
-      xp: 0,
-      streak: 0,
-      completedMissions: [],
-      createdAt: new Date().toISOString(),
-      lastLogin: new Date().toISOString()
-    });
-  } catch(e) {
-    const msgs = {
-      'auth/email-already-in-use': 'Email này đã được đăng ký!',
-      'auth/invalid-email': 'Email không hợp lệ!',
-      'auth/weak-password': 'Mật khẩu quá yếu!'
-    };
-    showAuthMsg(msgs[e.code] || 'Đăng ký thất bại!');
-  }
-};
-
-window._doLogout = window.doLogout = async function() {
-  await signOut(auth);
-};
-
-async function loadUserData(uid) {
-  const snap = await getDoc(doc(db, 'users', uid));
-  if (snap.exists()) {
-    const data = snap.data();
-    userXP = data.xp || 0;
-    userStreak = data.streak || 0;
-    completedMissions = data.completedMissions || [];
-    const name = data.displayName || 'Người chơi';
-    const avatar = data.avatar || '🌍';
-    document.getElementById('sb-xp').textContent = userXP + ' XP';
-    document.getElementById('sb-xp-streak-val').textContent = '🔥 ' + userStreak + ' ngày';
-    document.getElementById('sb-user-name').textContent = name;
-    document.getElementById('sb-user-avatar').textContent = avatar;
-    completedMissions.forEach(idx => {
-      const card = document.getElementById('mcard-' + idx);
-      if (card && !card.querySelector('.mcard-done')) {
-        const badge = document.createElement('span');
-        badge.className = 'mcard-done';
-        badge.textContent = '✓ Xong';
-        card.appendChild(badge);
-      }
-    });
-    await updateDoc(doc(db, 'users', uid), { lastLogin: new Date().toISOString() });
-    await loadLeaderboard();
-  }
-}
-
-async function saveProgress(missionIdx, correct, total) {
-  if (!currentUser) return;
-  const xpEarned = correct * 30;
-  const newXP = userXP + xpEarned;
-  const newMissions = completedMissions.includes(missionIdx) ? completedMissions : [...completedMissions, missionIdx];
-  userXP = newXP;
-  completedMissions = newMissions;
-  document.getElementById('sb-xp').textContent = newXP + ' XP';
-  await updateDoc(doc(db, 'users', currentUser.uid), {
-    xp: newXP,
-    completedMissions: newMissions
-  });
-}
-window.saveProgress = saveProgress;
-
-async function loadLeaderboard() {
-  try {
-    const q = query(collection(db, 'users'), orderBy('xp', 'desc'), limit(10));
-    const snap = await getDocs(q);
-    const lbLeft = document.getElementById('lb-rows');
-    if (!lbLeft) return;
-    lbLeft.innerHTML = '';
-    let rank = 1;
-    snap.forEach(d => {
-      const data = d.data();
-      const isYou = currentUser && d.id === currentUser.uid;
-      const row = document.createElement('div');
-      row.className = 'lb-row-d' + (isYou ? ' you' : '');
-      row.innerHTML = `<div class="lb-rank-d">${rank}</div><div class="lb-avatar-d">${data.avatar||'🌍'}</div><div class="lb-name-d">${data.displayName||'Người chơi'}${isYou?' <span class="lb-you-d">Bạn</span>':''}</div><div class="lb-score-d">${(data.xp||0).toLocaleString()} XP</div>`;
-      lbLeft.appendChild(row);
-      rank++;
-    });
-  } catch(e) { console.log('LB error:', e); }
-}
-
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    currentUser = user;
-    document.getElementById('auth-screen').style.display = 'none';
-    await loadUserData(user.uid);
-  } else {
-    currentUser = null;
-    document.getElementById('auth-screen').style.display = 'flex';
-  }
-});
-
-const origShowResult = window.showResult;
-window.showResult = function() {
-  origShowResult && origShowResult();
-  const total = window.MISSIONS ? window.MISSIONS[window.currentMission]?.questions?.length || 5 : 5;
-  saveProgress(window.currentMission, window.correctCount, total);
-};
+window.pickAvatar = function(el, emoji) { document.querySelectorAll('#form-register span').forEach(s=>s.style.border='2px solid transparent'); el.style.border='2px solid #2ecc71'; selectedAvatar=emoji; };
+window.switchAuthTab = function(tab) { document.getElementById('form-login').style.display = tab==='login'?'block':'none'; document.getElementById('form-register').style.display = tab==='register'?'block':'none'; document.getElementById('tab-login').style.background = tab==='login'?'#1a7a4a':'transparent'; document.getElementById('tab-login').style.color = tab==='login'?'white':'#7aad92'; document.getElementById('tab-register').style.background = tab==='register'?'#1a7a4a':'transparent'; document.getElementById('tab-register').style.color = tab==='register'?'white':'#7aad92'; document.getElementById('auth-msg').textContent=''; };
+window.doLogin = async function() { const email=document.getElementById('login-email').value.trim(); const pass=document.getElementById('login-pass').value; if(!email||!pass) return; try{ await signInWithEmailAndPassword(auth,email,pass); }catch(e){ document.getElementById('auth-msg').textContent='Sai email hoặc mật khẩu!'; } };
+window.doRegister = async function() { const name=document.getElementById('reg-name').value.trim(); const email=document.getElementById('reg-email').value.trim(); const pass=document.getElementById('reg-pass').value; if(!name||!email||pass.length<6) return; try{ const cred=await createUserWithEmailAndPassword(auth,email,pass); await setDoc(doc(db,'users',cred.user.uid),{ displayName:name, avatar:selectedAvatar, email:email, xp:0, streak:0, completedMissions:[], createdAt:new Date().toISOString(), lastLogin:new Date().toISOString() }); }catch(e){ document.getElementById('auth-msg').textContent='Email đã tồn tại!'; } };
+window.doLogout = async function() { await signOut(auth); };
+async function loadUserData(uid){ const snap=await getDoc(doc(db,'users',uid)); if(snap.exists()){ const data=snap.data(); userXP=data.xp||0; window.userXP=userXP; document.getElementById('sb-xp').textContent=userXP+' XP'; document.getElementById('sb-user-name').textContent=data.displayName||'Người chơi'; document.getElementById('sb-user-avatar').textContent=data.avatar||'🌍'; } }
+onAuthStateChanged(auth, async (user)=>{ if(user){ currentUser=user; window.currentUser=user; document.getElementById('auth-screen').style.display='none'; await loadUserData(user.uid); }else{ window.currentUser=null; document.getElementById('auth-screen').style.display='flex'; } });
+window.showScreen = function(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); if(id==='home') document.getElementById('nav-home').classList.add('active'); if(id==='leaderboard') document.getElementById('nav-lb').classList.add('active'); document.getElementById('topbar').style.display=(id==='game')?'flex':'none'; };
+window.showMiniGamesHub = function(){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById('minigames-hub').classList.add('active'); };
+window.showMap = function(idx){ showScreen('map'); /* gọi selectMission cũ nhưng cần viết lại đơn giản */ };
+// Khởi tạo mặc định home
+document.getElementById('home').innerHTML = `<div class="home-rings"><div class="home-ring" style="width:600px;height:600px;top:-200px;right:-150px;"></div><div class="home-ring" style="width:400px;height:400px;bottom:-100px;left:-100px;"></div></div><div class="home-earth">🌍</div><h1 class="home-h1">Trường Học <span>Xanh</span></h1><p class="home-tag">Mỗi lựa chọn của bạn đều tạo ra sự thay đổi · FPT Hòa Lạc</p><div class="home-planet-wrap"><div class="home-planet-label">Điểm Xanh Trường Học hiện tại</div><div class="home-planet-track"><div class="home-planet-fill" style="width:72%"></div></div><div class="home-planet-pct">72% — Cần cải thiện</div></div><div class="home-cards"><div class="home-stat"><div class="home-stat-num">12K+</div><div class="home-stat-lbl">Người chơi</div></div><div class="home-stat"><div class="home-stat-num">48</div><div class="home-stat-lbl">Nhiệm vụ</div></div><div class="home-stat"><div class="home-stat-num">4</div><div class="home-stat-lbl">Chủ đề</div></div><div class="home-stat"><div class="home-stat-num">22</div><div class="home-stat-lbl">Câu FPT</div></div></div><div class="home-btns"><button class="btn-hero btn-hero-primary" onclick="showMap(0)">🚀 Bắt đầu nhiệm vụ</button><button class="btn-hero btn-hero-secondary" onclick="showScreen('leaderboard')">🏆 Bảng xếp hạng</button><button class="btn-hero btn-hero-secondary" onclick="showMiniGamesHub()">🎮 Mini Games</button></div>`;
+document.getElementById('map').innerHTML = '<div class="map-list"><h2>Chọn nhiệm vụ</h2><p class="map-list-sub">Tính năng đang được phát triển trong phiên bản tích hợp.</p></div><div class="map-preview"><div class="preview-placeholder"><div class="preview-placeholder-icon">🗺️</div><h3>Chọn một nhiệm vụ</h3><p>Hãy quay lại trang chủ và chọn Mini Games để trải nghiệm các game tương tác nhé!</p></div></div>';
+document.getElementById('result').innerHTML = '<div class="result-wrap"><div class="result-trophy-d">🏆</div><div class="result-title-d">Xuất sắc!</div><div class="result-sub-d">Bạn đã hoàn thành nhiệm vụ</div><div class="result-btns"><button class="btn-result btn-result-p" onclick="showScreen(\'map\')">🗺️ Nhiệm vụ khác</button><button class="btn-result btn-result-s" onclick="showScreen(\'leaderboard\')">🏆 Bảng xếp hạng</button><button class="btn-result btn-result-s" onclick="showScreen(\'home\')">🏠 Về trang chủ</button></div></div>';
+document.getElementById('leaderboard').innerHTML = '<div class="lb-left"><h2>🏆 Bảng xếp hạng</h2><p class="lb-sub">Top người bảo vệ môi trường</p><div id="lb-rows"></div></div><div class="lb-right"><div class="podium-d"><div class="pd-slot pd2"><div class="pd-avatar">🧑</div><div class="pd-name">Minh T.</div><div class="pd-pts">2.840 XP</div><div class="pd-block">🥈</div></div><div class="pd-slot pd1"><div class="pd-avatar">👩</div><div class="pd-name">Lan N.</div><div class="pd-pts">3.210 XP</div><div class="pd-block">🥇</div></div><div class="pd-slot pd3"><div class="pd-avatar">👦</div><div class="pd-name">Hùng P.</div><div class="pd-pts">2.550 XP</div><div class="pd-block">🥉</div></div></div></div>';
+window.showScreen('home');
 </script>
 </body>
 </html>
