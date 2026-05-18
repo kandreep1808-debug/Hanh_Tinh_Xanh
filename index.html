@@ -65,7 +65,6 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 .sb-xp-icon{font-size:1.5rem;}
 .sb-xp-val{font-size:1.25rem;font-weight:900;color:var(--g4);}
 .sb-xp-sub{font-size:0.7rem;color:rgba(255,255,255,0.45);font-weight:600;}
-.sb-xp-streak{margin-left:auto;background:rgba(243,156,18,0.2);color:#fbbf24;font-size:0.72rem;font-weight:800;padding:0.25rem 0.55rem;border-radius:99px;}
 
 .sb-nav{flex:1;overflow-y:auto;padding:0.75rem 0;}
 .sb-nav-section{font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.3);padding:0.75rem 1.5rem 0.35rem;}
@@ -85,9 +84,8 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 .sb-nav-item.locked{opacity:0.45;pointer-events:none;}
 
 .sb-footer{padding:1rem 1.25rem;border-top:1px solid rgba(255,255,255,0.08);}
-.sb-streak-row{display:flex;gap:0.35rem;justify-content:center;}
-.streak-day{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:0.9rem;}
-.streak-day.done{background:rgba(243,156,18,0.25);}
+.sb-footer .sb-planet-label{margin-bottom:0.5rem;}
+.sb-footer .sb-planet-label:last-child{margin-bottom:0;}
 
 /* ===== MAIN CONTENT ===== */
 .main{flex:1;height:100vh;overflow:hidden;display:flex;flex-direction:column;background:var(--g6);}
@@ -324,8 +322,6 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 .lb-stat-num{font-size:1.5rem;font-weight:900;color:var(--g2);}
 .lb-stat-lbl{font-size:0.72rem;color:var(--text3);font-weight:700;margin-top:2px;}
 
-/* ===== SCROLLBAR ===== */
-
 /* ============ MINI GAMES ============ */
 #games{flex-direction:column;overflow-y:auto;background:var(--g6);}
 .games-hub{padding:2rem;max-width:100%;}
@@ -399,7 +395,7 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 .road-lines-d{position:absolute;inset:0;overflow:hidden;}
 .road-line-d{position:absolute;height:5px;width:50px;background:white;border-radius:3px;top:50%;transform:translateY(-50%);opacity:0.7;animation:rl 1s linear infinite;}
 @keyframes rl{from{right:-60px;}to{right:110%;}}
-.race-car-d{position:absolute;bottom:16px;font-size:2rem;transition:left 0.5s ease;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.3));}
+.race-car-d{position:absolute;bottom:16px;font-size:2rem;transition:left 0.4s ease;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.3));}
 .race-finish-d{position:absolute;right:0;top:0;bottom:0;width:36px;display:flex;flex-direction:column;}
 .rfc{flex:1;background:repeating-linear-gradient(45deg,#000 0,#000 5px,#fff 5px,#fff 10px);}
 .cloud-d{position:absolute;font-size:1.8rem;animation:cloudMove 8s linear infinite;}
@@ -520,10 +516,9 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
   <div class="sb-xp-card">
     <div class="sb-xp-icon">⭐</div>
     <div>
-      <div class="sb-xp-val" id="sb-xp">340 XP</div>
+      <div class="sb-xp-val" id="sb-xp">0 XP</div>
       <div class="sb-xp-sub">Kinh nghiệm tích lũy</div>
     </div>
-    <div class="sb-xp-streak" id="sb-xp-streak-val">🔥 0 ngày</div>
   </div>
   <div style="display:flex;align-items:center;gap:0.6rem;padding:0.7rem 1.25rem;border-bottom:1px solid rgba(255,255,255,0.08);">
     <div id="sb-user-avatar" style="font-size:1.4rem;width:32px;text-align:center;">🌍</div>
@@ -561,16 +556,8 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
   </div>
 
   <div class="sb-footer">
-    <div class="sb-planet-label" style="margin-bottom:0.5rem;">Streak tuần này</div>
-    <div class="sb-streak-row">
-      <div class="streak-day done">🔥</div>
-      <div class="streak-day done">🔥</div>
-      <div class="streak-day done">🔥</div>
-      <div class="streak-day">·</div>
-      <div class="streak-day">·</div>
-      <div class="streak-day">·</div>
-      <div class="streak-day">·</div>
-    </div>
+    <div class="sb-planet-label" style="margin-bottom:0.5rem;">🌱 Hành động mỗi ngày</div>
+    <div class="sb-planet-label" style="color:rgba(255,255,255,0.25);">Hoàn thành nhiệm vụ để nâng điểm xanh</div>
   </div>
 </div>
 
@@ -768,7 +755,6 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
       <div class="result-grid-d">
         <div class="rstat"><div class="rstat-num" id="rd-score">4/5</div><div class="rstat-lbl">Câu đúng</div></div>
         <div class="rstat"><div class="rstat-num" id="rd-xp">+120 XP</div><div class="rstat-lbl">Kinh nghiệm</div></div>
-        <div class="rstat"><div class="rstat-num" id="rd-streak">🔥 3</div><div class="rstat-lbl">Streak ngày</div></div>
         <div class="rstat"><div class="rstat-num" id="rd-rank">#42</div><div class="rstat-lbl">Xếp hạng</div></div>
       </div>
       <div class="result-planet-d">
@@ -794,7 +780,7 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
         <button class="lb-tab-d" onclick="switchTabD(this)">Tháng này</button>
         <button class="lb-tab-d" onclick="switchTabD(this)">Toàn thời gian</button>
       </div>
-      <div id="lb-rows"><div class="lb-row-d you"><div class="lb-rank-d">8</div><div class="lb-avatar-d">😊</div><div class="lb-name-d">Bạn <span class="lb-you-d">Bạn</span></div><div class="lb-score-d">1.240 XP</div></div>
+      <div id="lb-rows"><div class="lb-row-d you"><div class="lb-rank-d">8</div><div class="lb-avatar-d">😊</div><div class="lb-name-d">Bạn <span class="lb-you-d">Bạn</span></div><div class="lb-score-d">0 XP</div></div>
       <div class="lb-row-d"><div class="lb-rank-d">1</div><div class="lb-avatar-d">👩</div><div class="lb-name-d">Lan N.</div><div class="lb-score-d">3.210 XP</div></div>
       <div class="lb-row-d"><div class="lb-rank-d">2</div><div class="lb-avatar-d">🧑</div><div class="lb-name-d">Minh T.</div><div class="lb-score-d">2.840 XP</div></div>
       <div class="lb-row-d"><div class="lb-rank-d">3</div><div class="lb-avatar-d">👦</div><div class="lb-name-d">Hùng P.</div><div class="lb-score-d">2.550 XP</div></div>
@@ -973,761 +959,86 @@ body{font-family:'Nunito',sans-serif;background:var(--g0);display:flex;color:var
 </div><!-- end .main -->
 
 <script>
+// ***************************
+// TẤT CẢ CÂU HỎI ĐÃ ĐƯỢC VIẾT LẠI HOÀN TOÀN MỚI
+// ***************************
 const MISSIONS = window.MISSIONS = [
-  {title:"Phân loại rác thông minh",icon:"♻️",desc:"5 tình huống thực tế về phân loại rác hữu cơ, tái chế và rác thải nguy hại.",
-   questions:[
-    {img:"🗑️",q:"Bạn vừa ăn xong một hộp cơm bằng xốp. Bạn nên bỏ vào thùng rác nào?",choices:["♻️ Thùng tái chế nhựa","🍃 Thùng rác hữu cơ","🗑️ Thùng rác thông thường","🔴 Thùng rác nguy hại"],correct:2,feedback_ok:"Đúng! Hộp xốp không thể tái chế phổ biến và không phải hữu cơ — nên bỏ rác thông thường.",feedback_bad:"Hộp xốp không tái chế được phổ biến. Bỏ vào thùng rác thông thường là đúng nhất.",impact:"+2%"},
-    {img:"🍌",q:"Bạn có vỏ chuối và bã cà phê. Nên bỏ vào đâu để có ích nhất?",choices:["🗑️ Rác thông thường","🍃 Thùng rác hữu cơ/compost","♻️ Thùng tái chế","🔴 Thùng rác nguy hại"],correct:1,feedback_ok:"Tuyệt! Chất hữu cơ như vỏ trái cây có thể làm phân compost, tốt cho đất trồng trọt.",feedback_bad:"Vỏ chuối và bã cà phê là rác hữu cơ — có thể ủ phân compost rất tốt cho môi trường.",impact:"+3%"},
-    {img:"🔋",q:"Pin điện thoại cũ hỏng cần bỏ vào đâu?",choices:["🗑️ Thùng rác thông thường","🍃 Thùng hữu cơ","♻️ Thùng tái chế thông thường","🔴 Điểm thu gom pin/rác nguy hại"],correct:3,feedback_ok:"Chính xác! Pin chứa chất độc hại cần xử lý đặc biệt tại điểm thu gom chuyên dụng.",feedback_bad:"Pin là rác nguy hại! Bỏ vào rác thông thường gây ô nhiễm đất và nước ngầm nghiêm trọng.",impact:"+4%"},
-    {img:"📰",q:"Tờ báo cũ và giấy văn phòng đã dùng — xử lý thế nào tốt nhất?",choices:["🗑️ Rác thông thường","🔥 Đốt bỏ","♻️ Thùng tái chế giấy","🍃 Thùng hữu cơ"],correct:2,feedback_ok:"Đúng rồi! Giấy có thể tái chế nhiều lần, giúp giảm chặt phá rừng đáng kể.",feedback_bad:"Giấy nên được tái chế! Đốt giấy thải ra CO₂, còn vứt bỏ là lãng phí tài nguyên.",impact:"+2%"},
-    {img:"🥤",q:"Chai nhựa nước ngọt sau khi dùng — bạn xử lý thế nào?",choices:["🗑️ Vứt thẳng vào rác","♻️ Rửa sạch rồi bỏ thùng tái chế","🌊 Bỏ vào thùng rác gần ao hồ","🔥 Đốt để giảm thể tích"],correct:1,feedback_ok:"Hoàn hảo! Rửa sạch trước khi tái chế giúp nhà máy xử lý hiệu quả hơn, giảm ô nhiễm.",feedback_bad:"Nên rửa sạch và bỏ vào thùng tái chế. Đốt nhựa thải ra khí độc rất nguy hiểm!",impact:"+3%"}
-  ]},
-  {title:"Mua sắm có ý thức",icon:"🛍️",desc:"Chọn sản phẩm thân thiện với môi trường trong siêu thị ảo.",
-   questions:[
-    {img:"🛒",q:"Bạn cần mua nước uống cho cả ngày đi học. Lựa chọn nào xanh nhất?",choices:["🧴 Mua chai nhựa 500ml tại cửa hàng","🧊 Mang bình nước cá nhân từ nhà","🥤 Mua hộp giấy Tetra Pak","🧃 Mua lon nhôm"],correct:1,feedback_ok:"Xuất sắc! Bình nước cá nhân tái sử dụng được hàng trăm lần — tiết kiệm tiền và giảm rác nhựa tối đa.",feedback_bad:"Mang bình cá nhân là lựa chọn xanh nhất! Chai nhựa dùng 1 lần tạo ra lượng rác khổng lồ mỗi năm.",impact:"+4%"},
-    {img:"🧴",q:"Khi mua dầu gội, bạn chọn loại nào?",choices:["💊 Chai nhựa thường, giá rẻ nhất","🌿 Sản phẩm có nhãn thân thiện môi trường hoặc bao bì tái chế","📦 Loại đựng trong hộp giấy có thể tái chế","🔄 Mua dạng refill (túi nạp lại) để tái sử dụng chai cũ"],correct:3,feedback_ok:"Tuyệt! Dạng refill giảm đến 70% lượng nhựa so với mua chai mới — thói quen nhỏ, tác động lớn!",feedback_bad:"Dạng refill là lựa chọn xanh nhất — tái sử dụng chai cũ giảm lượng nhựa mới đến 70%.",impact:"+3%"},
-    {img:"🌾",q:"Ở siêu thị, bạn chọn rau củ nào?",choices:["📦 Rau đóng gói sẵn trong hộp nhựa cho tiện","🌱 Rau tươi không bọc nhựa, tự bỏ vào túi vải mang theo","🚗 Rau nhập khẩu từ nước ngoài vì tươi hơn","❄️ Rau đông lạnh đóng gói sẵn"],correct:1,feedback_ok:"Đúng! Rau tươi không bọc nhựa + túi vải cá nhân = zero waste shopping hoàn hảo.",feedback_bad:"Rau tươi không bọc nhựa trong túi vải của mình là lựa chọn xanh nhất — không rác, không nhựa!",impact:"+3%"},
-    {img:"🏷️",q:"Nhãn nào trên sản phẩm chứng tỏ thực sự thân thiện với môi trường?",choices:["💚 Nhãn tự in Eco hoặc Green của chính thương hiệu","🌍 Chứng nhận quốc tế như FSC, Energy Star, Ecolabel","⭐ Sản phẩm có màu xanh lá trên bao bì","📢 Quảng cáo tự nhiên 100% trên TV"],correct:1,feedback_ok:"Chính xác! Chứng nhận quốc tế (FSC, Energy Star) là bằng chứng thực — không phải quảng cáo tự gắn nhãn.",feedback_bad:"Chỉ tin vào chứng nhận quốc tế độc lập như FSC, Ecolabel! Nhãn tự gắn Eco không có giá trị.",impact:"+4%"},
-    {img:"👗",q:"Bạn cần mua thêm quần áo. Lựa chọn nào có tác động môi trường thấp nhất?",choices:["🛍️ Mua quần áo mới giá rẻ ở shop thời trang nhanh","👚 Mua đồ secondhand (quần áo cũ còn tốt)","🌐 Đặt hàng online từ nước ngoài vì rẻ hơn","🏪 Mua ở trung tâm thương mại lớn"],correct:1,feedback_ok:"Hoàn hảo! Thời trang secondhand kéo dài vòng đời sản phẩm, tiết kiệm nước và giảm CO₂ đáng kể.",feedback_bad:"Đồ secondhand là lựa chọn xanh nhất! Ngành thời trang nhanh là 1 trong những ngành ô nhiễm nhất thế giới.",impact:"+4%"}
-  ]},
-  {title:"Tiết kiệm điện tại nhà",icon:"💡",desc:"Tìm ra những thói quen lãng phí điện và cách khắc phục hiệu quả.",
-   questions:[
-    {img:"🌡️",q:"Nhiệt độ điều hòa lý tưởng để tiết kiệm điện mà vẫn mát là bao nhiêu?",choices:["❄️ 16-18°C cho thật lạnh","🌡️ 25-27°C là đủ mát","🌤️ 20-22°C cho mát vừa","💨 Không dùng điều hòa, chỉ dùng quạt"],correct:1,feedback_ok:"Đúng! 25-27°C là nhiệt độ lý tưởng. Mỗi 1°C giảm xuống tiêu thụ thêm 6% điện năng.",feedback_bad:"25-27°C là đủ mát và tiết kiệm điện. Mỗi 1°C thấp hơn = tốn thêm 6% điện!",impact:"+3%"},
-    {img:"🔌",q:"Thiết bị nào tốn điện ngay cả khi đã tắt nhưng vẫn cắm điện?",choices:["🖥️ Chỉ máy tính mới tốn","📺 TV, bộ sạc, lò vi sóng, modem — tất cả đều tốn","💡 Chỉ bóng đèn mới tốn khi bật","🔋 Không thiết bị nào tốn khi đã tắt"],correct:1,feedback_ok:"Đúng! Đây gọi là vampire power — rút phích cắm khi không dùng để tiết kiệm!",feedback_bad:"TV, sạc, lò vi sóng... vẫn tiêu thụ điện khi ở chế độ chờ. Rút phích cắm ra khi không dùng nhé!",impact:"+4%"},
-    {img:"💡",q:"Loại bóng đèn nào tiết kiệm điện nhất hiện nay?",choices:["🕯️ Bóng sợi đốt truyền thống","☀️ Bóng huỳnh quang (đèn tuýp)","💡 Đèn LED","🔦 Đèn halogen"],correct:2,feedback_ok:"Chính xác! Đèn LED tiết kiệm đến 80% điện so với bóng sợi đốt và có tuổi thọ gấp 25 lần.",feedback_bad:"Đèn LED tiết kiệm 80% điện so với bóng thường và sống lâu gấp 25 lần — nên thay ngay!",impact:"+3%"},
-    {img:"🌞",q:"Bạn đi ra ngoài 30 phút, phòng không có ai. Bạn làm gì với đèn và quạt?",choices:["💡 Để nguyên cho tiện","✅ Tắt hết trước khi ra","🔄 Chỉ tắt đèn, để quạt chạy","😴 Để chế độ ngủ (sleep mode)"],correct:1,feedback_ok:"Tuyệt! Tắt điện khi ra khỏi phòng là thói quen đơn giản nhất giúp tiết kiệm điện hiệu quả.",feedback_bad:"Luôn tắt đèn và quạt khi ra khỏi phòng! Dù chỉ 30 phút, tích lũy cả năm là rất nhiều điện.",impact:"+3%"},
-    {img:"🧺",q:"Khi giặt quần áo bằng máy, cách nào tiết kiệm điện nhất?",choices:["🔥 Giặt nước nóng cho sạch hơn","❄️ Giặt nước lạnh, chỉ cho đầy máy mới giặt","🌊 Giặt tay thay vì dùng máy","⚡ Giặt nhiều lần một ngày, mỗi lần ít đồ"],correct:1,feedback_ok:"Hoàn hảo! Nước lạnh + đầy máy = tiết kiệm điện tối đa. 90% điện máy giặt dùng để làm nóng nước!",feedback_bad:"Giặt nước lạnh và đợi đầy máy mới giặt! 90% điện của máy giặt dùng để đun nóng nước.",impact:"+4%"}
-  ]},
-  {title:"Tiết kiệm nước sạch",icon:"💧",desc:"Khám phá cách tiết kiệm nước trong sinh hoạt hàng ngày.",
-   questions:[
-    {img:"🚿",q:"Bạn tắm bao nhiêu phút là hợp lý để tiết kiệm nước?",choices:["🛁 20-30 phút cho thư giãn","⏱️ 5-10 phút là đủ","🚿 15-20 phút bình thường","💧 Tắm bồn cho sạch hơn tắm vòi"],correct:1,feedback_ok:"Đúng! 5-10 phút tắm vòi hoa sen dùng khoảng 60-80 lít — tiết kiệm hơn tắm bồn đến 4 lần!",feedback_bad:"5-10 phút là đủ! Tắm vòi 10 phút dùng 80 lít, còn tắm bồn tốn đến 300 lít nước.",impact:"+3%"},
-    {img:"🪥",q:"Khi đánh răng, bạn nên làm gì với vòi nước?",choices:["💧 Để vòi chảy cho tiện","✅ Tắt vòi khi không cần, chỉ mở khi súc miệng","🥤 Dùng cốc nước để súc miệng","🚰 Để nước nhỏ giọt thôi"],correct:2,feedback_ok:"Xuất sắc! Dùng cốc nước súc miệng tiết kiệm nhất — chỉ dùng khoảng 0.5 lít thay vì 10 lít nếu để vòi chảy.",feedback_bad:"Dùng cốc nước súc miệng tiết kiệm nhất! Để vòi chảy khi đánh răng lãng phí 10 lít nước mỗi lần.",impact:"+4%"},
-    {img:"🌧️",q:"Nước mưa có thể tái sử dụng cho việc gì?",choices:["🚫 Không dùng được gì","🌱 Tưới cây, rửa xe, lau nhà — hoàn toàn được","🍳 Nấu ăn trực tiếp","🛁 Tắm trực tiếp không cần lọc"],correct:1,feedback_ok:"Tuyệt! Tái sử dụng nước mưa cho tưới cây và vệ sinh giúp tiết kiệm đáng kể nước máy.",feedback_bad:"Nước mưa dùng được cho tưới cây, rửa xe, lau nhà! Tái sử dụng nước mưa là thói quen xanh rất tốt.",impact:"+3%"},
-    {img:"🔧",q:"Vòi nước bị nhỏ giọt liên tục. Tác hại là gì?",choices:["😌 Không đáng kể, chỉ vài giọt","💧 Lãng phí đến 20.000 lít nước mỗi năm","🔧 Chỉ tốn tiền sửa thôi","💸 Không ảnh hưởng vì nước máy rẻ"],correct:1,feedback_ok:"Đúng! 1 vòi nhỏ giọt = 20.000 lít/năm. Sửa vòi ngay khi phát hiện — đơn giản mà cực kỳ hiệu quả!",feedback_bad:"1 vòi nhỏ giọt lãng phí 20.000 lít nước mỗi năm! Báo ngay người lớn để sửa khi phát hiện nhé.",impact:"+4%"},
-    {img:"🍽️",q:"Khi rửa bát, cách nào tiết kiệm nước nhất?",choices:["🚰 Để vòi chảy liên tục khi rửa từng cái","🪣 Ngâm bát vào chậu nước xà phòng rồi tráng một lượt","🤖 Dùng máy rửa bát chạy khi chưa đầy","💦 Rửa dưới vòi nước nóng để sạch hơn"],correct:1,feedback_ok:"Hoàn hảo! Ngâm + tráng một lượt chỉ dùng 15-20 lít, trong khi để vòi chảy tốn 60-80 lít.",feedback_bad:"Ngâm bát trong chậu rồi tráng một lượt tiết kiệm đến 75% nước so với để vòi chảy liên tục!",impact:"+3%"}
-  ]},
-  {title:"Sau bữa trưa ở căn teen",icon:"🥡",desc:"Hộp cơm, trà sữa, ống hút — xử lý đúng cách sau mỗi bữa ăn tại căn teen FPT.",
-   questions:[
-    {img:"🥡",q:"Sau khi ăn trưa xong ở căn teen, bạn còn thừa hộp cơm bằng nhựa và đũa gỗ dùng 1 lần. Bạn xử lý thế nào?",choices:["🗑️ Bỏ tất cả vào 1 thùng rác gần nhất cho nhanh","♻️ Tách hộp nhựa vào thùng tái chế, đũa gỗ vào rác hữu cơ","🚪 Để lại trên bàn cho nhân viên dọn","💧 Rửa hộp nhựa rồi dùng lại lần sau"],correct:1,feedback_ok:"Chuẩn luôn! Hộp nhựa tái chế được, đũa gỗ phân hủy sinh học — tách riêng là đúng nhất.",feedback_bad:"Nên tách riêng: hộp nhựa vào thùng tái chế, đũa gỗ vào hữu cơ — bỏ chung là lãng phí tài nguyên.",impact:"+3%"},
-    {img:"🧋",q:"Bạn vừa uống xong 1 ly trà sữa có ống hút nhựa và nắp nhựa. Căn teen có 3 thùng rác. Bạn làm gì?",choices:["🗑️ Bỏ cả ly + ống hút + nắp vào 1 thùng","♻️ Tháo nắp & ly nhựa bỏ tái chế, ống hút bỏ rác thường","🌿 Xin ống hút giấy hoặc không dùng ống hút lần sau","❌ Để ly trên bàn, ra về"],correct:2,feedback_ok:"Giỏi! Và còn tốt hơn nếu lần sau xin ống hút giấy hoặc mang bình cá nhân luôn nhé!",feedback_bad:"Đúng nhất là từ chối ống hút nhựa ngay từ đầu! Mỗi ngày căn teen dùng hàng trăm ống hút nhựa.",impact:"+4%"},
-    {img:"🍱",q:"Nhóm bạn ăn xong để lại rất nhiều thức ăn thừa trong hộp. Bạn nên làm gì?",choices:["🗑️ Đổ tất cả vào thùng rác thông thường","🍃 Đổ thức ăn thừa vào thùng hữu cơ, hộp vào tái chế","📦 Xin hộp mới đựng phần thừa mang về","😐 Không quan tâm, để nhân viên dọn"],correct:2,feedback_ok:"Tuyệt vời! Mang thức ăn thừa về vừa tiết kiệm vừa tránh lãng phí thực phẩm — rất xanh!",feedback_bad:"Tốt nhất là mang phần thừa về! Lãng phí thực phẩm tạo ra lượng CO₂ khổng lồ khi phân hủy.",impact:"+3%"},
-    {img:"💧",q:"Bạn lấy nước uống ở máy nước căn teen nhưng uống không hết còn nửa ly. Bạn làm gì?",choices:["🚰 Đổ xuống cống rồi lấy ly mới","🌱 Tưới cho cây xanh trong sân trường","💧 Uống hết hoặc đem theo bình để dùng tiếp","❄️ Bỏ vào tủ lạnh căn teen"],correct:2,feedback_ok:"Đúng! Uống hết hoặc dùng bình cá nhân là thói quen tiết kiệm nước rất tốt.",feedback_bad:"Đừng đổ nước thừa! Tưới cây cũng tốt, nhưng tốt nhất là uống hết hoặc mang theo bình cá nhân.",impact:"+2%"},
-    {img:"🧻",q:"Bạn dùng khăn giấy để lau tay sau khi ăn ở căn teen. Bạn dùng bao nhiêu tờ là vừa đủ?",choices:["📚 Rút 5-6 tờ cho chắc chắn","✂️ 1-2 tờ là đủ nếu lau đúng cách","🔄 Dùng khăn vải cá nhân thay khăn giấy","💨 Vẩy tay cho khô, không cần khăn"],correct:2,feedback_ok:"Xuất sắc! Mang khăn vải cá nhân là lựa chọn xanh nhất — tiết kiệm hàng trăm tờ giấy mỗi năm!",feedback_bad:"Tốt nhất là dùng khăn vải cá nhân. Nếu phải dùng giấy thì 1-2 tờ là đủ — đừng lãng phí!",impact:"+2%"}
-  ]},
-  {title:"Tiết kiệm điện trong căn teen",icon:"💡",desc:"Điều hòa, đèn, quạt — bạn có đang để lãng phí điện mà không biết không?",
-   questions:[
-    {img:"❄️",q:"Trời mát, chỉ có vài bạn ngồi góc căn teen nhưng điều hòa đang bật 18°C lạnh buốt. Bạn làm gì?",choices:["😴 Không quan tâm, mình không phải nhân viên","🌡️ Nhờ nhân viên chỉnh lên 25-26°C hoặc tắt bớt","🧥 Mặc thêm áo vào, chấp nhận lạnh","📱 Đăng lên mạng xã hội than lạnh"],correct:1,feedback_ok:"Đúng! Mỗi 1°C điều hòa giảm xuống tốn thêm 6% điện. Nói nhân viên chỉnh là hành động xanh!",feedback_bad:"Nên nhờ nhân viên điều chỉnh nhiệt độ! 25-26°C là đủ mát và tiết kiệm điện hơn rất nhiều.",impact:"+4%"},
-    {img:"💡",q:"Bạn là người cuối cùng ra khỏi khu vực học nhóm trong căn teen. Còn đèn và quạt đang bật. Bạn làm gì?",choices:["🏃 Ra luôn, mình không bật thì không cần tắt","✅ Tắt đèn và quạt trước khi ra","📞 Gọi điện nhờ người khác quay lại tắt","🤷 Để nhân viên dọn dẹp tắt sau"],correct:1,feedback_ok:"Chuẩn! Tắt điện khi ra là thói quen cơ bản nhất — nếu ai cũng làm, trường tiết kiệm được rất nhiều.",feedback_bad:"Luôn tắt điện khi là người ra cuối! Quên tắt 1 bóng đèn 4 tiếng = lãng phí điện vô ích.",impact:"+3%"},
-    {img:"🔌",q:"Sạc điện thoại xong nhưng vẫn để dây cắm ổ điện cả buổi chiều. Tác hại là gì?",choices:["✅ Không sao, sạc xong tự ngắt điện rồi","⚡ Vẫn tiêu thụ điện dù nhỏ — gọi là 'vampire power'","🔥 Gây cháy nổ ngay lập tức","📱 Làm hỏng pin điện thoại nhanh hơn"],correct:1,feedback_ok:"Đúng! 'Vampire power' — thiết bị cắm nhưng không dùng vẫn hút điện. Nhớ rút sạc ra nhé!",feedback_bad:"Để sạc cắm không dùng gọi là 'vampire power' — vẫn tiêu thụ điện âm thầm mỗi giờ.",impact:"+3%"},
-    {img:"🌞",q:"Buổi sáng trời sáng, căn teen vẫn bật đèn huỳnh quang cả dãy dù cửa sổ nhiều ánh sáng tự nhiên. Bạn nên làm gì?",choices:["😶 Bình thường mà, không cần làm gì","🌤️ Nhờ nhân viên tắt bớt đèn, mở rèm tận dụng ánh sáng tự nhiên","😎 Kéo rèm lại để tối hơn, bật thêm đèn","📸 Chụp ảnh check-in vì ánh sáng đẹp"],correct:1,feedback_ok:"Tuyệt! Ánh sáng tự nhiên miễn phí và tốt cho mắt hơn đèn huỳnh quang. Hãy tận dụng!",feedback_bad:"Nên tận dụng ánh sáng tự nhiên! Tắt bớt đèn ban ngày là cách tiết kiệm điện đơn giản nhất.",impact:"+2%"},
-    {img:"🖥️",q:"Máy tính ở góc học tự học căn teen bị bỏ quên, màn hình sáng không ai dùng đã 30 phút. Bạn làm gì?",choices:["👀 Nhìn qua rồi đi tiếp, không liên quan mình","✅ Tắt màn hình hoặc báo nhân viên tắt giúp","🖱️ Dùng thử xem có gì hay không","📷 Chụp lại báo cáo trên mạng xã hội"],correct:1,feedback_ok:"Rất có trách nhiệm! Hành động nhỏ như tắt màn hình không người dùng tạo ra thói quen xanh chung.",feedback_bad:"Hãy tắt màn hình hoặc báo nhân viên! Máy tính để không 30 phút tốn điện tương đương sạc điện thoại.",impact:"+3%"}
-  ]},
-  {title:"Rác nhựa mỗi ngày ở trường",icon:"🧴",desc:"Chai nước, túi ni-lông, hộp nhựa dùng 1 lần — tác hại thực sự là bao nhiêu?",
-   questions:[
-    {img:"🧴",q:"Mỗi ngày bạn mua 1 chai nước nhựa 500ml ở căn teen. Trong 1 năm học (200 ngày), bạn tạo ra bao nhiêu rác nhựa?",choices:["🤏 Khoảng 20 chai — không đáng kể","📦 200 chai nhựa — 1 đống rác lớn","🏔️ Hơn 500 chai nếu tính cả bạn bè","♻️ Không sao vì chai nhựa được tái chế hết"],correct:1,feedback_ok:"Đúng! 200 chai/năm/người × cả lớp = hàng nghìn chai. Mang bình cá nhân tiết kiệm tiền lại xanh hơn!",feedback_bad:"200 chai/năm chỉ từ 1 người! Thử nhân với cả lớp 40 bạn = 8.000 chai/năm — con số đáng lo ngại.",impact:"+4%"},
-    {img:"🛍️",q:"Mua bánh ở căn teen, nhân viên cho vào túi ni-lông. Bạn chỉ đi từ quầy về bàn (5 mét). Bạn làm gì?",choices:["🛍️ Nhận túi ni-lông như bình thường","✋ Từ chối túi, cầm tay hoặc để vào balo","♻️ Nhận túi nhưng sau đó tái sử dụng","🤔 Hỏi xem túi làm bằng vật liệu gì trước"],correct:1,feedback_ok:"Hoàn hảo! Từ chối túi ni-lông khi không cần thiết là cách giảm rác nhựa đơn giản và hiệu quả nhất.",feedback_bad:"Nếu chỉ đi 5 mét thì không cần túi ni-lông! Từ chối lịch sự là hành động xanh dễ nhất.",impact:"+3%"},
-    {img:"🥤",q:"Bạn bè rủ order trà sữa online giao đến căn teen, 10 ly = 10 ống hút nhựa, 10 túi ni-lông. Bạn đề xuất gì?",choices:["👍 Bình thường, không sao cả","🌿 Nhắn shop: không cần ống hút + túi, tự mang hộp đựng","😶 Không nói gì, sợ bạn bè cho là phức tạp","📦 Order ít lại, mỗi người 1 ly thôi"],correct:1,feedback_ok:"Tuyệt! Nhắn shop không cần ống hút và túi là xu hướng 'zero-waste order' đang lan rộng. Bạn là người tiên phong!",feedback_bad:"Hãy mạnh dạn nhắn shop! Nhiều quán sẵn sàng bỏ ống hút và túi nếu khách yêu cầu.",impact:"+4%"},
-    {img:"📚",q:"Hết năm học, bạn có cả đống sách vở cũ, bút hết mực, hộp bút nhựa hỏng. Bạn xử lý thế nào tốt nhất?",choices:["🗑️ Vứt tất cả vào thùng rác","🎁 Tặng sách còn dùng được cho thư viện/em nhỏ, phân loại tái chế đồ còn lại","🔥 Đốt để không bị lộ điểm xấu","📦 Giữ lại hết trong kho ký túc xá"],correct:1,feedback_ok:"Xuất sắc! Tặng sách cũ = kéo dài vòng đời sản phẩm. Phân loại rác = giảm rác thải trường học.",feedback_bad:"Tặng đồ dùng được cho người khác và phân loại phần còn lại — đây là cách xử lý có trách nhiệm nhất!",impact:"+3%"},
-    {img:"🧃",q:"Hộp giấy đựng sữa (như Tetra Pak) sau khi uống — bạn vứt vào đâu?",choices:["🗑️ Rác thông thường vì là giấy cứng","♻️ Thùng tái chế — Tetra Pak có thể tái chế riêng","🍃 Thùng hữu cơ vì có giấy","🌊 Không quan trọng, vứt đâu cũng được"],correct:1,feedback_ok:"Đúng! Tetra Pak là vật liệu ghép (giấy + nhựa + nhôm) — cần tái chế riêng tại điểm thu gom chuyên dụng.",feedback_bad:"Tetra Pak cần tái chế riêng! Vứt vào rác thông thường là lãng phí vật liệu quý.",impact:"+3%"}
-  ]},
-  {title:"Thử thách 7 ngày xanh",icon:"🌿",desc:"Nếu cả lớp cùng hành động xanh trong 1 tuần, tác động sẽ lớn đến cỡ nào?",
-   questions:[
-    {img:"📅",q:"Nếu cả lớp 40 bạn cùng mang bình nước cá nhân trong 1 tuần (5 ngày học), tiết kiệm được bao nhiêu chai nhựa?",choices:["🤔 Khoảng 50 chai — không đáng kể","💯 200 chai nhựa trong 1 tuần","🏆 Tối thiểu 200 chai, tối đa 400 chai","♻️ Không tính được vì mỗi người uống khác nhau"],correct:2,feedback_ok:"Đúng! 40 bạn × 1-2 chai/ngày × 5 ngày = 200-400 chai. Chỉ 1 tuần thôi — sức mạnh tập thể rất lớn!",feedback_bad:"40 bạn × 1 chai/ngày × 5 ngày = 200 chai tối thiểu. Nhân 2 lần uống = 400 chai. Phi thường!",impact:"+5%"},
-    {img:"🌱",q:"Thử thách 'Thứ 2 không rác nhựa' — cả lớp đồng ý không dùng đồ nhựa 1 lần vào thứ 2. Khó khăn lớn nhất là gì?",choices:["😒 Quá khó, không ai làm được","🧠 Phải lên kế hoạch trước: mang bình, hộp cơm, túi vải","💰 Tốn nhiều tiền hơn khi dùng đồ tái sử dụng","📚 Ảnh hưởng đến việc học"],correct:1,feedback_ok:"Chuẩn! Chuẩn bị trước là chìa khóa. Thói quen xanh cần thực hành chứ không chỉ có ý định tốt.",feedback_bad:"Thử thách không rác nhựa hoàn toàn có thể làm được nếu chuẩn bị trước: bình, hộp cơm, túi vải!",impact:"+3%"},
-    {img:"🤝",q:"Bạn muốn vận động cả lớp cùng hành động xanh tại căn teen nhưng nhiều bạn thờ ơ. Chiến lược nào hiệu quả nhất?",choices:["😤 Chỉ trích thẳng những bạn không làm","🎮 Tổ chức thử thách/game có bảng điểm, phần thưởng nhỏ","📢 Post lên mạng xã hội chê trường","🤷 Bỏ cuộc, mình làm một mình thôi"],correct:1,feedback_ok:"Chính xác! Game hóa hành vi xanh — như app này — là cách hiệu quả nhất để lan truyền thói quen tốt!",feedback_bad:"Tạo thử thách vui vẻ với điểm số và phần thưởng nhỏ là cách tốt nhất! Ai cũng thích chơi game hơn bị thuyết giáo.",impact:"+4%"},
-    {img:"🌏",q:"Nếu toàn bộ 1.000 học sinh FPT Hòa Lạc giảm 1 ống hút nhựa mỗi ngày trong 1 năm học (200 ngày), giảm được bao nhiêu?",choices:["📊 200.000 ống hút nhựa","🏆 Đúng — 200.000 ống hút nhựa","💡 Chỉ 100.000 — ít hơn nhiều","🌊 Không đáng kể so với rác toàn cầu"],correct:1,feedback_ok:"200.000 ống hút nhựa! Mỗi hành động nhỏ nhân lên thành con số khổng lồ khi cả cộng đồng cùng làm.",feedback_bad:"1.000 học sinh × 1 ống hút × 200 ngày = 200.000 ống hút nhựa — từ hành động đơn giản nhất!",impact:"+5%"},
-    {img:"🎯",q:"Sau 7 ngày thử thách xanh tại căn teen, điều nào QUAN TRỌNG NHẤT để duy trì thói quen lâu dài?",choices:["📸 Chụp ảnh minh chứng và đăng mạng xã hội mỗi ngày","🔄 Biến hành động thành thói quen tự động, không cần nhắc","🏅 Chờ nhà trường khen thưởng mới tiếp tục","📊 Theo dõi số liệu phức tạp mỗi ngày"],correct:1,feedback_ok:"Tuyệt vời! Thói quen tự động mạnh hơn ý chí. Sau 21 ngày lặp lại, não bộ tự làm không cần nghĩ!",feedback_bad:"Quan trọng nhất là biến nó thành thói quen tự nhiên. Hành động xanh bền vững không phụ thuộc vào khen thưởng.",impact:"+5%"},
-    {img:"🌟",q:"Bạn đã hoàn thành thử thách 7 ngày! Bước tiếp theo để lan rộng phong trào 'Căn teen xanh FPT Hòa Lạc' là gì?",choices:["😌 Xong rồi thì thôi, mình đã làm phần của mình","🌱 Chia sẻ kết quả với lớp, rủ thêm bạn tham gia tháng sau","📝 Viết báo cáo gửi BGH xin điểm cộng","🎤 Chỉ làm nếu được lên báo/truyền thông"],correct:1,feedback_ok:"Đây mới là kết thúc thật sự đẹp! Lan truyền câu chuyện của bạn — đó là cách mạnh nhất để tạo thay đổi.",feedback_bad:"Chia sẻ hành trình của bạn! Câu chuyện thực tế từ bạn bè có sức thuyết phục hơn bất kỳ bài giảng nào.",impact:"+5%"}
-  ]}
-];
-
-window.currentMission=0; window.correctCount=0; let currentScreen='home', currentMission=0, currentQ=0, correctCount=0;
-let earthHealth=72, timerInterval=null, timeLeft=30, answered=false;
-let qResults=[];
-
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  currentScreen=id;
-  document.getElementById('topbar').style.display=(id==='game')?'flex':'none';
-  document.querySelectorAll('.sb-nav-item').forEach(n=>n.classList.remove('active'));
-  if(id==='home') document.getElementById('nav-home').classList.add('active');
-  if(id==='leaderboard') document.getElementById('nav-lb').classList.add('active');
-  if(id==='games'){
-    document.getElementById('nav-games').classList.add('active');
-    document.getElementById('games-hub').style.display='block';
-    document.querySelectorAll('.game-sub').forEach(s=>s.classList.remove('active'));
-    stopRaceGame(); stopMemGame();
-  }
-}
-
-function showMap(idx){
-  showScreen('map');
-  selectMission(idx);
-}
-
-function selectMission(idx){
-  document.querySelectorAll('.mcard').forEach((c,i)=>{
-    c.classList.toggle('selected', i===idx);
-  });
-  const m=MISSIONS[idx];
-  const preview=document.getElementById('map-preview');
-  const qs=m.questions;
-  if(!qs||qs.length===0){
-    preview.innerHTML=`<div class="preview-placeholder"><div class="preview-placeholder-icon">${m.icon}</div><h3>${m.title}</h3><p>Nhiệm vụ này đang được phát triển. Hãy hoàn thành các nhiệm vụ khác trước!</p></div>`;
-    return;
-  }
-  let qList=qs.map((q,i)=>`<div class="preview-q-item"><div class="preview-q-num">${i+1}</div>${q.q.substring(0,60)}${q.q.length>60?'...':''}</div>`).join('');
-  preview.innerHTML=`<div class="preview-card">
-    <div class="preview-header">
-      <div class="preview-icon">${m.icon}</div>
-      <div class="preview-title">${m.title}</div>
-      <div class="preview-desc">${m.desc}</div>
-    </div>
-    <div class="preview-body">
-      <div class="preview-stats">
-        <div class="pstat"><div class="pstat-val">${qs.length}</div><div class="pstat-lbl">Câu hỏi</div></div>
-        <div class="pstat"><div class="pstat-val">30s</div><div class="pstat-lbl">Mỗi câu</div></div>
-        <div class="pstat"><div class="pstat-val">${qs.length*30} XP</div><div class="pstat-lbl">Tối đa</div></div>
-      </div>
-      <div class="preview-q-list">${qList}</div>
-      <button class="btn-start-mission" onclick="startMission(${idx})">🚀 Bắt đầu nhiệm vụ</button>
-    </div>
-  </div>`;
-  currentMission=idx;
-}
-
-function startMission(idx){
-  currentMission=idx; currentQ=0; correctCount=0; qResults=[]; window.currentMission=idx; window.correctCount=0;
-  const m=MISSIONS[idx];
-  document.getElementById('topbar-title').textContent=m.title;
-  showScreen('game');
-  loadQuestion();
-}
-
-function loadQuestion(){
-  const m=MISSIONS[currentMission], q=m.questions[currentQ], total=m.questions.length;
-  answered=false;
-  document.getElementById('feedback-d').className='feedback-d';
-  document.getElementById('btn-next-d').className='btn-next-d';
-  document.getElementById('topbar-progress').style.width=(currentQ/total*100)+'%';
-  document.getElementById('q-counter-d').textContent=`${currentQ+1} / ${total}`;
-  document.getElementById('q-label').textContent=`Câu ${currentQ+1} / ${total}`;
-  document.getElementById('scenario-img-d').textContent=q.img;
-  document.getElementById('scenario-q-d').textContent=q.q;
-  document.getElementById('score-display').textContent=`${correctCount} / ${currentQ}`;
-
-  // choices
-  const wrap=document.getElementById('choices-d'); wrap.innerHTML='';
-  const letters=['A','B','C','D'];
-  q.choices.forEach((c,i)=>{
-    const btn=document.createElement('button');
-    btn.className='choice-d';
-    btn.innerHTML=`<span class="choice-d-letter">${letters[i]}</span>${c}`;
-    btn.onclick=()=>selectAnswer(i,q);
-    wrap.appendChild(btn);
-  });
-
-  // q list mini
-  const ql=document.getElementById('q-list-mini'); ql.innerHTML='';
-  m.questions.forEach((_,i)=>{
-    const div=document.createElement('div');
-    let cls='qm-item', dot='qm-dot qm-dot-idle', dotTxt=(i+1)+'';
-    if(i===currentQ){cls+=' current';dot='qm-dot qm-dot-cur';dotTxt='▶';}
-    else if(i<currentQ){
-      if(qResults[i]){cls+=' done-ok';dot='qm-dot qm-dot-ok';dotTxt='✓';}
-      else{cls+=' done-bad';dot='qm-dot qm-dot-bad';dotTxt='✗';}
-    }
-    div.className=cls;
-    div.innerHTML=`<div class="${dot}">${dotTxt}</div>Câu ${i+1}`;
-    ql.appendChild(div);
-  });
-  startTimer();
-}
-
-function startTimer(){
-  clearInterval(timerInterval); timeLeft=30;
-  document.getElementById('timer-d').textContent=timeLeft;
-  timerInterval=setInterval(()=>{
-    timeLeft--;
-    document.getElementById('timer-d').textContent=timeLeft;
-    if(timeLeft<=10) document.getElementById('timer-d').style.color='#e74c3c';
-    else document.getElementById('timer-d').style.color='var(--g2)';
-    if(timeLeft<=0){clearInterval(timerInterval);if(!answered)timeUp();}
-  },1000);
-}
-
-function timeUp(){
-  const q=MISSIONS[currentMission].questions[currentQ];
-  answered=true; qResults[currentQ]=false;
-  document.querySelectorAll('.choice-d').forEach((b,i)=>{
-    b.classList.add('disabled');
-    if(i===q.correct)b.classList.add('correct');
-  });
-  showFeedback(false,q);
-}
-
-function selectAnswer(idx,q){
-  if(answered)return;
-  answered=true; clearInterval(timerInterval);
-  const isOk=idx===q.correct; qResults[currentQ]=isOk;
-  document.querySelectorAll('.choice-d').forEach(b=>b.classList.add('disabled'));
-  document.querySelectorAll('.choice-d')[idx].classList.add(isOk?'correct':'wrong');
-  if(!isOk)document.querySelectorAll('.choice-d')[q.correct].classList.add('correct');
-  if(isOk){correctCount++; window.correctCount=correctCount;}
-  document.getElementById('score-display').textContent=`${correctCount} / ${currentQ+1}`;
-  const newPct=Math.min(earthHealth+parseInt(q.impact.replace('+','')),100);
-  if(isOk){
-    document.getElementById('em-fill').style.width=newPct+'%';
-    document.getElementById('em-pct').textContent=newPct+'%';
-  }
-  showFeedback(isOk,q);
-}
-
-function showFeedback(ok,q){
-  const box=document.getElementById('feedback-d');
-  box.className='feedback-d show'+(ok?'':' bad');
-  if(!ok)box.classList.add('bad');
-  document.getElementById('fb-emoji-d').textContent=ok?'✅':'❌';
-  document.getElementById('fb-title-d').textContent=ok?'🎉 Chính xác!':'😅 Chưa đúng rồi!';
-  document.getElementById('fb-text-d').textContent=ok?q.feedback_ok:q.feedback_bad;
-  document.getElementById('fb-impact-d').innerHTML=ok
-    ?`<span class="fb-impact-pos">🏫 Trường học ${q.impact} nhờ hành động của bạn!</span>`
-    :`<span class="fb-impact-neg">⚠️ Hãy ghi nhớ để lần sau hành động đúng hơn nhé.</span>`;
-  document.getElementById('btn-next-d').className='btn-next-d show';
-}
-
-function nextQuestion(){
-  const m=MISSIONS[currentMission];
-  currentQ++;
-  if(currentQ>=m.questions.length) showResult();
-  else loadQuestion();
-}
-
-function showResult(){
-  clearInterval(timerInterval);
-  const total=MISSIONS[currentMission].questions.length;
-  const pct=Math.round(correctCount/total*100), xp=correctCount*30, impact=correctCount*4;
-  let trophy='🌱',title='Tiếp tục cố gắng!';
-  if(pct>=80){trophy='🏆';title='Xuất sắc! Học sinh xanh tiêu biểu!';}
-  else if(pct>=60){trophy='🌿';title='Tốt lắm! Bạn đang tiến bộ!';}
-  document.getElementById('result-trophy-d').textContent=trophy;
-  document.getElementById('result-title-d').textContent=title;
-  document.getElementById('result-sub-d').textContent='Hoàn thành: '+MISSIONS[currentMission].title;
-  document.getElementById('rd-score').textContent=`${correctCount}/${total}`;
-  document.getElementById('rd-xp').textContent=`+${xp} XP`;
-  showScreen('result');
-  setTimeout(()=>{
-    document.getElementById('rp-fill').style.width=Math.min(earthHealth+impact,100)+'%';
-    document.getElementById('rp-change').textContent=`+${impact}% điểm xanh trường học`;
-  },400);
-}
-
-function switchTabD(el){
-  document.querySelectorAll('.lb-tab-d').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-}
-
-// ===================================
-// MINI GAMES ENGINE
-// ===================================
-let miniGameXP = 0;
-let activeGame = '';
-
-function openMiniGame(g) {
-  document.querySelectorAll('.game-sub').forEach(s => s.classList.remove('active'));
-  document.getElementById('games-hub').style.display = 'none';
-  document.getElementById('g-' + g).classList.add('active');
-  activeGame = g;
-  if(g === 'drag') initDragGame();
-  if(g === 'memory') initMemoryGame();
-  if(g === 'race') initRaceGame();
-  if(g === 'city') initCityGame();
-}
-
-function backToHub() {
-  stopRaceGame(); stopMemGame();
-  document.querySelectorAll('.game-sub').forEach(s => s.classList.remove('active'));
-  document.getElementById('games-hub').style.display = 'block';
-  document.getElementById('g-result').classList.remove('show');
-}
-
-function replayMiniGame() {
-  document.getElementById('g-result').classList.remove('show');
-  openMiniGame(activeGame);
-}
-
-function showGameResult(trophy, title, sub, xp, score) {
-  miniGameXP += xp;
-  const sbXp = document.getElementById('sb-xp');
-  if(sbXp) {
-    const cur = parseInt(sbXp.textContent) || 0;
-    sbXp.textContent = (cur + xp) + ' XP';
-  }
-  document.getElementById('gr-trophy').textContent = trophy;
-  document.getElementById('gr-title').textContent = title;
-  document.getElementById('gr-sub').textContent = sub;
-  document.getElementById('gr-xp').textContent = '+' + xp + ' XP';
-  document.getElementById('gr-score').textContent = score;
-  document.getElementById('g-result').classList.add('show');
-}
-
-// --- DRAG GAME ---
-const DRAG_DATA = [
-  {e:'🍌',n:'Vỏ chuối',t:'organic'},{e:'☕',n:'Bã cà phê',t:'organic'},
-  {e:'🥬',n:'Rau thừa',t:'organic'},{e:'🍳',n:'Vỏ trứng',t:'organic'},
-  {e:'🫚',n:'Dầu ăn thừa',t:'organic'},{e:'🍎',n:'Lõi táo',t:'organic'},
-  {e:'📰',n:'Tờ báo',t:'recycle'},{e:'🥤',n:'Chai nhựa',t:'recycle'},
-  {e:'🫙',n:'Hộp thiếc',t:'recycle'},{e:'📦',n:'Hộp giấy',t:'recycle'},
-  {e:'🪟',n:'Thủy tinh',t:'recycle'},{e:'👕',n:'Quần áo cũ',t:'recycle'},
-  {e:'🔋',n:'Pin cũ',t:'hazard'},{e:'💊',n:'Thuốc hết hạn',t:'hazard'},
-  {e:'🖨️',n:'Mực in',t:'hazard'},{e:'🧴',n:'Chai hóa chất',t:'hazard'},
-  {e:'🍱',n:'Hộp xốp',t:'general'},{e:'🧻',n:'Khăn giấy bẩn',t:'general'},
-  {e:'🩹',n:'Băng gạc cũ',t:'general'},{e:'✏️',n:'Bút chì gãy',t:'general'},
-];
-let dScore=0, dRound=0, dItems=[], dAnswered=0;
-
-function initDragGame() {
-  dScore=0; dRound=0;
-  document.getElementById('drag-score-d').textContent='✅ 0 đúng';
-  nextDragRound();
-}
-
-function nextDragRound() {
-  dRound++; dAnswered=0;
-  document.getElementById('drag-next-btn').style.display='none';
-  document.getElementById('drag-fb').className='drag-fb';
-  ['organic','recycle','hazard','general'].forEach(z => {
-    const el = document.getElementById('dz-'+z);
-    el.innerHTML=''; el.className='dz-drop';
-  });
-  const shuffled=[...DRAG_DATA].sort(()=>Math.random()-0.5).slice(0,8);
-  dItems=shuffled;
-  const pool=document.getElementById('d-pool'); pool.innerHTML='';
-  shuffled.forEach((item,i)=>{
-    const el=document.createElement('div');
-    el.className='drag-item'; el.draggable=true; el.id='di-'+i;
-    el.dataset.type=item.t; el.dataset.idx=i;
-    el.textContent=item.e+' '+item.n;
-    el.addEventListener('dragstart',e=>{e.dataTransfer.setData('text',i+':'+item.t);el.style.opacity='0.45';});
-    el.addEventListener('dragend',()=>{el.style.opacity='1';});
-    pool.appendChild(el);
-  });
-}
-
-function dzAllow(e){e.preventDefault();}
-
-function dzDrop(e,zone){
-  e.preventDefault();
-  const data=e.dataTransfer.getData('text');
-  const [idx,type]=data.split(':');
-  const item=dItems[parseInt(idx)];
-  const dragEl=document.getElementById('di-'+idx);
-  if(!dragEl||dragEl.classList.contains('used')) return;
-  dragEl.classList.add('used');
-  const zoneEl=document.getElementById('dz-'+zone);
-  const tag=document.createElement('div');
-  const ok=type===zone;
-  tag.className='placed-tag'+(ok?'':' wrong-tag');
-  tag.textContent=item.e+' '+item.n;
-  zoneEl.appendChild(tag);
-  zoneEl.classList.add(ok?'flash-ok':'flash-bad');
-  setTimeout(()=>zoneEl.classList.remove('flash-ok','flash-bad'),500);
-  if(ok) dScore++;
-  document.getElementById('drag-score-d').textContent='✅ '+dScore+' đúng';
-  dAnswered++;
-  if(dAnswered>=8){
-    const fb=document.getElementById('drag-fb');
-    fb.className='drag-fb show'+(dScore>=6?'':' bad');
-    fb.innerHTML=(dScore>=6?'🎉':'😅')+' <strong>'+dScore+'/8 đúng!</strong> '+(dScore>=6?'Bạn là chuyên gia phân loại rác!':'Xem lại các loại rác nhé!');
-    document.getElementById('drag-next-btn').style.display='inline-block';
-    if(dRound>=3) showGameResult(dScore>=20?'🏆':'🌿',dScore>=20?'Chuyên gia rác!':'Tốt lắm!','Hoàn thành Phân loại rác',dScore*6,dScore+'/24');
-  }
-}
-
-// --- MEMORY GAME ---
-const MEM_DATA=[
-  {icon:'🌱',text:'Trồng cây',match:'CO₂↓'},{icon:'CO₂↓',text:'CO₂↓',match:'🌱'},
-  {icon:'♻️',text:'Tái chế',match:'Rác↓'},{icon:'Rác↓',text:'Rác↓',match:'♻️'},
-  {icon:'💡',text:'Đèn LED',match:'Điện↓'},{icon:'Điện↓',text:'Điện↓',match:'💡'},
-  {icon:'🚲',text:'Xe đạp',match:'Khói↓'},{icon:'Khói↓',text:'Khói↓',match:'🚲'},
-  {icon:'💧',text:'Tiết kiệm nước',match:'Nước↓'},{icon:'Nước↓',text:'Nước↓',match:'💧'},
-  {icon:'🛍️',text:'Túi vải',match:'Nhựa↓'},{icon:'Nhựa↓',text:'Nhựa↓',match:'🛍️'},
-  {icon:'☀️',text:'Điện mặt trời',match:'Sạch↑'},{icon:'Sạch↑',text:'Sạch↑',match:'☀️'},
-  {icon:'🥦',text:'Ăn rau xanh',match:'Xanh↑'},{icon:'Xanh↑',text:'Xanh↑',match:'🥦'},
-];
-let mFlipped=[],mMatched=0,mMoves=0,mLocked=false,mTimer=null,mSecs=0;
-
-function stopMemGame(){clearInterval(mTimer);}
-
-function initMemoryGame(){
-  mFlipped=[];mMatched=0;mMoves=0;mLocked=false;mSecs=0;
-  clearInterval(mTimer);
-  mTimer=setInterval(()=>{mSecs++;document.getElementById('mem-time-d').textContent=mSecs+'s';document.getElementById('mem-xp-d').textContent='+'+(Math.max(20,80-mMoves*2));},1000);
-  document.getElementById('mem-pairs-d').textContent='0/8';
-  document.getElementById('mem-moves-d').textContent='0';
-  document.getElementById('mem-time-d').textContent='0s';
-  const cards=[...MEM_DATA].sort(()=>Math.random()-0.5);
-  const grid=document.getElementById('mem-grid-d'); grid.innerHTML='';
-  cards.forEach((card,i)=>{
-    const el=document.createElement('div');
-    el.className='mc'; el.dataset.match=card.match; el.dataset.icon=card.icon;
-    el.innerHTML=`<div class="mc-inner"><div class="mc-front">🌿</div><div class="mc-back"><div class="mc-back-icon">${card.icon}</div><div class="mc-back-text">${card.text}</div></div></div>`;
-    el.onclick=()=>flipMem(el);
-    grid.appendChild(el);
-  });
-}
-
-function flipMem(el){
-  if(mLocked||el.classList.contains('flipped')||el.classList.contains('matched')) return;
-  el.classList.add('flipped'); mFlipped.push(el);
-  if(mFlipped.length===2){
-    mMoves++; document.getElementById('mem-moves-d').textContent=mMoves; mLocked=true;
-    const [a,b]=mFlipped;
-    const ok=a.dataset.icon===b.dataset.match&&b.dataset.icon===a.dataset.match;
-    if(ok){
-      a.classList.add('matched');b.classList.add('matched');
-      mMatched++; document.getElementById('mem-pairs-d').textContent=mMatched+'/8';
-      mFlipped=[];mLocked=false;
-      if(mMatched===8){clearInterval(mTimer);const xp=Math.max(20,80-mMoves*2);setTimeout(()=>showGameResult('🃏','Trí nhớ siêu đẳng!','Hoàn thành Lật thẻ',xp,mMoves+' lượt'),500);}
-    } else {
-      setTimeout(()=>{a.classList.remove('flipped');b.classList.remove('flipped');mFlipped=[];mLocked=false;},900);
-    }
-  }
-}
-
-// --- RACE GAME ---
-const RACE_DATA=[
-  {q:"Loại bóng đèn nào tiết kiệm điện nhất?",c:["Bóng sợi đốt","Đèn LED","Đèn huỳnh quang","Đèn halogen"],ok:1},
-  {q:"Tắm bao nhiêu phút để tiết kiệm nước nhất?",c:["20-30 phút","15 phút","5-10 phút","Tắm bồn"],ok:2},
-  {q:"Rác nào bỏ vào thùng hữu cơ?",c:["Pin cũ","Chai nhựa","Vỏ chuối","Hộp xốp"],ok:2},
-  {q:"Nhiệt độ điều hòa tiết kiệm điện nhất?",c:["16-18°C","20-22°C","25-27°C","30°C+"],ok:2},
-  {q:"Vòi nước nhỏ giọt lãng phí bao nhiêu/năm?",c:["100 lít","1.000 lít","5.000 lít","20.000 lít"],ok:3},
-  {q:"Mang gì đi siêu thị để giảm rác nhựa?",c:["Túi nilon","Túi vải cá nhân","Hộp xốp","Không cần"],ok:1},
-  {q:"'Vampire power' là gì?",c:["Năng lượng gió","Điện thiết bị ở chế độ chờ","Điện mặt trời","Pin dự phòng"],ok:1},
-  {q:"Thời trang secondhand giúp gì cho môi trường?",c:["Không ích gì","Tốn nhiều tiền hơn","Giảm ô nhiễm ngành may mặc","Chỉ tiết kiệm tiền"],ok:2},
-];
-let rQ=0,rSpeed=0,rPos=5,rTimer=null,rAnswered=false,rScore=0;
-
-function stopRaceGame(){clearInterval(rTimer);}
-
-function initRaceGame(){
-  rQ=0;rSpeed=0;rPos=5;rScore=0;
-  document.getElementById('race-car-d').style.left='5%';
-  buildRoadD(); loadRaceQD();
-}
-
-function buildRoadD(){
-  const c=document.getElementById('road-lines-d'); c.innerHTML='';
-  const dur=Math.max(0.3,1-rSpeed*0.08);
-  for(let i=0;i<6;i++){
-    const l=document.createElement('div');
-    l.className='road-line-d';
-    l.style.right=(i*18)+'%';
-    l.style.animationDelay=(-i*0.15)+'s';
-    l.style.animationDuration=dur+'s';
-    c.appendChild(l);
-  }
-}
-
-function loadRaceQD(){
-  if(rQ>=RACE_DATA.length){
-    const xp=rScore*12;
-    showGameResult(rScore>=6?'🏎️':'🌿',rScore>=6?'Tay đua xuất sắc!':'Cần luyện thêm!','Hoàn thành Đua xe xanh',xp,rScore+'/8 đúng');
-    return;
-  }
-  rAnswered=false;
-  const q=RACE_DATA[rQ];
-  document.getElementById('rq-text-d').textContent=q.q;
-  document.getElementById('race-lap-d').textContent='Câu '+(rQ+1)+' / '+RACE_DATA.length;
-  document.getElementById('spd-badge-d').textContent='🏎️ Tốc độ: '+rSpeed;
-  const wrap=document.getElementById('rq-choices-d'); wrap.innerHTML='';
-  q.c.forEach((ch,i)=>{
-    const btn=document.createElement('button');
-    btn.className='rq-choice'; btn.textContent=ch;
-    btn.onclick=()=>answerRaceD(i,q.ok,btn);
-    wrap.appendChild(btn);
-  });
-  let tLeft=100;
-  document.getElementById('rq-fill-d').style.width='100%';
-  document.getElementById('rq-fill-d').style.background='linear-gradient(90deg,var(--g3),var(--amber))';
-  clearInterval(rTimer);
-  rTimer=setInterval(()=>{
-    tLeft-=2; document.getElementById('rq-fill-d').style.width=tLeft+'%';
-    if(tLeft<=20) document.getElementById('rq-fill-d').style.background='linear-gradient(90deg,#e74c3c,#f59e0b)';
-    if(tLeft<=0){clearInterval(rTimer);if(!rAnswered){rAnswered=true;document.querySelectorAll('.rq-choice').forEach(b=>b.classList.add('disabled'));document.querySelectorAll('.rq-choice')[q.ok].classList.add('correct');rPos=Math.max(rPos-3,5);document.getElementById('race-car-d').style.left=rPos+'%';rQ++;setTimeout(loadRaceQD,1200);}}
-  },80);
-}
-
-function answerRaceD(idx,ok,btn){
-  if(rAnswered) return;
-  rAnswered=true; clearInterval(rTimer);
-  document.querySelectorAll('.rq-choice').forEach(b=>b.classList.add('disabled'));
-  const isOk=idx===ok;
-  btn.classList.add(isOk?'correct':'wrong');
-  document.querySelectorAll('.rq-choice')[ok].classList.add('correct');
-  if(isOk){rScore++;rSpeed=Math.min(rSpeed+1,8);rPos=Math.min(rPos+11,82);}
-  else{rSpeed=Math.max(rSpeed-1,0);rPos=Math.max(rPos-5,5);}
-  document.getElementById('race-car-d').style.left=rPos+'%';
-  document.getElementById('spd-badge-d').textContent='🏎️ Tốc độ: '+rSpeed;
-  buildRoadD(); rQ++; setTimeout(loadRaceQD,1200);
-}
-
-// --- CITY GAME ---
-const BLDS=[
-  {icon:'🌳',name:'Công viên cây xanh',cost:50,env:15,happy:10,pop:0},
-  {icon:'⚡',name:'Điện mặt trời',cost:80,env:20,happy:5,pop:0},
-  {icon:'🏫',name:'Trường học xanh',cost:100,env:10,happy:15,pop:30},
-  {icon:'♻️',name:'Trạm tái chế',cost:60,env:25,happy:5,pop:0},
-  {icon:'🚲',name:'Làn xe đạp',cost:40,env:12,happy:8,pop:0},
-  {icon:'💧',name:'Lọc nước sạch',cost:70,env:18,happy:12,pop:20},
-  {icon:'🌻',name:'Vườn rau cộng đồng',cost:45,env:10,happy:20,pop:10},
-  {icon:'🏥',name:'Trạm y tế xanh',cost:90,env:8,happy:25,pop:40},
-];
-let cBudget=500,cEnv=0,cHappy=0,cPop=0,cScore=0,cSelected=null,cGrid=[];
-
-function initCityGame(){
-  cBudget=500;cEnv=0;cHappy=0;cPop=0;cScore=0;cSelected=null;cGrid=new Array(18).fill(null);
-  updateCityD(); renderBldsD(); renderCityGridD();
-}
-
-function renderBldsD(){
-  const list=document.getElementById('bld-list-d'); list.innerHTML='';
-  BLDS.forEach((b,i)=>{
-    const el=document.createElement('div');
-    el.className='bld-item'+(cBudget<b.cost?' no-budget':'')+(cSelected===i?' sel':'');
-    el.id='bld-'+i;
-    el.innerHTML=`<div class="bld-icon">${b.icon}</div><div class="bld-info"><div class="bld-name">${b.name}</div><div class="bld-meta">💰${b.cost} · 🌿+${b.env} 😊+${b.happy}</div></div>`;
-    el.onclick=()=>{cSelected=i;document.querySelectorAll('.bld-item').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');};
-    list.appendChild(el);
-  });
-}
-
-function renderCityGridD(){
-  const grid=document.getElementById('city-grid-d'); grid.innerHTML='';
-  for(let i=0;i<18;i++){
-    const cell=document.createElement('div');
-    cell.className='cc'+(cGrid[i]?' has-building':'');
-    cell.textContent=cGrid[i]?cGrid[i].icon:'';
-    cell.title=cGrid[i]?cGrid[i].name:'Nhấn để đặt công trình';
-    cell.onclick=()=>{
-      if(cSelected===null||cGrid[i]) return;
-      const b=BLDS[cSelected];
-      if(cBudget<b.cost) return;
-      cBudget-=b.cost; cGrid[i]=b;
-      cEnv=Math.min(100,cEnv+b.env); cHappy=Math.min(100,cHappy+b.happy);
-      cPop+=b.pop; cScore+=b.env+b.happy;
-      cell.textContent=b.icon; cell.classList.add('has-building');
-      cell.title=b.name;
-      document.getElementById('city-budget-d').textContent='💰 '+cBudget+' xu';
-      updateCityD(); renderBldsD();
-    };
-    grid.appendChild(cell);
-  }
-}
-
-function updateCityD(){
-  document.getElementById('cenv').textContent=cEnv;
-  document.getElementById('chappy').textContent=cHappy;
-  document.getElementById('cpop').textContent=cPop;
-  document.getElementById('csd-env').textContent=cEnv+'%';
-  document.getElementById('csd-happy').textContent=cHappy+'%';
-  document.getElementById('csd-pop').textContent=cPop;
-  document.getElementById('csd-score').textContent=cScore;
-}
-
-function finishCityGame(){
-  const xp=Math.round(cScore*0.8);
-  let trophy='🌱',title='Thành phố đang phát triển!';
-  if(cScore>=150){trophy='🏆';title='Thành phố xanh hoàn hảo!';}
-  else if(cScore>=80){trophy='🌍';title='Thành phố xanh tốt!';}
-  showGameResult(trophy,title,'Hoàn thành Xây thành phố xanh',xp,cScore+' điểm xanh');
-}
-
-</script>
-<script>
-function switchAuthTab(t){ if(window._switchAuthTab) window._switchAuthTab(t); }
-function pickAvatar(el,e){ if(window._pickAvatar) window._pickAvatar(el,e); }
-function doLogin(){ if(window._doLogin) window._doLogin(); }
-function doRegister(){ if(window._doRegister) window._doRegister(); }
-function doLogout(){ if(window._doLogout) window._doLogout(); }
-</script>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, getDocs, orderBy, query, limit } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAVrL8Bq6RHL77EyX-8aVfQBJ1LwmQPD-A",
-  authDomain: "hanhtinhxanh-8cb85.firebaseapp.com",
-  projectId: "hanhtinhxanh-8cb85",
-  storageBucket: "hanhtinhxanh-8cb85.firebasestorage.app",
-  messagingSenderId: "150062325711",
-  appId: "1:150062325711:web:b7b7a955a6eac33ea47cba"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-let currentUser = null;
-let selectedAvatar = '🌱';
-let userXP = 0;
-let userStreak = 0;
-let completedMissions = [];
-
-window._pickAvatar = window.pickAvatar = function(el, emoji) {
-  document.querySelectorAll('#form-register span').forEach(s => s.style.border = '2px solid transparent');
-  el.style.border = '2px solid #2ecc71';
-  selectedAvatar = emoji;
-};
-
-window._switchAuthTab = window.switchAuthTab = function(tab) {
-  document.getElementById('form-login').style.display = tab === 'login' ? 'block' : 'none';
-  document.getElementById('form-register').style.display = tab === 'register' ? 'block' : 'none';
-  document.getElementById('tab-login').style.background = tab === 'login' ? '#1a7a4a' : 'transparent';
-  document.getElementById('tab-login').style.color = tab === 'login' ? 'white' : '#7aad92';
-  document.getElementById('tab-register').style.background = tab === 'register' ? '#1a7a4a' : 'transparent';
-  document.getElementById('tab-register').style.color = tab === 'register' ? 'white' : '#7aad92';
-  document.getElementById('auth-msg').textContent = '';
-};
-
-function showAuthMsg(msg, isError = true) {
-  const el = document.getElementById('auth-msg');
-  el.textContent = msg;
-  el.style.color = isError ? '#e74c3c' : '#1a7a4a';
-}
-
-window._doLogin = window.doLogin = async function() {
-  const email = document.getElementById('login-email').value.trim();
-  const pass = document.getElementById('login-pass').value;
-  if (!email || !pass) return showAuthMsg('Vui lòng điền đầy đủ thông tin!');
-  showAuthMsg('Đang đăng nhập...', false);
-  try {
-    await signInWithEmailAndPassword(auth, email, pass);
-  } catch(e) {
-    const msgs = {
-      'auth/user-not-found': 'Email không tồn tại!',
-      'auth/wrong-password': 'Mật khẩu không đúng!',
-      'auth/invalid-credential': 'Email hoặc mật khẩu không đúng!',
-      'auth/invalid-email': 'Email không hợp lệ!'
-    };
-    showAuthMsg(msgs[e.code] || 'Đăng nhập thất bại!');
-  }
-};
-
-window._doRegister = window.doRegister = async function() {
-  const name = document.getElementById('reg-name').value.trim();
-  const email = document.getElementById('reg-email').value.trim();
-  const pass = document.getElementById('reg-pass').value;
-  if (!name || !email || !pass) return showAuthMsg('Vui lòng điền đầy đủ thông tin!');
-  if (pass.length < 6) return showAuthMsg('Mật khẩu tối thiểu 6 ký tự!');
-  showAuthMsg('Đang tạo tài khoản...', false);
-  try {
-    const cred = await createUserWithEmailAndPassword(auth, email, pass);
-    await setDoc(doc(db, 'users', cred.user.uid), {
-      displayName: name,
-      avatar: selectedAvatar,
-      email: email,
-      xp: 0,
-      streak: 0,
-      completedMissions: [],
-      createdAt: new Date().toISOString(),
-      lastLogin: new Date().toISOString()
-    });
-  } catch(e) {
-    const msgs = {
-      'auth/email-already-in-use': 'Email này đã được đăng ký!',
-      'auth/invalid-email': 'Email không hợp lệ!',
-      'auth/weak-password': 'Mật khẩu quá yếu!'
-    };
-    showAuthMsg(msgs[e.code] || 'Đăng ký thất bại!');
-  }
-};
-
-window._doLogout = window.doLogout = async function() {
-  await signOut(auth);
-};
-
-async function loadUserData(uid) {
-  const snap = await getDoc(doc(db, 'users', uid));
-  if (snap.exists()) {
-    const data = snap.data();
-    userXP = data.xp || 0;
-    userStreak = data.streak || 0;
-    completedMissions = data.completedMissions || [];
-    const name = data.displayName || 'Người chơi';
-    const avatar = data.avatar || '🌍';
-    document.getElementById('sb-xp').textContent = userXP + ' XP';
-    document.getElementById('sb-xp-streak-val').textContent = '🔥 ' + userStreak + ' ngày';
-    document.getElementById('sb-user-name').textContent = name;
-    document.getElementById('sb-user-avatar').textContent = avatar;
-    completedMissions.forEach(idx => {
-      const card = document.getElementById('mcard-' + idx);
-      if (card && !card.querySelector('.mcard-done')) {
-        const badge = document.createElement('span');
-        badge.className = 'mcard-done';
-        badge.textContent = '✓ Xong';
-        card.appendChild(badge);
-      }
-    });
-    await updateDoc(doc(db, 'users', uid), { lastLogin: new Date().toISOString() });
-    await loadLeaderboard();
-  }
-}
-
-async function saveProgress(missionIdx, correct, total) {
-  if (!currentUser) return;
-  const xpEarned = correct * 30;
-  const newXP = userXP + xpEarned;
-  const newMissions = completedMissions.includes(missionIdx) ? completedMissions : [...completedMissions, missionIdx];
-  userXP = newXP;
-  completedMissions = newMissions;
-  document.getElementById('sb-xp').textContent = newXP + ' XP';
-  await updateDoc(doc(db, 'users', currentUser.uid), {
-    xp: newXP,
-    completedMissions: newMissions
-  });
-}
-window.saveProgress = saveProgress;
-
-async function loadLeaderboard() {
-  try {
-    const q = query(collection(db, 'users'), orderBy('xp', 'desc'), limit(10));
-    const snap = await getDocs(q);
-    const lbLeft = document.getElementById('lb-rows');
-    if (!lbLeft) return;
-    lbLeft.innerHTML = '';
-    let rank = 1;
-    snap.forEach(d => {
-      const data = d.data();
-      const isYou = currentUser && d.id === currentUser.uid;
-      const row = document.createElement('div');
-      row.className = 'lb-row-d' + (isYou ? ' you' : '');
-      row.innerHTML = `<div class="lb-rank-d">${rank}</div><div class="lb-avatar-d">${data.avatar||'🌍'}</div><div class="lb-name-d">${data.displayName||'Người chơi'}${isYou?' <span class="lb-you-d">Bạn</span>':''}</div><div class="lb-score-d">${(data.xp||0).toLocaleString()} XP</div>`;
-      lbLeft.appendChild(row);
-      rank++;
-    });
-  } catch(e) { console.log('LB error:', e); }
-}
-
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    currentUser = user;
-    document.getElementById('auth-screen').style.display = 'none';
-    await loadUserData(user.uid);
-  } else {
-    currentUser = null;
-    document.getElementById('auth-screen').style.display = 'flex';
-  }
-});
-
-const origShowResult = window.showResult;
-window.showResult = function() {
-  origShowResult && origShowResult();
-  const total = window.MISSIONS ? window.MISSIONS[window.currentMission]?.questions?.length || 5 : 5;
-  saveProgress(window.currentMission, window.correctCount, total);
-};
-</script>
-</body>
-</html>
+  { // 0. Phân loại rác thông minh (MỚI)
+    title:"Phân loại rác thông minh", icon:"♻️",
+    desc:"5 tình huống thực tế về phân loại rác hữu cơ, tái chế và rác thải nguy hại.",
+    questions:[
+      {img:"🥤",q:"Bạn uống hết một lon nước ngọt bằng nhôm. Nên bỏ vào thùng rác nào?",choices:["♻️ Thùng tái chế (lon nhôm)","🍃 Thùng rác hữu cơ","🗑️ Thùng rác thông thường","🔴 Thùng rác nguy hại"],correct:0,feedback_ok:"Hoàn hảo! Lon nhôm có thể tái chế vô hạn, tiết kiệm 95% năng lượng so với sản xuất từ quặng.",feedback_bad:"Lon nhôm hoàn toàn có thể tái chế. Bỏ vào thùng tái chế để bảo vệ tài nguyên.",impact:"+3%"},
+      {img:"🍳",q:"Dầu ăn đã qua sử dụng sau khi chiên rán. Xử lý thế nào?",choices:["🚰 Đổ thẳng xuống bồn rửa chén","🗑️ Đổ vào thùng rác thông thường","🍃 Đổ vào thùng hữu cơ","⚱️ Cho vào chai nhựa, mang đến điểm thu gom dầu thải"],correct:3,feedback_ok:"Chuẩn xác! Dầu thải gây tắc cống và ô nhiễm nguồn nước. Mang đến điểm thu gom là hành động đúng đắn.",feedback_bad:"Tuyệt đối không đổ dầu xuống cống! Tốt nhất là thu gom vào chai và mang đến điểm tái chế dầu thải.",impact:"+4%"},
+      {img:"💊",q:"Thuốc kháng sinh hết hạn. Bạn vứt bỏ như thế nào?",choices:["🗑️ Bỏ thẳng vào thùng rác thông thường","🚽 Xả xuống bồn cầu","🔴 Mang đến điểm thu gom rác nguy hại hoặc trả lại nhà thuốc","🍃 Vứt vào thùng hữu cơ"],correct:2,feedback_ok:"Đúng rồi! Thuốc hết hạn là rác thải nguy hại, cần xử lý đúng cách để tránh ô nhiễm môi trường và nguồn nước.",feedback_bad:"Thuốc thuộc nhóm rác nguy hại. Hãy mang đến điểm thu gom chuyên dụng hoặc trả lại nhà thuốc để xử lý an toàn.",impact:"+5%"},
+      {img:"🌿",q:"Lá cây khô, cỏ cắt từ vườn trường. Nên bỏ vào đâu?",choices:["🗑️ Rác thông thường","🍃 Thùng rác hữu cơ (ủ phân)","🔥 Đốt để tiết kiệm thời gian","♻️ Thùng tái chế"],correct:1,feedback_ok:"Tuyệt vời! Rác vườn là nguồn hữu cơ tuyệt vời để làm phân compost, giúp đất tơi xốp và màu mỡ.",feedback_bad:"Rác xanh như lá cây, cỏ nên được ủ phân hữu cơ. Đốt tạo ra khói bụi và CO₂ có hại.",impact:"+2%"},
+      {img:"🖨️",q:"Hộp mực in đã qua sử dụng (cartridge). Bạn làm gì?",choices:["🗑️ Bỏ vào thùng rác thường","♻️ Thùng tái chế thông thường","🔴 Xem như rác nguy hại và gửi về nhà sản xuất","🍃 Bỏ thùng hữu cơ"],correct:2,feedback_ok:"Chính xác! Hộp mực in chứa mực thải và nhựa composite, cần được xử lý đặc biệt. Nhiều nhà sản xuất có chương trình thu hồi.",feedback_bad:"Hộp mực in là rác thải điện tử nguy hại, không thể bỏ thùng thường. Hãy tìm chương trình tái chế của nhà sản xuất.",impact:"+4%"}
+    ]},
+  { // 1. Mua sắm có ý thức (MỚI)
+    title:"Mua sắm có ý thức", icon:"🛍️",
+    desc:"Chọn sản phẩm thân thiện với môi trường trong siêu thị ảo.",
+    questions:[
+      {img:"🥛",q:"Bạn cần mua sữa chua. Chọn loại nào ít nhựa nhất?",choices:["🥤 Hũ nhựa nhỏ, uống liền","🍶 Hũ thủy tinh có thể tái sử dụng","🧃 Ống hút nhựa dẻo","📦 Hộp giấy có tráng nhôm"],correct:1,feedback_ok:"Xuất sắc! Hũ thủy tinh có thể rửa sạch và tái sử dụng làm hộp đựng gia vị hoặc trồng cây. Giảm rác thải tuyệt đối.",feedback_bad:"Hũ thủy tinh là lựa chọn bền vững nhất. Nhựa dùng một lần và hộp giấy tráng nhôm khó tái chế hơn.",impact:"+3%"},
+      {img:"🧽",q:"Bạn cần mua miếng rửa bát. Lựa chọn nào xanh nhất?",choices:["🧽 Miếng bọt biển màu xanh thông thường","🌱 Miếng rửa làm từ sợi mướp (xơ mướp) và sợi tự nhiên","🧼 Miếng rửa có tẩm hóa chất tẩy rửa","🪥 Bàn chải cọ nhựa"],correct:1,feedback_ok:"Tuyệt vời! Xơ mướp là vật liệu tự nhiên, phân hủy sinh học. Khi hết dùng có thể ủ compost.",feedback_bad:"Xơ mướp là lựa chọn thân thiện nhất: tự nhiên, không nhựa, có thể ủ compost sau khi sử dụng.",impact:"+3%"},
+      {img:"🍞",q:"Mua bánh mì, bạn chọn cách đóng gói nào?",choices:["📦 Bánh mì đóng gói sẵn trong túi nhựa kín","🎒 Bánh mì tươi, bỏ vào túi vải cá nhân mang theo","🥡 Túi giấy có lớp ni lông bên trong","📦 Hộp xốp sạch sẽ"],correct:1,feedback_ok:"Hoàn hảo! Túi vải tái sử dụng là giải pháp zero-waste tuyệt vời. Hãy luôn mang theo túi vải khi đi mua thực phẩm.",feedback_bad:"Dùng túi vải cá nhân để đựng bánh mì tươi là cách xanh nhất, không tạo ra rác thải nhựa hay giấy không cần thiết.",impact:"+4%"},
+      {img:"🧴",q:"Bạn cần mua sữa tắm. Chọn loại nào có ít tác động môi trường nhất?",choices:["🧴 Chai nhựa to 1 lít, giá rẻ","🔄 Sữa tắm dạng bánh (soap bar) không bao bì nhựa","🌿 Sữa tắm chiết xuất thiên nhiên nhưng đựng chai nhựa","📦 Sữa tắm trong hộp giấy có bọc nhựa"],correct:1,feedback_ok:"Đúng rồi! Bánh sữa tắm không cần chai nhựa, tiết kiệm nước trong vận chuyển, thường có thành phần tự nhiên hơn.",feedback_bad:"Bánh sữa tắm là lựa chọn tối ưu: không nhựa, nhẹ, tiết kiệm nước và năng lượng vận chuyển.",impact:"+5%"},
+      {img:"🥫",q:"Mua thực phẩm đóng hộp. Bạn ưu tiên chất liệu nào?",choices:["🥫 Hộp nhựa trong suốt","🥫 Hộp thiếc (sắt tây)","📦 Hộp giấy tráng nhôm (Tetra Pak)","🍯 Hũ thủy tinh"],correct:3,feedback_ok:"Tuyệt! Hũ thủy tinh tái sử dụng được nhiều lần, hoàn toàn có thể tái chế vô hạn mà không giảm chất lượng.",feedback_bad:"Thủy tinh là vật liệu bền vũng nhất: tái chế 100%, tái sử dụng nhiều lần. Hãy ưu tiên mua thực phẩm đựng trong lọ thủy tinh.",impact:"+3%"}
+    ]},
+  { // 2. Tiết kiệm điện tại nhà (MỚI)
+    title:"Tiết kiệm điện tại nhà", icon:"💡",
+    desc:"Tìm ra những thói quen lãng phí điện và cách khắc phục hiệu quả.",
+    questions:[
+      {img:"❄️",q:"Tủ lạnh để ở nhiệt độ bao nhiêu là vừa tiết kiệm điện vừa bảo quản tốt?",choices:["❄️ Ngăn mát 0°C, ngăn đá -18°C","🌡️ Ngăn mát 3-5°C, ngăn đá -15°C","🔥 Ngăn mát 7°C, ngăn đá -5°C","💨 Để ở mức cao nhất luôn"],correct:1,feedback_ok:"Chính xác! 3-5°C cho ngăn mát và -15°C cho ngăn đá là lý tưởng. Mỗi 1°C thấp hơn tiêu tốn thêm 6% điện.",feedback_bad:"Nhiệt độ hợp lý: ngăn mát 3-5°C, ngăn đá -15°C. Không để quá lạnh sẽ gây lãng phí điện.",impact:"+3%"},
+      {img:"📺",q:"Tivi ở chế độ chờ (standby) vẫn tiêu thụ điện. Mức tiêu thụ trung bình?",choices:["🔌 Gần như không đáng kể, dưới 0.1W","⚡ Khoảng 1-5W tùy thiết bị","🔥 10-20W như khi bật","💡 Lên đến 50W"],correct:1,feedback_ok:"Đúng! Nhiều thiết bị tiêu thụ 1-5W khi ở chế độ chờ. Rút phích cắm hoặc dùng ổ cắm công tắc để tiết kiệm.",feedback_bad:"Chế độ chờ có thể tiêu thụ 1-5W. Tuy nhỏ nhưng nhân với nhiều thiết bị và thời gian dài sẽ thành con số đáng kể.",impact:"+3%"},
+      {img:"👕",q:"Máy giặt: yếu tố nào ảnh hưởng nhiều nhất đến lượng điện tiêu thụ?",choices:["💧 Lượng nước sử dụng","🌡️ Nhiệt độ nước giặt","⚙️ Chế độ vắt ly tâm","🕒 Thời gian giặt"],correct:1,feedback_ok:"Hoàn hảo! Đun nóng nước chiếm 75-90% điện năng của máy giặt. Giặt nước lạnh tiết kiệm điện rất nhiều.",feedback_bad:"Nhiệt độ nước giặt là yếu tố quan trọng nhất. Hãy chọn giặt nước lạnh hoặc 30°C thay vì 60°C.",impact:"+4%"},
+      {img:"💡",q:"Bóng đèn LED 10W sáng tương đương bóng sợi đốt bao nhiêu watt?",choices:["💡 40W","💡 60W","💡 75W","💡 100W"],correct:2,feedback_ok:"Chuẩn! LED 10W = sợi đốt 75W. LED tiết kiệm 85% điện và tuổi thọ cao gấp 25 lần.",feedback_bad:"LED 10W cho ánh sáng tương đương bóng sợi đốt 75W, tiết kiệm điện vượt trội.",impact:"+2%"},
+      {img:"🖨️",q:"Máy tính để bàn (desktop) khi không sử dụng trong giờ nghỉ trưa 1 tiếng. Bạn làm gì?",choices:["💤 Để chế độ ngủ (sleep)","📴 Tắt hẳn (shut down)","🖥️ Để màn hình tắt nhưng CPU chạy","🔌 Rút dây nguồn"],correct:1,feedback_ok:"Tốt nhất là tắt hẳn. Chế độ ngủ vẫn tiêu thụ 2-5W. Tắt máy khi không dùng trên 30 phút là thói quen tiết kiệm.",feedback_bad:"Hãy tắt hẳn máy tính nếu không dùng trên 30 phút. Chế độ ngủ vẫn hao điện, dù ít.",impact:"+3%"}
+    ]},
+  { // 3. Tiết kiệm nước sạch (MỚI)
+    title:"Tiết kiệm nước sạch", icon:"💧",
+    desc:"Khám phá cách tiết kiệm nước trong sinh hoạt hàng ngày.",
+    questions:[
+      {img:"🚽",q:"Bồn cầu thông thường mỗi lần xả tốn bao nhiêu lít nước?",choices:["💧 3 lít","💧 6-9 lít","💧 12-15 lít","💧 Trên 20 lít"],correct:1,feedback_ok:"Đúng! Bồn cầu cũ tốn 9-12 lít, bồn cầu tiết kiệm nước chỉ 4-6 lít. Đặt chai nhựa đầy nước vào két nước để giảm lượng xả.",feedback_bad:"Mỗi lần xả bồn cầu tốn 6-9 lít nước. Hãy lắp bồn cầu tiết kiệm nước hoặc đặt một chai nhựa đầy nước vào két nước.",impact:"+3%"},
+      {img:"🌧️",q:"Nước mưa có thể dùng cho hoạt động nào sau đây sau khi lọc thô?",choices:["🥤 Uống trực tiếp","🛁 Tắm rửa","💧 Tưới cây, rửa sân, lau nhà","🍳 Nấu ăn"],correct:2,feedback_ok:"Tốt! Nước mưa sau khi lọc cặn có thể dùng tưới cây, rửa xe, lau sàn. Tiết kiệm nước máy đáng kể.",feedback_bad:"Tuyệt đối không uống nước mưa chưa qua xử lý. Nhưng dùng để tưới cây, rửa xe là rất tốt.",impact:"+3%"},
+      {img:"🪥",q:"Cách đánh răng tiết kiệm nước nhất là?",choices:["⏲️ Tắt vòi khi chải, dùng cốc nước để súc miệng","💧 Để vòi chảy nhỏ giọt khi chải","🚰 Mở vòi to để chải nhanh","🥤 Dùng cốc nước nhưng để vòi chảy liên tục"],correct:0,feedback_ok:"Chuẩn không cần chỉnh! Tắt vòi khi chải răng tiết kiệm đến 10 lít nước mỗi lần.",feedback_bad:"Cách tốt nhất: tắt vòi nước khi đang chải răng, chỉ mở khi cần súc miệng. Tiết kiệm rất nhiều nước.",impact:"+4%"},
+      {img:"🍽️",q:"Rửa bát tay với chậu nước thay vì để vòi chảy liên tục tiết kiệm bao nhiêu phần trăm?",choices:["📉 10%","📉 30%","📉 60%","📉 80%"],correct:2,feedback_ok:"Tuyệt vời! Rửa chậu so với xả vòi liên tục tiết kiệm đến 60% nước. Ngâm bát trong chậu nước xà phòng rồi tráng một lượt.",feedback_bad:"Rửa bát với chậu nước tiết kiệm khoảng 60% so với để vòi chảy. Hãy thay đổi thói quen nhỏ này.",impact:"+3%"},
+      {img:"🔧",q:"Một vòi nước bị rò rỉ, nhỏ giọt 1 giọt/giây. Lượng nước thất thoát trong 1 năm?",choices:["💧 1.000 lít","💧 5.000 lít","💧 12.000 lít","💧 20.000 lít"],correct:2,feedback_ok:"Chính xác! 1 giọt/giây = 12.000 lít/năm, đủ cho 180 lần tắm. Sửa vòi ngay khi phát hiện rò rỉ.",feedback_bad:"Một vòi nhỏ giọt 1 giọt/giây lãng phí khoảng 12.000 lít nước mỗi năm. Hãy sửa chữa ngay!",impact:"+5%"}
+    ]},
+  { // 4. Sau bữa trưa ở căn teen (MỚI)
+    title:"Sau bữa trưa ở căn teen", icon:"🥡",
+    desc:"Hộp cơm, trà sữa, ống hút — xử lý đúng cách sau mỗi bữa ăn tại căn teen FPT.",
+    questions:[
+      {img:"🍱",q:"Bạn mang cơm hộp từ nhà (hộp thủy tinh) và dùng đũa inox tái sử dụng. Sau ăn, bạn làm gì?",choices:["🚮 Bỏ hộp vào thùng rác","🧼 Rửa sạch để dùng cho bữa sau","♻️ Vứt đũa inox đi và lấy đũa mới","🗑️ Bỏ tất cả vào thùng tái chế"],correct:1,feedback_ok:"Hoàn hảo! Đồ dùng tái sử dụng là giải pháp xanh nhất. Mang cơm hộp mỗi ngày giảm lượng rác nhựa khổng lồ.",feedback_bad:"Tuyệt vời! Hãy rửa sạch hộp thủy tinh và đũa inox để dùng tiếp. Đó chính là thói quen không rác thải.",impact:"+4%"},
+      {img:"🧋",q:"Bạn mua trà sữa và nhân viên đưa ống hút nhựa. Bạn từ chối và dùng ống hút giấy. Tác động tích cực?",choices:["✅ Ống hút giấy phân hủy sinh học nhanh hơn","❌ Ống hút giấy cũng có nhựa bên trong","🤷 Không khác gì ống hút nhựa","🌿 Ống hút giấy có thể tái chế vô hạn"],correct:0,feedback_ok:"Đúng! Ống hút giấy phân hủy trong vài tuần, trong khi ống hút nhựa tồn tại 200 năm. Mỗi từ chối đều có giá trị.",feedback_bad:"Ống hút giấy phân hủy nhanh hơn rất nhiều so với nhựa. Nhưng vẫn nên ưu tiên không dùng ống hút hoặc dùng ống hút inox tái sử dụng.",impact:"+3%"},
+      {img:"🍌",q:"Bạn còn vỏ chuối và lõi táo sau bữa trưa. Căn teen có thùng rác hữu cơ. Bạn làm gì?",choices:["🗑️ Bỏ chung rác thường","🍃 Bỏ vào thùng hữu cơ để ủ phân","♻️ Bỏ vào thùng tái chế","🔥 Bỏ lên bàn cho nhân viên dẹp"],correct:1,feedback_ok:"Rất tốt! Bỏ rác thực phẩm vào thùng hữu cơ giúp chúng được ủ thành phân bón, thay vì chôn lấp gây khí mê-tan.",feedback_bad:"Rác hữu cơ nên được bỏ riêng để làm phân compost. Đừng bỏ lẫn với rác thông thường hoặc tái chế.",impact:"+2%"},
+      {img:"🧴",q:"Chai nước nhựa sau khi uống hết, bạn thấy thùng tái chế đã đầy. Bạn làm gì?",choices:["🗑️ Bỏ sang thùng rác thường","♻️ Mang về nhà hoặc tìm thùng tái chế khác","📦 Để cạnh thùng rác","💧 Nén chai và bỏ chồng lên thùng tái chế"],correct:1,feedback_ok:"Tuyệt vời! Mang chai về nhà hoặc tìm thùng tái chế khác là hành động có trách nhiệm, đảm bảo chai được tái chế đúng cách.",feedback_bad:"Đừng bỏ nhựa vào thùng rác thường khi thùng tái chế đầy. Hãy giữ lại hoặc tìm điểm thu gọi tái chế khác.",impact:"+3%"},
+      {img:"🍽️",q:"Khăn giấy ăn đã qua sử dụng, nên bỏ vào đâu?",choices:["🍃 Thùng rác hữu cơ (nếu không dính hóa chất)","🗑️ Thùng rác thông thường","♻️ Thùng tái chế giấy","🚽 Xả xuống bồn cầu"],correct:0,feedback_ok:"Đúng! Khăn giấy bẩn (thức ăn) có thể ủ phân hữu cơ. Tuy nhiên nếu có tẩy rửa thì bỏ rác thường.",feedback_bad:"Khăn giấy dùng để lau thức ăn có thể bỏ vào thùng hữu cơ. Không nên bỏ vào thùng tái chế vì sợi giấy đã quá ngắn.",impact:"+2%"}
+    ]},
+  { // 5. Tiết kiệm điện trong căn teen (MỚI)
+    title:"Tiết kiệm điện trong căn teen", icon:"💡",
+    desc:"Điều hòa, đèn, quạt — bạn có đang để lãng phí điện mà không biết không?",
+    questions:[
+      {img:"❄️",q:"Phòng căn teen đang bật điều hòa ở 20°C, nhưng chỉ có 2 người. Nhiệt độ ngoài trời 32°C. Bạn nên đề xuất gì?",choices:["🌡️ Tăng lên 25°C vẫn mát và tiết kiệm","🧥 Mặc thêm áo ấm","❄️ Giữ nguyên 20°C","🔌 Tắt điều hòa mở quạt"],correct:0,feedback_ok:"Chuẩn! 25°C là nhiệt độ cân bằng. Mỗi 1°C tăng lên tiết kiệm 6-8% điện năng.",feedback_bad:"25-26°C là nhiệt độ lý tưởng, vừa mát vừa tiết kiệm. Hãy đề xuất điều chỉnh lên mức này.",impact:"+4%"},
+      {img:"💡",q:"Lối đi và hành lang căn teen có đèn LED chiếu sáng cả ngày, nhưng trời rất sáng. Bạn làm gì?",choices:["🌞 Đề nghị tắt bớt đèn, tận dụng ánh sáng tự nhiên","😴 Không quan tâm","📸 Chụp ảnh phàn nàn trên mạng","🚶 Bỏ qua"],correct:0,feedback_ok:"Tuyệt! Tận dụng ánh sáng tự nhiên vừa tiết kiệm điện vừa tốt cho mắt. Hãy báo nhân viên hoặc tự tắt nếu có công tắc.",feedback_bad:"Hành động đúng: đề xuất tắt bớt đèn khi đủ sáng. Mỗi bóng đèn LED 20W bật 8h/ngày tốn 60kWh/tháng.",impact:"+3%"},
+      {img:"🔌",q:"Các bạn cắm sạc điện thoại, laptop cả ngày dù đã đầy pin. Điều này:",choices:["⚡ Không ảnh hưởng vì sạc thông minh tự ngắt","🔥 Tiêu hao điện lãng phí (vampire power)","💥 Có thể gây cháy nổ ngay lập tức","✅ Tốt cho pin vì luôn đầy"],correct:1,feedback_ok:"Đúng vậy! Sạc vẫn tiêu thụ điện dù không sạc pin. Nên rút sạc khỏi ổ điện khi không sử dụng.",feedback_bad:"Cắm sạc không tải vẫn tiêu hao điện (0.5-2W). Rút ra khỏi ổ khi không dùng là thói quen tiết kiệm.",impact:"+3%"},
+      {img:"🖥️",q:"Bạn thấy máy tính trong phòng tự học bật màn hình nhưng không ai dùng. Bạn sẽ:",choices:["👀 Mặc kệ","✅ Tắt màn hình hoặc báo nhân viên","🖱️ Dùng thử xem có gì","📷 Chụp ảnh đăng story"],correct:1,feedback_ok:"Hành động nhỏ ý nghĩa lớn! Tắt thiết bị không dùng là cách tiết kiệm điện cơ bản nhất.",feedback_bad:"Hãy tắt màn hình máy tính khi không sử dụng. Màn hình để sáng 30 phút không dùng gây lãng phí điện.",impact:"+2%"},
+      {img:"🌬️",q:"Sử dụng quạt trần hay điều hòa sẽ tiết kiệm điện hơn?",choices:["❄️ Điều hòa luôn tiết kiệm hơn","🌀 Quạt trần tiêu thụ điện ít hơn 90% so với điều hòa","⚖️ Tùy nhiệt độ, nhưng quạt luôn tiết kiệm hơn","🔄 Kết hợp cả hai tiết kiệm nhất"],correct:1,feedback_ok:"Chuẩn! Quạt trần công suất 50-80W, điều hòa 1000-2000W. Nếu không quá nóng, hãy dùng quạt trước khi bật điều hòa.",feedback_bad:"Quạt trần tiết kiệm điện hơn rất nhiều so với điều hòa. Hãy dùng quạt khi thời tiết không quá nóng bức.",impact:"+4%"}
+    ]},
+  { // 6. Rác nhựa mỗi ngày ở trường (MỚI)
+    title:"Rác nhựa mỗi ngày ở trường", icon:"🧴",
+    desc:"Chai nước, túi ni-lông, hộp nhựa dùng 1 lần — tác hại thực sự là bao nhiêu?",
+    questions:[
+      {img:"🧴",q:"Mỗi năm học (200 ngày), nếu mỗi ngày bạn uống 1 chai nước nhựa 500ml và không tái chế. Khối lượng nhựa thải ra?",choices:["♻️ 2 kg","🗑️ 5 kg","🏔️ 10 kg","🌊 20 kg"],correct:2,feedback_ok:"Khoảng 10 kg nhựa/người/năm. Với 1000 học sinh = 10 tấn nhựa. Hãy dùng bình nước cá nhân!",feedback_bad:"Mỗi học sinh thải ra khoảng 10 kg nhựa/năm nếu dùng chai nhựa hàng ngày. Con số rất lớn khi nhân lên.",impact:"+5%"},
+      {img:"🛍️",q:"Túi ni-lông phân hủy trong tự nhiên mất bao lâu?",choices:["📅 1 tháng","📅 1 năm","📅 20 năm","📅 500 năm"],correct:3,feedback_ok:"Túi ni-lông tồn tại 500-1000 năm trong môi trường. Chúng phân rã thành vi nhựa gây hại cho sinh vật.",feedback_bad:"Ni-lông cần 500-1000 năm để phân hủy. Hãy từ chối túi ni-lông và mang theo túi vải khi đi mua đồ.",impact:"+4%"},
+      {img:"🥤",q:"Lựa chọn nào sau đây giảm rác nhựa hiệu quả nhất khi uống nước?",choices:["🧴 Chai nhựa dùng một lần","🍾 Bình thủy tinh dùng nhiều lần","🫙 Bình inox giữ nhiệt","♻️ Chai nhựa tái chế"],correct:2,feedback_ok:"Bình inox giữ nhiệt là lựa chọn tối ưu: bền, giữ nhiệt, không thải nhựa, có thể dùng hàng chục năm.",feedback_bad:"Bình inox hoặc thủy tinh tái sử dụng là giải pháp bền vững nhất. Hãy đầu tư một bình nước cá nhân tốt.",impact:"+4%"},
+      {img:"🧪",q:"Hộp nhựa đen (xốp) đựng đồ ăn mang về. Nó có được tái chế ở Việt Nam không?",choices:["✅ Có, tất cả nhựa đều tái chế được","❌ Hầu hết các nhà máy không nhận hộp xốp màu đen","♻️ Chỉ tái chế được nếu rửa sạch","🌿 Có thể ủ phân hủy"],correct:1,feedback_ok:"Chính xác! Nhựa đen khó nhận diện bằng cảm biến quang học, hầu hết nhà máy không tái chế. Hãy tránh dùng hộp xốp đen.",feedback_bad:"Hộp nhựa đen (xốp) rất khó tái chế do màu đen. Lựa chọn tốt hơn: mang hộp cơm từ nhà.",impact:"+4%"},
+      {img:"🍬",q:"Kẹo, bánh có vỏ gói bằng nhôm và nhựa composite. Sau khi ăn, vỏ gói thuộc loại rác gì?",choices:["♻️ Rác tái chế","🍃 Rác hữu cơ","🗑️ Rác thông thường","🔴 Rác nguy hại"],correct:2,feedback_ok:"Đúng! Vỏ kẹo, bánh composite (nhôm+nhựa) không thể tái chế. Hãy bỏ vào thùng rác thường.",feedback_bad:"Vỏ bánh kẹo composite không thể tái chế, hãy bỏ vào thùng rác thông thường. Tốt nhất là hạn chế ăn đồ có nhiều bao bì này.",impact:"+2%"}
+    ]},
+  { // 7. Thử thách 7 ngày xanh (MỚI)
+    title:"Thử thách 7 ngày xanh", icon:"🌿",
+    desc:"Nếu cả lớp cùng hành động xanh trong 1 tuần, tác động sẽ lớn đến cỡ nào?",
+    questions:[
+      {img:"📅",q:"Thử thách: 1 tuần không dùng ống hút nhựa. Lớp 40 học sinh, mỗi người dùng trung bình 2 ống hút/tuần trước. Tiết kiệm bao nhiêu ống hút?",choices:["🥤 40 ống","🥤 80 ống","🥤 160 ống","🥤 200 ống"],correct:2,feedback_ok:"Chuẩn! 40 bạn x 2 ống = 80 ống/tuần. Nếu duy trì 1 năm = 4.000 ống nhựa không thải ra môi trường.",feedback_bad:"Lớp 40 học sinh mỗi tuần tiết kiệm 80 ống hút nhựa. Một con số đáng tự hào!",impact:"+4%"},
+      {img:"🚰",q:"Cả lớp cam kết mang bình nước cá nhân trong 1 tuần. Mỗi ngày tránh được 40 chai nhựa. Sau 1 năm học (200 ngày), con số là?",choices:["♻️ 4.000 chai","♻️ 8.000 chai","♻️ 16.000 chai","♻️ 32.000 chai"],correct:1,feedback_ok:"40 chai/ngày x 200 ngày = 8.000 chai nhựa/năm cho một lớp. Sức mạnh tập thể thật lớn!",feedback_bad:"Tuyệt vời! Một lớp học tiết kiệm 8.000 chai nhựa/năm. Hãy nhân con số này với số lớp trong trường.",impact:"+5%"},
+      {img:"💡",q:"Thử thách 'tắt đèn, tắt quạt khi ra khỏi phòng'. Nếu cả trường 1000 học sinh cùng thực hiện trong 1 ngày, tiết kiệm bao nhiêu điện?",choices:["💡 5 kWh","💡 50 kWh","💡 200 kWh","💡 500 kWh"],correct:2,feedback_ok:"Ước tính mỗi phòng có 2 đèn LED 20W và 1 quạt 50W. Tắt 1 giờ sớm hơn cho 40 phòng tiết kiệm 2.8 kWh. Nhân lên toàn trường là con số lớn.",feedback_bad:"Hành động nhỏ này nếu làm đại trà có thể tiết kiệm hàng trăm kWh điện mỗi ngày, giảm phát thải CO₂.",impact:"+4%"},
+      {img:"🗑️",q:"Tuần lễ xanh: mỗi bạn phân loại rác đúng cách. Rác hữu cơ từ căn teen được đưa đi ủ thành phân. Một tuần, 1000 học sinh tạo ra khoảng bao nhiêu kg rác hữu cơ?",choices:["🌿 50 kg","🌿 200 kg","🌿 500 kg","🌿 1.000 kg"],correct:2,feedback_ok:"Ước tính mỗi học sinh thải 0.5kg rác thực phẩm/tuần. 1000 học sinh = 500 kg, đủ để ủ thành phân bón cho vườn trường.",feedback_bad:"500 kg rác hữu cơ/tuần có thể biến thành phân bón quý giá, thay vì chôn lấp gây khí nhà kính.",impact:"+5%"},
+      {img:"🏆",q:"Sau 7
